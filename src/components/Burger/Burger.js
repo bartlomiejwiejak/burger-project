@@ -8,6 +8,9 @@ const burger = (props) => {
       ingredientComponents.push(<BurgerIngredient type={ingredient} key={ingredient + i} />);
     }
   }
+  if (ingredientComponents.length === 0) {
+    ingredientComponents = <p>Please, add ingredients.</p>
+  }
   return (
     <div className='Burger'>
       <BurgerIngredient type='bread-top' />
