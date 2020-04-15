@@ -1,0 +1,39 @@
+.SideDrawerToggler {
+  cursor: pointer;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  @media (min-width: 500px) {
+    display: none;
+  }
+}
+.Hamburger {
+  border: none;
+  border-radius: 0;
+  background-color: white;
+  height: 2px;
+  width: 40px;
+  display: block;
+  position: relative;
+  &::before,
+  &::after {
+    width: 40px;
+    height: 2px;
+    display: block;
+    content: "";
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &::after {
+    transform: translateY(10px);
+  }
+
+  &::before {
+    transform: translateY(-10px);
+  }
+
+}
+

@@ -17,7 +17,7 @@ class Layout extends Component {
   render() {
     return (
       <Auxiliary>
-        <Toolbar />
+        <Toolbar SideDrawerHandle={this.SideDrawerHandler} />
         <SideDrawer show={this.state.SideDrawerShown} SideDrawerHandle={this.SideDrawerHandler} />
         <main>
           {this.props.children}
