@@ -97,6 +97,7 @@ class BurgerBuilder extends Component {
           purchasing: false
         })
       })
+    this.props.history.push({ pathname: '/checkout' });
   }
   componentDidMount() {
     axios.get('/ingredients.json')
