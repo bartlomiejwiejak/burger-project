@@ -48,14 +48,14 @@ class ContactData extends Component {
         },
         value: ''
       },
-    },
-    deliveryMethod: {
-      elementType: 'select',
-      elementConfig: {
-        options: [{ value: 'fastest', displayValue: 'Fastest' }, { value: 'cheapest', displayValue: 'Cheapest' }]
-      },
-      value: ''
-    },
+      deliveryMethod: {
+        elementType: 'select',
+        elementConfig: {
+          options: [{ value: 'fastest', displayValue: 'Fastest' }, { value: 'cheapest', displayValue: 'Cheapest' }]
+        },
+        value: ''
+      }
+    }
   }
 
   orderHandler = (event) => {
