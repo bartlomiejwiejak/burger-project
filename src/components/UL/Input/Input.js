@@ -15,7 +15,7 @@ const Input = (props) => {
   }
   return (
     <div className='Input'>
-      <label classNamte='Label'>{props.label}</label>
+      <label className='Label'>{props.label}</label>
       {inputElement}
     </div>
   );
