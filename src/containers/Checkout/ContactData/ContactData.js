@@ -6,14 +6,58 @@ import Spinner from '../../../components/UL/Spinner/Spinner';
 import Input from '../../../components/UL/Input/Input';
 class ContactData extends Component {
   state = {
-    name: '',
-    email: '',
-    adress: {
-      street: '',
-      postalCode: ''
+    orderForm: {
+      name: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your name'
+        },
+        value: ''
+      },
+
+      street: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Street'
+        },
+        value: ''
+      },
+      zipCode: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'ZIP Code'
+        },
+        value: ''
+      },
+      country: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Country'
+        },
+        value: ''
+      },
+      email: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'email',
+          placeholder: 'Your email'
+        },
+        value: ''
+      },
     },
-    loading: false
+    deliveryMethod: {
+      elementType: 'select',
+      elementConfig: {
+        options: [{ value: 'fastest', displayValue: 'Fastest' }, { value: 'cheapest', displayValue: 'Cheapest' }]
+      },
+      value: ''
+    },
   }
+
   orderHandler = (event) => {
     event.preventDefault();
     this.setState({
@@ -22,17 +66,8 @@ class ContactData extends Component {
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.price,
-      customer: {
-        name: 'Bartlomiej Wiejak',
-        adress: {
-          street: 'Polna 99',
-          zipCode: '3123',
-          country: 'Poland'
-        },
-        email: 'test@test.com'
-      },
-      deliveryMethod: 'fastest'
     }
+
     axios.post('/orders.json', order)
       .then(res => {
         this.setState({
