@@ -81,6 +81,13 @@ class ContactData extends Component {
         })
       })
   }
+  inputOnChangeHandler = (e, key) => {
+    let updatedOrderForm = { ...this.state.orderForm };
+    updatedOrderForm[key].value = e.target.value
+    this.setState({
+      orderForm: updatedOrderForm
+    })
+  }
   render() {
     let inputElements = [];
 
@@ -94,7 +101,7 @@ class ContactData extends Component {
     }
 
     let form = (<form>
-      {inputElements.map(inputElement => <Input key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
+      {inputElements.map(inputElement => <Input onChange={(e) => this.inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
       <Button click={this.orderHandler} btnType='Success'>ORDER</Button>
     </form>)
 
