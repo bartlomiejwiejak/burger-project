@@ -87,7 +87,8 @@ class ContactData extends Component {
           touched: false
         }
       }
-    }
+    },
+    isFormValid: false
   }
   checkValidity(value, rules) {
     let isValid = true;
@@ -136,8 +137,15 @@ class ContactData extends Component {
     updatedOrderForm[key].value = e.target.value
     updatedOrderForm[key].validation.touched = true;
     updatedOrderForm[key].validation.valid = this.checkValidity(updatedOrderForm[key].value, updatedOrderForm[key].validation);
+    let isFormValid = true;
+    for (let inputName in this.state.orderForm) {
+      if (!this.state.orderForm[inputName].validation.valid) {
+        isFormValid = false;
+      }
+    }
     this.setState({
-      orderForm: updatedOrderForm
+      orderForm: updatedOrderForm,
+      isFormValid
     })
   }
   render() {
@@ -153,7 +161,7 @@ class ContactData extends Component {
     }
     let form = (<form onSubmit={this.orderHandler}>
       {inputElements.map(inputElement => <Input name={inputElement.id} touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => this.inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
-      <Button click={this.orderHandler} btnType='Success'>ORDER</Button>
+      <Button disabled={!this.state.isFormValid} click={this.orderHandler} btnType='Success'>ORDER</Button>
     </form>)
 
     if (this.state.loading) {
