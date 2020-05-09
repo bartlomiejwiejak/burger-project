@@ -16,7 +16,8 @@ class ContactData extends Component {
         value: '',
         validation: {
           required: true,
-          valid: false
+          valid: false,
+          touched: false
         }
       },
 
@@ -29,7 +30,8 @@ class ContactData extends Component {
         value: '',
         validation: {
           required: true,
-          valid: false
+          valid: false,
+          touched: false
         }
       },
       zipCode: {
@@ -43,7 +45,8 @@ class ContactData extends Component {
           required: true,
           valid: false,
           minLength: 5,
-          maxLength: 5
+          maxLength: 5,
+          touched: false
         }
       },
       country: {
@@ -55,7 +58,8 @@ class ContactData extends Component {
         value: '',
         validation: {
           required: true,
-          valid: false
+          valid: false,
+          touched: false
         }
       },
       email: {
@@ -67,7 +71,8 @@ class ContactData extends Component {
         value: '',
         validation: {
           required: true,
-          valid: false
+          valid: false,
+          touched: false
         }
       },
       deliveryMethod: {
@@ -75,7 +80,12 @@ class ContactData extends Component {
         elementConfig: {
           options: [{ value: 'fastest', displayValue: 'Fastest' }, { value: 'cheapest', displayValue: 'Cheapest' }]
         },
-        value: ''
+        value: '',
+        validation: {
+          required: false,
+          valid: true,
+          touched: false
+        }
       }
     }
   }
@@ -124,7 +134,8 @@ class ContactData extends Component {
   inputOnChangeHandler = (e, key) => {
     let updatedOrderForm = { ...this.state.orderForm };
     updatedOrderForm[key].value = e.target.value
-    updatedOrderForm[key].validation.valid = this.checkValidity(updatedOrderForm[key].value, updatedOrderForm[key].validation.required);
+    updatedOrderForm[key].validation.touched = true;
+    updatedOrderForm[key].validation.valid = this.checkValidity(updatedOrderForm[key].value, updatedOrderForm[key].validation);
     this.setState({
       orderForm: updatedOrderForm
     })
@@ -140,9 +151,8 @@ class ContactData extends Component {
       obj['id'] = inputName;
       inputElements.push(obj);
     }
-
     let form = (<form onSubmit={this.orderHandler}>
-      {inputElements.map(inputElement => <Input onChange={(e) => this.inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
+      {inputElements.map(inputElement => <Input touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => this.inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
       <Button click={this.orderHandler} btnType='Success'>ORDER</Button>
     </form>)
 
