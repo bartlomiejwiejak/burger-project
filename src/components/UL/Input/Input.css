@@ -2,6 +2,7 @@
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .Label {
@@ -29,4 +30,12 @@
 .Invalid {
   border: 1px solid red;
   background-color: #fDA49A;
+}
+.ValidationError {
+  color: red;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateY(100%) translateX(-50% );
+  margin: 0;
 }
