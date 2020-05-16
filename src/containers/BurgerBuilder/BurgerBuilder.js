@@ -13,7 +13,6 @@ import * as actionTypes from '../../store/actions';
 class BurgerBuilder extends Component {
   state = {
     totalPrice: 4,
-    purchasable: false,
     purchasing: false,
     loading: false,
     error: false
@@ -23,19 +22,15 @@ class BurgerBuilder extends Component {
       purchasing: true
     })
   }
-  updatePurchasableState(ingredients) {
+  canPurchase(ingredients) {
     for (let ingredient in ingredients) {
-      this.setState({
-        purchasable: false
-      })
       if (ingredients[ingredient] !== 0) {
-        this.setState({
-          purchasable: true
-        })
-        return;
+        return true;
       }
     }
+    return false;
   }
+
   cancelPurchaseHandler = () => {
     this.setState({
       purchasing: false
@@ -76,7 +71,7 @@ class BurgerBuilder extends Component {
       burger = (
         <Aux>
           <Burger ingredients={this.props.ings} />
-          <BuildControls price={this.props.price} disabled={disabledInfo} addIngredient={this.props.onIngredientAdded} removeIngredient={this.props.onIngredientRemoved} purchasable={this.state.purchasable} purchase={this.purchaseHandler} />
+          <BuildControls price={this.props.price} disabled={disabledInfo} addIngredient={this.props.onIngredientAdded} removeIngredient={this.props.onIngredientRemoved} purchasable={this.canPurchase(this.props.ings)} purchase={this.purchaseHandler} />
         </Aux>
       )
       orderSummary = <OrderSummary price={this.state.totalPrice} continuePurchase={this.continuePurchaseHandler} cancelPurchase={this.cancelPurchaseHandler} ingredients={this.props.ings} />
