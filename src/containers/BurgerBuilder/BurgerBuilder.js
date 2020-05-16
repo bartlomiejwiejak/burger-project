@@ -37,27 +37,22 @@ class BurgerBuilder extends Component {
     })
   }
   continuePurchaseHandler = () => {
-    let queryParams = [];
-    for (let ingredient in this.state.ingredients) {
-      queryParams.push(encodeURIComponent(ingredient) + '=' + encodeURIComponent(this.state.ingredients[ingredient]))
-    }
-    queryParams.push('price=' + this.state.totalPrice)
-    queryParams = queryParams.join('&')
-    this.props.history.push({ pathname: '/checkout', search: '?' + queryParams });
+
+    this.props.history.push('/checkout');
   }
   componentDidMount() {
-    axios.get('/ingredients.json')
-      .then(res => {
-        this.setState({
-          ingredients: res.data
-        })
-      })
-      .catch(error => {
-        console.log(error)
-        this.setState({
-          error: true
-        })
-      })
+    // axios.get('/ingredients.json')
+    //   .then(res => {
+    //     this.setState({
+    //       ingredients: res.data
+    //     })
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //     this.setState({
+    //       error: true
+    //     })
+    //   })
   }
   render() {
     const disabledInfo = { ...this.props.ings };
