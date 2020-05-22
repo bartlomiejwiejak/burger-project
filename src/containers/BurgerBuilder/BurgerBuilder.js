@@ -39,18 +39,7 @@ class BurgerBuilder extends Component {
     this.props.history.push('/checkout');
   }
   componentDidMount() {
-    // axios.get('/ingredients.json')
-    //   .then(res => {
-    //     this.setState({
-    //       ingredients: res.data
-    //     })
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //     this.setState({
-    //       error: true
-    //     })
-    //   })
+    this.props.onInitIngredients()
   }
   render() {
     const disabledInfo = { ...this.props.ings };
@@ -58,7 +47,7 @@ class BurgerBuilder extends Component {
       disabledInfo[key] = disabledInfo[key] === 0;
     }
     let orderSummary = null;
-    let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />
+    let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />
 
     if (this.props.ings) {
       burger = (
@@ -86,7 +75,8 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
   return {
     ings: state.burgerBuilder.ingredients,
-    price: state.burgerBuilder.totalPrice
+    price: state.burgerBuilder.totalPrice,
+    error: state.burgerBuilder.error
   }
 }
 
@@ -94,7 +84,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
     onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
-
+    onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
