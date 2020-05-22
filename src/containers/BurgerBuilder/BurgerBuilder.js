@@ -14,8 +14,6 @@ class BurgerBuilder extends Component {
   state = {
     totalPrice: 4,
     purchasing: false,
-    loading: false,
-    error: false
   }
   purchaseHandler = () => {
     this.setState({
@@ -95,7 +93,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
-    onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName))
+    onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
+
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
