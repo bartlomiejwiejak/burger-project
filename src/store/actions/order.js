@@ -21,10 +21,10 @@ export const purchaseBurgerStart = () => {
 }
 export const purchaseBurger = (orderData) => {
   return dispatch => {
-    dispatch(purchaseBurgerStart)
+    dispatch(purchaseBurgerStart())
     axios.post('orders.json', orderData)
       .then(res => {
-        dispatch(purchaseBurgerSucces(res.data, orderData))
+        dispatch(purchaseBurgerSucces(res.data.name, orderData))
       })
       .catch(error => {
         dispatch(purchaseBurgerFail(error))
