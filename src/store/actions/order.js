@@ -14,11 +14,11 @@ export const purchaseBurgerFail = (error) => {
     error: error
   }
 }
-export const purchaseBurgerStart = (order) => {
+export const purchaseBurgerStart = (orderData) => {
   return dispatch => {
-    axios.post('orders.json', order)
+    axios.post('orders.json', orderData)
       .then(res => {
-        dispatch(purchaseBurgerSucces(res.data, order.data))
+        dispatch(purchaseBurgerSucces(res.data, orderData))
       })
       .catch(error => {
         dispatch(purchaseBurgerFail(error))
