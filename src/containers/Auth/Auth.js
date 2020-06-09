@@ -6,6 +6,7 @@ import * as actions from '../../store/actions';
 import './Auth.css';
 class Auth extends Component {
   state = {
+    isSignUp: true,
     controls: {
       email: {
         elementType: 'input',
@@ -78,7 +79,15 @@ class Auth extends Component {
   }
   submitHandler = (e) => {
     e.preventDefault();
-    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
+    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignUp);
+  }
+  switchAuthModeHandler = (e) => {
+    e.preventDefault();
+    this.setState((prevState) => {
+      return {
+        isSignUp: !prevState.isSignUp
+      }
+    })
   }
   render() {
     let inputElements = [];
@@ -99,6 +108,7 @@ class Auth extends Component {
     return (
       <div className='Auth'>
         {form}
+        <Button click={this.switchAuthModeHandler} btnType='Danger'>SWITCH TO {this.state.isSignUp ? 'SIGN IN' : 'SIGN UP'}</Button>
       </div>
     );
   }
@@ -106,7 +116,7 @@ class Auth extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAuth: (email, password) => dispatch(actions.auth(email, password))
+    onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp))
   }
 }
 
