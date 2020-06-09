@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Input from '../../components/UL/Input/Input';
 import Button from '../../components/UL/Button/Button';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 import './Auth.css';
 class Auth extends Component {
   state = {
@@ -64,8 +66,8 @@ class Auth extends Component {
     updatedControls[key].validation.touched = true;
     updatedControls[key].validation.valid = this.checkValidity(updatedControls[key].value, updatedControls[key].validation);
     let isFormValid = true;
-    for (let inputName in this.state.orderForm) {
-      if (!this.state.orderForm[inputName].validation.valid) {
+    for (let inputName in updatedControls) {
+      if (!updatedControls[inputName].validation.valid) {
         isFormValid = false;
       }
     }
@@ -73,6 +75,10 @@ class Auth extends Component {
       controls: updatedControls,
       isFormValid
     })
+  }
+  submitHandler = (e) => {
+    e.preventDefault();
+    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
   }
   render() {
     let inputElements = [];
@@ -87,7 +93,7 @@ class Auth extends Component {
     }
     let form = (<form onSubmit={this.orderHandler}>
       {inputElements.map(inputElement => <Input name={inputElement.id} touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => this.inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
-      <Button disabled={!this.state.isFormValid} btnType='Success'>SUBMIT</Button>
+      <Button click={this.submitHandler} disabled={!this.state.isFormValid} btnType='Success'>SUBMIT</Button>
     </form>)
 
     return (
@@ -98,4 +104,10 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password) => dispatch(actions.auth(email, password))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Auth);
