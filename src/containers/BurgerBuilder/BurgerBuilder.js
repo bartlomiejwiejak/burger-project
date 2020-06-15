@@ -16,9 +16,14 @@ class BurgerBuilder extends Component {
     purchasing: false,
   }
   purchaseHandler = () => {
-    this.setState({
-      purchasing: true
-    })
+    if (this.props.isAuth) {
+      this.setState({
+        purchasing: true
+      })
+    } else {
+      this.props.history.push('/auth')
+    }
+
   }
   canPurchase(ingredients) {
     for (let ingredient in ingredients) {
@@ -53,7 +58,7 @@ class BurgerBuilder extends Component {
       burger = (
         <Aux>
           <Burger ingredients={this.props.ings} />
-          <BuildControls price={this.props.price} disabled={disabledInfo} addIngredient={this.props.onIngredientAdded} removeIngredient={this.props.onIngredientRemoved} purchasable={this.canPurchase(this.props.ings)} purchase={this.purchaseHandler} />
+          <BuildControls isAuth={this.props.isAuth} price={this.props.price} disabled={disabledInfo} addIngredient={this.props.onIngredientAdded} removeIngredient={this.props.onIngredientRemoved} purchasable={this.canPurchase(this.props.ings)} purchase={this.purchaseHandler} />
         </Aux>
       )
       orderSummary = <OrderSummary price={this.state.totalPrice} continuePurchase={this.continuePurchaseHandler} cancelPurchase={this.cancelPurchaseHandler} ingredients={this.props.ings} />
@@ -76,7 +81,8 @@ const mapStateToProps = state => {
   return {
     ings: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
-    error: state.burgerBuilder.error
+    error: state.burgerBuilder.error,
+    isAuth: state.auth.token !== null
   }
 }
 

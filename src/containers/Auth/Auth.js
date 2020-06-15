@@ -4,6 +4,7 @@ import Button from '../../components/UL/Button/Button';
 import { connect } from 'react-redux';
 import Spinner from '../../components/UL/Spinner/Spinner';
 import * as actions from '../../store/actions';
+import { Redirect } from 'react-router-dom';
 import './Auth.css';
 class Auth extends Component {
   state = {
@@ -116,6 +117,7 @@ class Auth extends Component {
     }
     return (
       <div className='Auth'>
+        {this.props.isAuth ? <Redirect to='/' /> : null}
         {errorMessage}
         {form}
         <Button click={this.switchAuthModeHandler} btnType='Danger'>SWITCH TO {this.state.isSignUp ? 'SIGN IN' : 'SIGN UP'}</Button>
@@ -132,7 +134,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     loading: state.auth.loading,
-    error: state.auth.error
+    error: state.auth.error,
+    isAuth: state.auth.token !== null
   }
 }
 
