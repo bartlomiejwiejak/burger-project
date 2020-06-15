@@ -4,6 +4,7 @@ const initialState = {
   ingredients: null,
   totalPrice: 4,
   error: false,
+  building: false
 }
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -16,7 +17,8 @@ const addIngredient = (state, action) => {
   const updatedIngredients = updatedObject(state.ingredients, updatedIngredient);
   const updatedState = {
     ingredients: updatedIngredients,
-    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+    building: true
   }
   return updatedObject(state, updatedState)
 }
@@ -25,6 +27,7 @@ const removeIngredient = (state, action) => {
   const updatedIngs = updatedObject(state.ingredients, updatedIng);
   const updatedSt = {
     ingredients: updatedIngs,
+    building: true,
     totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
   }
   return updatedObject(state, updatedSt)
@@ -37,13 +40,15 @@ const setIngredients = (state, action) => {
       cheese: action.ingredients.bacon,
       meat: action.ingredients.meat
     },
-    totalPrice: 4
+    totalPrice: 4,
+    building: false
   })
 }
 const fetchIngredients = (state, action) => {
   return updatedObject(state, {
     error: true
   })
+
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {

@@ -91,6 +91,11 @@ class Auth extends Component {
       }
     })
   }
+  componentDidMount() {
+    if (!this.props.isBurgerBuilding && this.props.redirectPath !== '/') {
+      this.props.onSetAuthRedirectPath('/')
+    }
+  }
   render() {
     let inputElements = [];
 
@@ -115,9 +120,13 @@ class Auth extends Component {
         <p>{this.props.error.message}</p>
       )
     }
+    let redirect = null;
+    if (this.props.isAuth) {
+      redirect = <Redirect to={this.props.redirectPath} />
+    }
     return (
       <div className='Auth'>
-        {this.props.isAuth ? <Redirect to='/' /> : null}
+        {redirect}
         {errorMessage}
         {form}
         <Button click={this.switchAuthModeHandler} btnType='Danger'>SWITCH TO {this.state.isSignUp ? 'SIGN IN' : 'SIGN UP'}</Button>
@@ -128,14 +137,17 @@ class Auth extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp))
+    onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
+    onSetAuthRedirectPath: (url) => dispatch(actions.setAuthRedirectPath(url))
   }
 }
 const mapStateToProps = state => {
   return {
     loading: state.auth.loading,
     error: state.auth.error,
-    isAuth: state.auth.token !== null
+    isAuth: state.auth.token !== null,
+    isBurgerBuilding: state.burgerBuilder.building,
+    redirectPath: state.auth.redirectPath
   }
 }
 
