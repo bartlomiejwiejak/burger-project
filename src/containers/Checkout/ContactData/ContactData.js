@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import axios from '../../../axios-orders';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
+import { updatedObject } from '../../../shared/utility';
 class ContactData extends Component {
   state = {
     orderForm: {
@@ -133,13 +134,19 @@ class ContactData extends Component {
     this.props.onPurchaseBurger(order, this.props.token);
   }
   inputOnChangeHandler = (e, key) => {
-    let updatedOrderForm = { ...this.state.orderForm };
-    updatedOrderForm[key].value = e.target.value
-    updatedOrderForm[key].validation.touched = true;
-    updatedOrderForm[key].validation.valid = this.checkValidity(updatedOrderForm[key].value, updatedOrderForm[key].validation);
+    const updatedFormElement = updatedObject(this.state.orderForm[key], {
+      value: e.target.value,
+      validation: updatedObject(this.state.orderForm[key].validation, {
+        touched: true,
+        valid: this.checkValidity(e.target.value, this.state.orderForm[key].validation)
+      })
+    })
+    const updatedOrderForm = updatedObject(this.state.orderForm, {
+      [key]: updatedFormElement
+    })
     let isFormValid = true;
-    for (let inputName in this.state.orderForm) {
-      if (!this.state.orderForm[inputName].validation.valid) {
+    for (let inputName in updatedOrderForm) {
+      if (!updatedOrderForm[inputName].validation.valid) {
         isFormValid = false;
       }
     }

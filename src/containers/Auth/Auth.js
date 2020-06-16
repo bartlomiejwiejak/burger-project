@@ -6,6 +6,7 @@ import Spinner from '../../components/UL/Spinner/Spinner';
 import * as actions from '../../store/actions';
 import { Redirect } from 'react-router-dom';
 import './Auth.css';
+import { updatedObject } from '../../shared/utility';
 class Auth extends Component {
   state = {
     isSignUp: true,
@@ -64,10 +65,16 @@ class Auth extends Component {
     return isValid;
   }
   inputOnChangeHandler = (e, key) => {
-    let updatedControls = { ...this.state.controls };
-    updatedControls[key].value = e.target.value
-    updatedControls[key].validation.touched = true;
-    updatedControls[key].validation.valid = this.checkValidity(updatedControls[key].value, updatedControls[key].validation);
+    const updatedControl = updatedObject(this.state.controls[key], {
+      value: e.target.value,
+      validation: updatedObject(this.state.controls[key].validation, {
+        touched: true,
+        valid: this.checkValidity(e.target.value, this.state.controls[key].validation)
+      })
+    })
+    const updatedControls = updatedObject(this.state.controls, {
+      [key]: updatedControl
+    })
     let isFormValid = true;
     for (let inputName in updatedControls) {
       if (!updatedControls[inputName].validation.valid) {
