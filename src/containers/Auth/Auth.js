@@ -6,7 +6,7 @@ import Spinner from '../../components/UL/Spinner/Spinner';
 import * as actions from '../../store/actions';
 import { Redirect } from 'react-router-dom';
 import './Auth.css';
-import { updatedObject } from '../../shared/utility';
+import { updatedObject, checkValidity } from '../../shared/utility';
 class Auth extends Component {
   state = {
     isSignUp: true,
@@ -42,34 +42,12 @@ class Auth extends Component {
     },
     isFormValid: false
   }
-  checkValidity(value, rules) {
-    let isValid = true;
-    if (rules.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
-    if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid;
-    }
-    if (rules.isEmail) {
-      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      isValid = pattern.test(value) && isValid
-    }
-
-    if (rules.isNumeric) {
-      const pattern = /^\d+$/;
-      isValid = pattern.test(value) && isValid
-    }
-    return isValid;
-  }
   inputOnChangeHandler = (e, key) => {
     const updatedControl = updatedObject(this.state.controls[key], {
       value: e.target.value,
       validation: updatedObject(this.state.controls[key].validation, {
         touched: true,
-        valid: this.checkValidity(e.target.value, this.state.controls[key].validation)
+        valid: checkValidity(e.target.value, this.state.controls[key].validation)
       })
     })
     const updatedControls = updatedObject(this.state.controls, {
