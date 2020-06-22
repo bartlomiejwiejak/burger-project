@@ -1,5 +1,4 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
 export const authStart = () => {
   return {
     type: actionTypes.AUTH_START
@@ -35,29 +34,11 @@ export const checkAuthTimeout = (expirationTime) => {
   }
 }
 export const auth = (email, password, isSignUp) => {
-  return dispatch => {
-    const authData = {
-      email,
-      password,
-      returnSecureToken: true
-    }
-    let link = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAXM6PTyBjnTzL_c3qGhM7MMiOoQqHE2Js';
-    if (!isSignUp) {
-      link = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAXM6PTyBjnTzL_c3qGhM7MMiOoQqHE2Js'
-    }
-    dispatch(authStart());
-    axios.post(link, authData)
-      .then(res => {
-        const expirationDate = new Date(new Date().getTime() + res.data.expiresIn * 1000);
-        localStorage.setItem('userId', res.data.localId)
-        localStorage.setItem('token', res.data.idToken)
-        localStorage.setItem('expirationDate', expirationDate)
-        dispatch(authSuccess(res.data.localId, res.data.idToken))
-        dispatch(checkAuthTimeout(res.data.expiresIn))
-      })
-      .catch(err => {
-        dispatch(authFail(err.response.data.error))
-      })
+  return {
+    type: actionTypes.AUTH_INIT,
+    email,
+    password,
+    isSignUp
   }
 }
 
