@@ -10,11 +10,11 @@ const SideDrawer = (props) => {
   styles = styles.join(' ');
   return (
     <Aux>
-      <Backdrop show={props.show} cancel={props.SideDrawerHandle} />
+      <Backdrop show={props.show} cancel={props.sideDrawerHandle} />
       <div className={styles}>
         <Logo height='11%' mb='32px' />
         <nav>
-          <NavigationItems sideHandle={props.SideDrawerHandle} isAuth={props.isAuth} />
+          <NavigationItems sideHandle={props.sideDrawerHandle} isAuth={props.isAuth} />
         </nav>
       </div>
     </Aux>

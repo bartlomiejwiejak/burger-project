@@ -6,7 +6,7 @@ import SideDrawerToggler from '../SideDrawer/SideDrawerToggler/SideDrawerToggler
 const Toolbar = (props) => {
   return (
     <header className='Toolbar'>
-      <SideDrawerToggler toggle={props.SideDrawerHandle} />
+      <SideDrawerToggler toggle={props.sideDrawerHandle} />
       <Logo height='80%' />
       <nav className='DesktopOnly'>
         <NavigationItems isAuth={props.isAuth} />
