@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
@@ -10,23 +10,18 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
-export const BurgerBuilder = class BurgerBuilder extends Component {
-  state = {
-    totalPrice: 4,
-    purchasing: false,
-  }
-  purchaseHandler = () => {
-    if (this.props.isAuth) {
-      this.setState({
-        purchasing: true
-      })
-    } else {
-      this.props.onSetAuthRedirectPath('/checkout');
-      this.props.history.push('/auth');
-    }
+const BurgerBuilder = (props) => {
+  const [purchasing, setPurchasing] = useState(false);
 
+  const purchaseHandler = () => {
+    if (props.isAuth) {
+      setPurchasing(true);
+    } else {
+      props.onSetAuthRedirectPath('/checkout');
+      props.history.push('/auth');
+    }
   }
-  canPurchase(ingredients) {
+  const canPurchase = (ingredients) => {
     for (let ingredient in ingredients) {
       if (ingredients[ingredient] !== 0) {
         return true;
@@ -35,47 +30,42 @@ export const BurgerBuilder = class BurgerBuilder extends Component {
     return false;
   }
 
-  cancelPurchaseHandler = () => {
-    this.setState({
-      purchasing: false
-    })
+  const cancelPurchaseHandler = () => {
+    setPurchasing(false);
   }
-  continuePurchaseHandler = () => {
-    this.props.onInitPurchase();
-    this.props.history.push('/checkout');
+  const continuePurchaseHandler = () => {
+    props.onInitPurchase();
+    props.history.push('/checkout');
   }
-  componentDidMount() {
-    this.props.onInitIngredients()
-  }
-  render() {
-    const disabledInfo = { ...this.props.ings };
-    for (let key in disabledInfo) {
-      disabledInfo[key] = disabledInfo[key] === 0;
-    }
-    let orderSummary = null;
-    let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />
+  const { onInitIngredients } = props;
+  useEffect(() => {
+    onInitIngredients()
+  }, [onInitIngredients])
 
-    if (this.props.ings) {
-      burger = (
-        <Aux>
-          <Burger ingredients={this.props.ings} />
-          <BuildControls isAuth={this.props.isAuth} price={this.props.price} disabled={disabledInfo} addIngredient={this.props.onIngredientAdded} removeIngredient={this.props.onIngredientRemoved} purchasable={this.canPurchase(this.props.ings)} purchase={this.purchaseHandler} />
-        </Aux>
-      )
-      orderSummary = <OrderSummary price={this.state.totalPrice} continuePurchase={this.continuePurchaseHandler} cancelPurchase={this.cancelPurchaseHandler} ingredients={this.props.ings} />
-    }
-    if (this.state.loading) {
-      orderSummary = <Spinner />
-    }
-    return (
-      <Aux>
-        <Modal cancel={this.cancelPurchaseHandler} show={this.state.purchasing}>
-          {orderSummary}
-        </Modal>
-        {burger}
-      </Aux>
-    );
+  const disabledInfo = { ...props.ings };
+  for (let key in disabledInfo) {
+    disabledInfo[key] = disabledInfo[key] === 0;
   }
+  let orderSummary = null;
+  let burger = props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />
+
+  if (props.ings) {
+    burger = (
+      <Aux>
+        <Burger ingredients={props.ings} />
+        <BuildControls isAuth={props.isAuth} price={props.price} disabled={disabledInfo} addIngredient={props.onIngredientAdded} removeIngredient={props.onIngredientRemoved} purchasable={canPurchase(props.ings)} purchase={purchaseHandler} />
+      </Aux>
+    )
+    orderSummary = <OrderSummary price={props.price} continuePurchase={continuePurchaseHandler} cancelPurchase={cancelPurchaseHandler} ingredients={props.ings} />
+  }
+  return (
+    <Aux>
+      <Modal cancel={cancelPurchaseHandler} show={purchasing}>
+        {orderSummary}
+      </Modal>
+      {burger}
+    </Aux>
+  );
 }
 
 const mapStateToProps = state => {
