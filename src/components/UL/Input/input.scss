@@ -1,0 +1,56 @@
+.input {
+  box-sizing: border-box;
+  position: relative;
+  color: #777;
+  visibility: inherit;
+}
+
+.Label {
+  font-weight: bold;
+  display: block;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  visibility: inherit;
+}
+
+.InputElement {
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: white;
+    border: none;
+    font-family: inherit;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+    color: inherit;
+    transition: .3s;
+    line-height: 1.7;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(#000, .1);
+      border-bottom: 3px solid #55c57a;
+      outline: none;
+      &.Invalid {
+        background-color: white;
+          border-bottom: 3px solid #ff7730;
+      }
+    }
+    
+}
+
+.ValidationError {
+  color: #ff7730;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateY(100%) translateX(-50% );
+  @media (max-width: 500px) {
+  left: 0;
+  transform: translateY(100%) translateX(0);
+  }
+  margin: 0;
+  font-size: 1.3rem;
+}

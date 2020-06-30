@@ -1,5 +1,5 @@
 import React from 'react';
-import './Input.css';
+import './input.scss';
 const Input = (props) => {
   let inputElement = null;
   let classes = ['InputElement'];
@@ -7,7 +7,7 @@ const Input = (props) => {
 
   if (!props.isValid && props.touched) {
     classes.push('Invalid');
-    validationError = <p className='ValidationError'>Please enter a valid {props.name}.</p>
+    validationError = <p className='ValidationError'>Please enter a valid {props.name} .</p>
   }
   classes = classes.join(' ');
   switch (props.elementType) {
@@ -26,7 +26,7 @@ const Input = (props) => {
       inputElement = <input onChange={props.onChange} className={classes} {...props.elementConfig} value={props.value} />
   }
   return (
-    <div className='Input'>
+    <div className='input'>
       <label className='Label'>{props.label}</label>
       {inputElement}
       {validationError}

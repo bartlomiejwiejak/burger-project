@@ -1,5 +1,5 @@
 .Toolbar {
-  height: 56px;
+  height: 5.6rem;
   width: 100%;
   position: fixed;
   top: 0;
@@ -11,6 +11,7 @@
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 90;
+  font-size: 1.6rem;
 }
 
 .Toolbar nav {

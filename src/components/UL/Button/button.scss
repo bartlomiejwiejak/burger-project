@@ -1,0 +1,35 @@
+.btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.6rem;
+  padding: 1rem;
+  margin: 1rem;
+  font-weight: bold;
+  display: block;
+  position: relative;
+  transition: .3s;
+  &:hover {
+    transform: translateY(-3px);
+    text-shadow: 0 1rem 2rem rgba(0,0,0, 0.5);
+  }
+  &--success {
+    color: #5C9210;
+  }
+  &--danger {
+    color: #944317;
+  }
+  &:disabled {
+    color: #777;
+    cursor: not-allowed;
+  }
+  &:active, &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    text-shadow: 0 .5rem 1rem rgba(black,.2);
+  }
+}
+

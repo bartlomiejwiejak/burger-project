@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Button from '../../../components/UL/Button/Button';
 import './ContactData.css';
-import Spinner from '../../../components/UL/Spinner/Spinner';
 import Input from '../../../components/UL/Input/Input';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
@@ -146,9 +145,7 @@ const ContactData = (props) => {
     <Button disabled={!isFormValid} click={orderHandler} btnType='Success'>ORDER</Button>
   </form>)
 
-  if (props.loading) {
-    form = <Spinner />
-  }
+
   return (
     <div className='ContactData'>
       <h4>Enter your Contact Data</h4>

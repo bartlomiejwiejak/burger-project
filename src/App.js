@@ -1,19 +1,19 @@
 import React, { useEffect, Suspense } from 'react';
 import Layout from './hoc/Layout/Layout';
-import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import BurgerBuilder from './pages/BurgerBuilder/BurgerBuilder';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
-import Logout from './containers/Auth/Logout/Logout';
+import Logout from './pages/Auth/Logout/Logout';
 import { connect } from 'react-redux';
 import * as actions from './store/actions';
 
 const Checkout = React.lazy(() => {
-  return import('./containers/Checkout/Checkout')
+  return import('./pages/Checkout/Checkout')
 })
 const Orders = React.lazy(() => {
-  return import('./containers/Orders/Orders')
+  return import('./pages/Orders/Orders')
 })
 const Auth = React.lazy(() => {
-  return import('./containers/Auth/Auth')
+  return import('./pages/Auth/Auth')
 })
 
 const App = (props) => {

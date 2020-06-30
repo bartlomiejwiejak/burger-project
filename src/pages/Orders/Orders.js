@@ -4,14 +4,13 @@ import axios from '../../axios-orders';
 import { connect } from 'react-redux';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions';
-import Spinner from '../../components/UL/Spinner/Spinner';
 const Orders = (props) => {
   const { token, userId, loading, onFetchOrders } = props;
 
   useEffect(() => {
     onFetchOrders(token, userId);
   }, [token, userId, onFetchOrders])
-  let orders = <Spinner />
+  let orders = null;
   if (!loading) {
     orders = (
       <>

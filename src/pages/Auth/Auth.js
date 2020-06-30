@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Input from '../../components/UL/Input/Input';
 import Button from '../../components/UL/Button/Button';
 import { connect } from 'react-redux';
-import Spinner from '../../components/UL/Spinner/Spinner';
 import * as actions from '../../store/actions';
 import { Redirect } from 'react-router-dom';
-import './Auth.css';
+import './auth.scss';
 import { updatedObject, checkValidity } from '../../shared/utility';
+import Loader from '../../components/UL/Loader/Loader';
 const Auth = (props) => {
   const [isSignUp, setIsSignUp] = useState(true);
   const [controls, setControls] = useState({
@@ -85,17 +85,14 @@ const Auth = (props) => {
     obj['id'] = inputName;
     inputElements.push(obj);
   }
-  let form = (<form onSubmit={submitHandler}>
-    {inputElements.map(inputElement => <Input name={inputElement.id} touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
-    <Button click={submitHandler} disabled={!isFormValid} btnType='Success'>SUBMIT</Button>
+  let form = (<form className={`auth__form ${props.loading ? 'auth__form--invisible' : ''}`} onSubmit={submitHandler}>
+    {inputElements.map(inputElement => <Input label={inputElement.elementConfig.type} name={inputElement.id} touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
+    <Button click={submitHandler} disabled={!isFormValid} btnType='btn--success btn auth__btn'>{isSignUp ? 'SIGN UP' : 'SIGN IN'}</Button>
   </form>)
-  if (props.loading) {
-    form = <Spinner />
-  }
   let errorMessage = null;
   if (props.error) {
     errorMessage = (
-      <p>{props.error.message}</p>
+      <p style={{ fontSize: '1.4rem', color: '#944317', fontWeight: '700' }}>{props.error.message}</p>
     )
   }
   let redirect = null;
@@ -103,11 +100,18 @@ const Auth = (props) => {
     redirect = <Redirect to={props.redirectPath} />
   }
   return (
-    <div className='Auth'>
+    <div className='auth'>
       {redirect}
-      {errorMessage}
-      {form}
-      <Button click={switchAuthModeHandler} btnType='Danger'>SWITCH TO {isSignUp ? 'SIGN IN' : 'SIGN UP'}</Button>
+      <div className="auth__container">
+        <div className="auth__form-container">
+          <h2 className='heading-secondary'>Burger Builder App</h2>
+          <h3 className='heading-tertiary'>Start building your custom burger now!</h3>
+          {errorMessage}
+          {form}
+          <div className='auth__switch'>{isSignUp ? <><p className='auth__tip'>Already have an account? Switch to </p><Button click={switchAuthModeHandler} btnType='btn btn--danger'> SIGN IN</Button></> : <><p className='auth__tip'>Don't have an account? Switch to</p><Button click={switchAuthModeHandler} btnType='btn btn--danger'> SIGN UP</Button></>}</div>
+        </div>
+      </div>
+      <Loader loading={props.loading} />
     </div>
   );
 }

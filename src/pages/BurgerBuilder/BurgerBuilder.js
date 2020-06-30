@@ -5,7 +5,6 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UL/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
-import Spinner from '../../components/UL/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions';
@@ -59,8 +58,7 @@ const BurgerBuilder = (props) => {
     disabledInfo[key] = disabledInfo[key] === 0;
   }
   let orderSummary = null;
-  let burger = error ? <p>Ingredients can't be loaded!</p> : <Spinner />
-
+  let burger = null;
   if (ings) {
     burger = (
       <Aux>
