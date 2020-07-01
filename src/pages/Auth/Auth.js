@@ -42,6 +42,16 @@ const Auth = (props) => {
     }
   })
   const [isFormValid, setIsFormValid] = useState(false);
+  const container = useRef(null);
+
+  const onFocus = () => {
+    const auth__container = container.current;
+    gsap.to(auth__container, { duration: .3, backgroundSize: '110%' })
+  }
+  const onFocusOut = () => {
+    const auth__container = container.current;
+    gsap.to(auth__container, { duration: .3, backgroundSize: '100%' })
+  }
 
   const inputOnChangeHandler = (e, key) => {
     const updatedControl = updatedObject(controls[key], {
@@ -88,7 +98,7 @@ const Auth = (props) => {
     inputElements.push(obj);
   }
   let form = (<form className={`auth__form ${props.loading ? 'auth__form--invisible' : ''}`} onSubmit={submitHandler}>
-    {inputElements.map(inputElement => <Input label={inputElement.elementConfig.type} name={inputElement.id} touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
+    {inputElements.map(inputElement => <Input onFocusOut={onFocusOut} onFocus={onFocus} label={inputElement.elementConfig.type} name={inputElement.id} touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
     <Button click={submitHandler} disabled={!isFormValid} btnType='btn--success btn auth__btn'>{isSignUp ? 'SIGN UP' : 'SIGN IN'}</Button>
   </form>)
   let errorMessage = null;
@@ -98,7 +108,6 @@ const Auth = (props) => {
     )
   }
 
-  const container = useRef(null);
   const { onAuthClear } = props;
   useEffect(() => {
     const auth__container = container.current;
@@ -110,7 +119,7 @@ const Auth = (props) => {
     const auth__switch = auth__container.querySelectorAll('.auth__switch');
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
     gsap.set([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { opacity: 0, y: '1.6rem' });
-    tl.fromTo(auth__container, { opacity: 0, x: '-50%', y: '-30%' }, { duration: .4, opacity: 1, x: '-50%', y: '-50%' })
+    tl.to(auth__container, { duration: .3, opacity: 1, transform: 'translate(-50%, -50%)' })
       .fromTo(auth__background, { backgroundPosition: '100%' }, { duration: .3, backgroundPosition: '47%' })
       .to(auth__secondary, { duration: .1, opacity: 1, y: 0 })
       .to(auth__tertiary, { duration: .1, opacity: 1, y: 0 })
@@ -124,18 +133,29 @@ const Auth = (props) => {
     props.history.push(props.path);
     props.onRedirectEnd();
   }
-  if (props.leaving) {
-    const auth__container = container.current;
+
+  const authSuccess = () => {
+    props.onRedirectEnd();
+    props.history.push('/burger-builder');
+  }
+  if (props.isAuth) {
+    props.onRedirectStart();
+    const auth__container = container.current;                         //redirect po zalogowaniu
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
-    tl.fromTo(auth__container, { opacity: 1, x: '-50%', y: '-50%' }, { duration: .5, opacity: 0, x: '-50%', y: '-80%', onComplete: redirect })
+    tl.fromTo(auth__container, { opacity: 1, transform: 'translate(-50%,-50%)' }, { duration: .5, opacity: 0, transform: 'translate(-50%, -80%)', onComplete: authSuccess })
+  }
+  if (props.leaving) {
+    const auth__container = container.current;                                                                                     // redirect dla navigacji
+    const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
+    tl.fromTo(auth__container, { opacity: 1, transform: 'translate(-50%,-50%)' }, { duration: .5, opacity: 0, transform: 'translate(-50%, -80%)', onComplete: redirect })
   }
 
   return (
     <div className='auth'>
-      <div ref={container} className="auth__container">
+      <div ref={container} className='auth__container'>
         <div style={{ backgroundPosition: '100%' }} className="auth__background">
         </div>
-        <div className="auth__form-container">
+        <div className='auth__form-container'>
           <h2 className='heading-secondary'>Burger Builder App</h2>
           <h3 className='heading-tertiary'>Start building your custom burger now!</h3>
           {errorMessage}
@@ -154,6 +174,7 @@ const mapDispatchToProps = dispatch => {
     onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
     onSetAuthRedirectPath: (url) => dispatch(actions.setAuthRedirectPath(url)),
     onAuthClear: () => dispatch(actions.authClear()),
+    onRedirectStart: () => dispatch(actions.redirectEnd()),
     onRedirectEnd: () => dispatch(actions.redirectEnd())
   }
 }

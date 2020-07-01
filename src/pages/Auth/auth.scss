@@ -7,15 +7,15 @@
     box-sizing: border-box;
     max-width: 1140px;
     width: 80%;
-    transform: translate(-30%, 50%);
     position: absolute;
+    transform: translate(-50%, -30%);
     top: 50%;
+    opacity: 0;
     left: 50%;
     box-shadow: 2rem 5rem 5rem rgba(0, 0, 0, 0.4);
     background-image: url(../../Assets/Images/auth-background.jpg);
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
-  
 }
 &__background {
   position: absolute;
@@ -34,7 +34,8 @@
   animation: activateButton 1s ease-in-out;
  }
  &__btn {
-    margin: 1rem auto 0;
+    margin: 1.5rem auto 0;
+    font-size: 1.8rem;
  }
  &__tip {
    font-size: 1.4rem;

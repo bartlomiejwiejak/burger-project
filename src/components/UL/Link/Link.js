@@ -2,22 +2,25 @@ import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
+import './link.scss';
 
-const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classes }) => {
-  let style = []
-  style = [...style, classes];
+const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames }) => {
+  let classes = ['link']
+  if (classNames) {
+    classes = [...classes, ...classNames];
+  }
   useEffect(() => {
     if (activeClass && history.location.pathname === to) {
-      style.push('link--active');
+      classes.push('link--active');
     }
-  }, [activeClass, history.location.pathname, to, style])
+  }, [activeClass, history.location.pathname, to, classes])
   const linkTo = () => {
     if (leaving || history.location.pathname === to) {
       return;
     }
     onRedirectStart(to)
   }
-  return <button className={style.join(' ')} onClick={linkTo}>{children}</button>
+  return <button className={classes.join(' ')} onClick={linkTo}>{children}</button>
 }
 const mapStateToProps = state => {
   return {
