@@ -19,17 +19,36 @@ html {
   }
 }
 
-.page-enter {
-  opacity: 0;
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  letter-spacing: 3px;
 }
-.page-enter-active {
-  opacity: 1;
-  transition: opacity 200ms;
+
+.heading-secondary {
+  font-size: 3.5rem;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, rgba(#bc581e, 0.8), rgba(#e27b36, 0.8));
+  transition: .3s;
+  letter-spacing: 2px;
+  font-weight: 700;
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 5px 10px 20px;
+  }
 }
-.page-exit {
-  opacity: 1;
-}
-.page-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
+.heading-tertiary {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  transition: .3s;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, rgba(#bc581e, 0.8), rgba(#e27b36, 0.8));
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 5px 10px 20px;
+  }
 }

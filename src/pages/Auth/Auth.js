@@ -43,6 +43,7 @@ const Auth = (props) => {
   })
   const [isFormValid, setIsFormValid] = useState(false);
   const container = useRef(null);
+  const [triedAuth, setTriedAuth] = useState(false)
 
   const onFocus = () => {
     const auth__container = container.current;
@@ -75,6 +76,7 @@ const Auth = (props) => {
   }
   const submitHandler = (e) => {
     e.preventDefault();
+    setTriedAuth(true);
     props.onAuth(controls.email.value, controls.password.value, isSignUp);
   }
   const switchAuthModeHandler = (e) => {
@@ -138,11 +140,14 @@ const Auth = (props) => {
     props.onRedirectEnd();
     props.history.push('/burger-builder');
   }
-  if (props.isAuth) {
+  if (props.isAuth && triedAuth) {
     props.onRedirectStart();
     const auth__container = container.current;                         //redirect po zalogowaniu
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
     tl.fromTo(auth__container, { opacity: 1, transform: 'translate(-50%,-50%)' }, { duration: .5, opacity: 0, transform: 'translate(-50%, -80%)', onComplete: authSuccess })
+  }
+  if (props.isAuth && !triedAuth) {
+    props.history.push('/');
   }
   if (props.leaving) {
     const auth__container = container.current;                                                                                     // redirect dla navigacji

@@ -1,10 +1,11 @@
 import React from 'react';
 import './Logo.css';
-import logo from '../../Assets/Images/logoBurger.png';
+import { ReactComponent as LogoSvg } from '../../Assets/Images/burger.svg';
+import Link from '../UL/Link/Link';
 const Logo = (props) => {
   return (
-    <div className='Logo' style={{ height: props.height, marginBottom: props.mb }}>
-      <img src={logo} alt="Logo" />
+    <div className='Logo'>
+      <Link wrapp to='/'><LogoSvg /></Link>
     </div>
   );
 }

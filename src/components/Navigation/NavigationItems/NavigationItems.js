@@ -8,7 +8,7 @@ const NavigationItems = (props) => {
       <Link click={props.sideHandle} link='/' exact>Home</Link>
       <Link click={props.sideHandle} link='/burger-builder' exact>Burger Builder</Link>
       {props.isAuth ? <Link click={props.sideHandle} link='/orders'>Orders</Link> : null}
-      {props.isAuth ? <Link click={props.sideHandle} link='/logout'>Logout</Link> : <Link click={props.sideHandle} link='/auth'>Sign in/out</Link>}
+      {props.isAuth ? <Link click={props.sideHandle} link='/logout'>Logout</Link> : <Link click={props.sideHandle} link='/auth'>Sign in/up</Link>}
     </ul>
   );
 }

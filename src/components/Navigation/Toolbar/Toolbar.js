@@ -7,7 +7,7 @@ const Toolbar = (props) => {
   return (
     <header className='Toolbar'>
       <SideDrawerToggler toggle={props.sideDrawerHandle} />
-      <Logo height='80%' />
+      <Logo />
       <nav className='DesktopOnly'>
         <NavigationItems isAuth={props.isAuth} />
       </nav>

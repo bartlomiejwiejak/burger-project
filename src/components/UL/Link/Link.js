@@ -4,8 +4,11 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import './link.scss';
 
-const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames }) => {
-  let classes = ['link']
+const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames, wrapp }) => {
+  let classes = ['action-button shadow animate']
+  if (wrapp) {
+    classes = ['wrapp']
+  }
   if (classNames) {
     classes = [...classes, ...classNames];
   }
@@ -20,7 +23,7 @@ const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, cl
     }
     onRedirectStart(to)
   }
-  return <button className={classes.join(' ')} onClick={linkTo}>{children}</button>
+  return <div className={classes.join(' ')} onClick={linkTo}>{children}</div>
 }
 const mapStateToProps = state => {
   return {

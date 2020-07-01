@@ -1,10 +1,10 @@
 .Logo {
-  background-color: white;
-  padding: 8px;
   box-sizing: border-box;
-  border-radius: 8px;
+  margin-left: 1.9rem;
+  margin-right: 1.4rem;
 }
 
-.Logo img {
-  height: 100%;
+.Logo svg {
+  height: 5rem;
+  width: 5rem;
 }

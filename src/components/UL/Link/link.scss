@@ -1,8 +1,45 @@
-.link {
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  background-color: transparent;
-  border: none;
-  font-size: 2.4rem;
-  outline: none;
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
 }
+.wrapp {
+  cursor: pointer;
+}
+.action-button
+{
+ -webkit-user-select: none;
+ -khtml-user-select: none;
+ -moz-user-select: none;
+ -o-user-select: none;
+ user-select: none;
+	position: relative;
+	padding: .8rem 2.5rem;
+  margin: 0px .8rem .8rem 0px;
+  float: left;
+	border-radius: 10px;
+	font-family: 'Pacifico', cursive;
+	font-size: 1.9rem;
+	color: #FFF;
+  text-decoration: none;	
+  cursor: pointer;
+	background-image: linear-gradient(to right, rgba(#bc581e, 0.8), rgba(#e27b36, 0.8));
+	&:hover {
+		transform: translate(0px,-3px);
+		box-shadow: 20px 27px 47px -13px rgba(0,0,0,0.75);
+	}
+	&:active
+{
+	transform: translate(0px,5px);
+	-webkit-transform: translate(0px,5px);
+	box-shadow: none;
+}
+&.active
+{
+	transform: translate(0px,5px);
+	-webkit-transform: translate(0px,5px);
+	box-shadow: none;
+}
+
+}
+
