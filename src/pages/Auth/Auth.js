@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Input from '../../components/UL/Input/Input';
 import Button from '../../components/UL/Button/Button';
 import { connect } from 'react-redux';
@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 import './auth.scss';
 import { updatedObject, checkValidity } from '../../shared/utility';
 import Loader from '../../components/UL/Loader/Loader';
+import gsap from 'gsap';
 const Auth = (props) => {
   const [isSignUp, setIsSignUp] = useState(true);
   const [controls, setControls] = useState({
@@ -99,16 +100,41 @@ const Auth = (props) => {
   if (props.isAuth) {
     redirect = <Redirect to={props.redirectPath} />
   }
+  const container = useRef(null);
+  const { onAuthClear } = props;
+  useEffect(() => {
+    const auth__container = container.current;
+    const auth__background = auth__container.querySelector('.auth__background');
+    const auth__secondary = auth__container.querySelector('.heading-secondary');
+    const auth__tertiary = auth__container.querySelector('.heading-tertiary');
+    const auth__inputs = auth__container.querySelectorAll('.input');
+    const auth__btn = auth__container.querySelectorAll('.auth__btn');
+    const auth__switch = auth__container.querySelectorAll('.auth__switch');
+    const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
+    gsap.set([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { opacity: 0, y: '1.6rem' });
+    tl.fromTo(auth__container, { opacity: 0, x: '-50%', y: '-30%' }, { duration: .4, opacity: 1, x: '-50%', y: '-50%' })
+      .fromTo(auth__background, { backgroundPosition: '100%' }, { duration: .3, backgroundPosition: '47%' })
+      .to(auth__secondary, { duration: .1, opacity: 1, y: 0 })
+      .to(auth__tertiary, { duration: .1, opacity: 1, y: 0 })
+      .to(auth__inputs[0], { duration: .1, opacity: 1, y: 0 })
+      .to(auth__inputs[1], { duration: .1, opacity: 1, y: 0 })
+      .to(auth__btn, { duration: .1, opacity: 1, y: 0 })
+      .to(auth__switch, { duration: .1, opacity: 1, y: 0 })
+    onAuthClear();
+  }, [onAuthClear])
   return (
     <div className='auth'>
       {redirect}
-      <div className="auth__container">
+      <div ref={container} className="auth__container">
+        <div style={{ backgroundPosition: '100%' }} className="auth__background">
+        </div>
         <div className="auth__form-container">
           <h2 className='heading-secondary'>Burger Builder App</h2>
           <h3 className='heading-tertiary'>Start building your custom burger now!</h3>
           {errorMessage}
           {form}
           <div className='auth__switch'>{isSignUp ? <><p className='auth__tip'>Already have an account? Switch to </p><Button click={switchAuthModeHandler} btnType='btn btn--danger'> SIGN IN</Button></> : <><p className='auth__tip'>Don't have an account? Switch to</p><Button click={switchAuthModeHandler} btnType='btn btn--danger'> SIGN UP</Button></>}</div>
+
         </div>
       </div>
       <Loader loading={props.loading} />
@@ -119,7 +145,8 @@ const Auth = (props) => {
 const mapDispatchToProps = dispatch => {
   return {
     onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
-    onSetAuthRedirectPath: (url) => dispatch(actions.setAuthRedirectPath(url))
+    onSetAuthRedirectPath: (url) => dispatch(actions.setAuthRedirectPath(url)),
+    onAuthClear: () => dispatch(actions.authClear())
   }
 }
 const mapStateToProps = state => {

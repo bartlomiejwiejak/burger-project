@@ -54,3 +54,8 @@ export const authCheckState = () => {
     type: actionTypes.AUTH_CHECK_STATE_INIT
   }
 }
+export const authClear = () => {
+  return {
+    type: actionTypes.AUTH_CLEAR
+  }
+}

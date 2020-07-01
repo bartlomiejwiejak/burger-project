@@ -6,6 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   line-height: 1.7;
+  background-image: url(./Assets/Images/purty_wood.png);
 }
 
 html {
@@ -16,4 +17,19 @@ html {
   @media (max-width: 800px) {
     font-size: 50%;
   }
+}
+
+.page-enter {
+  opacity: 0;
+}
+.page-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.page-exit {
+  opacity: 1;
+}
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
 }
