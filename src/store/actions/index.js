@@ -28,3 +28,4 @@ export {
   authSuccess,
   authClear
 } from './auth';
+export { redirectStart, redirectEnd } from './redirect';

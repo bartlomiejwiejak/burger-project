@@ -10,15 +10,17 @@ import thunk from 'redux-thunk'
 import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import orderReducer from './store/reducers/order';
 import authReducer from './store/reducers/auth';
+import redirectReducer from './store/reducers/redirect';
 import createSagaMiddleware from 'redux-saga';
 import { watchAuth, watchBurgerBuilder, watchOrder } from './store/sagas';
 const rootReducer = combineReducers({
   burgerBuilder: burgerBuilderReducer,
   order: orderReducer,
-  auth: authReducer
+  auth: authReducer,
+  redirect: redirectReducer
 })
-// process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null ||
-const composeEnhancers = compose;
+//
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, sagaMiddleware)));
 sagaMiddleware.run(watchAuth);

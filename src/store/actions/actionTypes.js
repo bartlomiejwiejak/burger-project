@@ -25,3 +25,6 @@ export const AUTH_CHECK_TIMEOUT = 'AUTH_CHECK_TIMEOUT';
 export const AUTH_INIT = 'AUTH_INIT';
 export const AUTH_CHECK_STATE_INIT = 'AUTH_CHECK_STATE_INIT';
 export const AUTH_CLEAR = 'AUTH_CLEAR';
+
+export const REDIRECT_START = 'LEAVING_START';
+export const REDIRECT_END = 'LEAVING_END';

@@ -1,6 +1,8 @@
 import React from 'react';
 import './NavigationItems.css';
 import NavigationItem from './NavigationItem/NavigationItem';
+import Link from '../../UL/Link/Link';
+import { withRouter } from 'react-router-dom';
 const NavigationItems = (props) => {
   return (
     <ul className='NavigationItems'>
@@ -11,4 +13,4 @@ const NavigationItems = (props) => {
   );
 }
 
-export default NavigationItems;
+export default withRouter(NavigationItems);

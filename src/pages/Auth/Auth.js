@@ -3,11 +3,12 @@ import Input from '../../components/UL/Input/Input';
 import Button from '../../components/UL/Button/Button';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
-import { Redirect } from 'react-router-dom';
 import './auth.scss';
 import { updatedObject, checkValidity } from '../../shared/utility';
 import Loader from '../../components/UL/Loader/Loader';
 import gsap from 'gsap';
+import { withRouter } from 'react-router-dom';
+
 const Auth = (props) => {
   const [isSignUp, setIsSignUp] = useState(true);
   const [controls, setControls] = useState({
@@ -96,10 +97,7 @@ const Auth = (props) => {
       <p style={{ fontSize: '1.4rem', color: '#944317', fontWeight: '700' }}>{props.error.message}</p>
     )
   }
-  let redirect = null;
-  if (props.isAuth) {
-    redirect = <Redirect to={props.redirectPath} />
-  }
+
   const container = useRef(null);
   const { onAuthClear } = props;
   useEffect(() => {
@@ -122,9 +120,18 @@ const Auth = (props) => {
       .to(auth__switch, { duration: .1, opacity: 1, y: 0 })
     onAuthClear();
   }, [onAuthClear])
+  const redirect = () => {
+    props.history.push(props.path);
+    props.onRedirectEnd();
+  }
+  if (props.leaving) {
+    const auth__container = container.current;
+    const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
+    tl.fromTo(auth__container, { opacity: 1, x: '-50%', y: '-50%' }, { duration: .5, opacity: 0, x: '-50%', y: '-80%', onComplete: redirect })
+  }
+
   return (
     <div className='auth'>
-      {redirect}
       <div ref={container} className="auth__container">
         <div style={{ backgroundPosition: '100%' }} className="auth__background">
         </div>
@@ -146,7 +153,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
     onSetAuthRedirectPath: (url) => dispatch(actions.setAuthRedirectPath(url)),
-    onAuthClear: () => dispatch(actions.authClear())
+    onAuthClear: () => dispatch(actions.authClear()),
+    onRedirectEnd: () => dispatch(actions.redirectEnd())
   }
 }
 const mapStateToProps = state => {
@@ -155,8 +163,10 @@ const mapStateToProps = state => {
     error: state.auth.error,
     isAuth: state.auth.token !== null,
     isBurgerBuilding: state.burgerBuilder.building,
-    redirectPath: state.auth.redirectPath
+    redirectPath: state.auth.redirectPath,
+    leaving: state.redirect.leaving,
+    path: state.redirect.path
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Auth));
