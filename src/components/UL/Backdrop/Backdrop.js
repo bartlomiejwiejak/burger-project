@@ -3,7 +3,7 @@ import './Backdrop.css';
 
 const Backdrop = (props) => {
   return (
-    props.show ? <div onClick={props.cancel} className={`Backdrop ${props.isMobile ? 'isMobile' : ''}`}></div> : null
+    <div ref={props.reference} onClick={props.isAnimating ? null : props.cancel} className={`Backdrop ${props.isMobile ? 'isMobile' : ''}`}></div>
   );
 }
 

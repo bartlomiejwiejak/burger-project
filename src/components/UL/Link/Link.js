@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import './link.scss';
 
-const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames, wrapp }) => {
+const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames, wrapp, sideDrawerHandle, isAnimating }) => {
   let classes = ['action-button shadow animate']
   if (wrapp) {
     classes = ['wrapp']
@@ -18,10 +18,13 @@ const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, cl
     }
   }, [activeClass, history.location.pathname, to, classes])
   const linkTo = () => {
+    if (sideDrawerHandle && !isAnimating) sideDrawerHandle();
     if (leaving || history.location.pathname === to) {
       return;
     }
-    onRedirectStart(to)
+    setTimeout(() => {
+      onRedirectStart(to)
+    }, .3)
   }
   return <div className={classes.join(' ')} onClick={linkTo}>{children}</div>
 }

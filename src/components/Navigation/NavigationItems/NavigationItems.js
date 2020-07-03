@@ -4,11 +4,11 @@ import Link from '../../UL/Link/Link';
 import { withRouter } from 'react-router-dom';
 const NavigationItems = (props) => {
   return (
-    <ul className='NavigationItems'>
-      <Link click={props.sideHandle} link='/' exact>Home</Link>
-      <Link click={props.sideHandle} link='/burger-builder' exact>Burger Builder</Link>
-      {props.isAuth ? <Link click={props.sideHandle} link='/orders'>Orders</Link> : null}
-      {props.isAuth ? <Link click={props.sideHandle} link='/logout'>Logout</Link> : <Link click={props.sideHandle} link='/auth'>Sign in/up</Link>}
+    <ul ref={props.reference} className='NavigationItems'>
+      <Link isAnimating={props.isAnimating} sideDrawerHandle={props.sideDrawerHandle} to='/' exact>Home</Link>
+      <Link isAnimating={props.isAnimating} sideDrawerHandle={props.sideDrawerHandle} to='/burger-builder' exact>Burger Builder</Link>
+      {props.isAuth ? <Link isAnimating={props.isAnimating} sideDrawerHandle={props.sideDrawerHandle} to='/orders'>Orders</Link> : null}
+      {props.isAuth ? <Link isAnimating={props.isAnimating} sideDrawerHandle={props.sideDrawerHandle} to='/logout'>Logout</Link> : <Link isAnimating={props.isAnimating} sideDrawerHandle={props.sideDrawerHandle} to='/auth'>Sign in/up</Link>}
     </ul>
   );
 }

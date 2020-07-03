@@ -1,7 +1,7 @@
 .animate
 {
-	transition: all 0.1s;
-	-webkit-transition: all 0.1s;
+	transition: all 0.2s;
+	-webkit-transition: all 0.2s;
 }
 .wrapp {
   cursor: pointer;
@@ -18,7 +18,7 @@
   margin: 0px .8rem .8rem 0px;
   float: left;
 	border-radius: 10px;
-	font-family: 'Pacifico', cursive;
+	font-weight: bold;
 	font-size: 1.9rem;
 	color: #FFF;
   text-decoration: none;	
@@ -26,7 +26,7 @@
 	background-image: linear-gradient(to right, rgba(#bc581e, 0.8), rgba(#e27b36, 0.8));
 	&:hover {
 		transform: translate(0px,-3px);
-		box-shadow: 20px 27px 47px -13px rgba(0,0,0,0.75);
+		box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 	}
 	&:active
 {

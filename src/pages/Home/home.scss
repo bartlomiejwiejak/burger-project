@@ -1,0 +1,52 @@
+.wrapper {
+  padding: 0 6rem;
+}
+.home {
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  opacity: 0;
+  animation: fade-in .5s forwards ease-in;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
+}
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+
+.welcome {
+  height: 80vh;
+  background-image: linear-gradient(to right bottom, rgba(#ddd, .5) 0%, rgba(#ddd, .5) 100%), url('../../Assets/Images/home-1.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+    &__text-box {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      text-align: center;
+      transform: translate(-50%,-50%);
+    }
+}
+.arrow-container {
+  padding: 3rem 0 12rem;
+  text-align: center;
+}
+.arrow {
+  display: inline-block;
+  font-size: 6rem;
+  background-image: linear-gradient(to right, rgba(188, 88, 30, 0.8), rgba(226, 123, 54, 0.8));
+  background-clip: text;
+  color: transparent;
+  cursor: pointer;
+  transition: .3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.about {
+  font-size: 1.8rem;
+  width: 50%;
+  margin: 0 auto;
+}

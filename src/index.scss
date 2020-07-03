@@ -9,6 +9,18 @@ body {
   background-image: url(./Assets/Images/purty_wood.png);
 }
 
+::-webkit-scrollbar {
+    background-color: #f7f7f7;
+    width: 5px;
+  &-track {
+     box-shadow: 0 0 2.5px 2px #000;
+  }
+  &-thumb {
+  background-color: #bc581e;
+  border-radius: 3px;
+  }
+}
+
 html {
   font-size: 62.5%;
   @media (max-width: 1100px) {
@@ -25,6 +37,13 @@ html {
   font-family: 'Pacifico', cursive;
   font-size: 2rem;
   letter-spacing: 3px;
+  &--main {
+    font-size: 5rem;
+    letter-spacing: 6px;
+    font-weight: 300;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  }
 }
 
 .heading-secondary {
@@ -34,10 +53,13 @@ html {
   background-image: linear-gradient(to right, rgba(#bc581e, 0.8), rgba(#e27b36, 0.8));
   transition: .3s;
   letter-spacing: 2px;
-  font-weight: 700;
-  &:hover {
-    transform: skewY(2deg) skewX(15deg) scale(1.1);
-    text-shadow: 5px 10px 20px;
+  font-weight: bold;
+  &--main {
+    font-size: 4rem;
+  letter-spacing: 4px;
+  font-weight: normal;
+  font-style: italic;
+  color: white;
   }
 }
 .heading-tertiary {
@@ -47,8 +69,4 @@ html {
   background-clip: text;
   color: transparent;
   background-image: linear-gradient(to right, rgba(#bc581e, 0.8), rgba(#e27b36, 0.8));
-  &:hover {
-    transform: skewY(2deg) skewX(15deg) scale(1.1);
-    text-shadow: 5px 10px 20px;
-  }
 }

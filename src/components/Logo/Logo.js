@@ -1,5 +1,5 @@
 import React from 'react';
-import './Logo.css';
+import './logo.scss';
 import { ReactComponent as LogoSvg } from '../../Assets/Images/burger.svg';
 import Link from '../UL/Link/Link';
 const Logo = (props) => {

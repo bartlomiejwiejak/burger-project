@@ -5,6 +5,10 @@
 }
 
 .Logo svg {
-  height: 5rem;
-  width: 5rem;
+  height: 6rem;
+  width: 6rem;
+  transition: .3s;
+  &:hover{
+    transform: scale(1.1);
+  }
 }

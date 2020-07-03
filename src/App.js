@@ -21,9 +21,10 @@ const BurgerBuilder = React.lazy(() => {
 })
 
 const App = (props) => {
+  const { onTryAutoSignUp } = props;
   useEffect(() => {
-    props.onTryAutoSignUp()
-  }, [props])
+    onTryAutoSignUp()
+  }, [onTryAutoSignUp])
 
   let routes = (
     <Switch>
