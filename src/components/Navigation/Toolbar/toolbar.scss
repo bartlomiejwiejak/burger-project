@@ -1,7 +1,7 @@
 .Toolbar {
   height: 10rem;
   width: 100%;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   display: flex;
@@ -10,10 +10,15 @@
   box-sizing: border-box;
   z-index: 90;
   font-size: 1.6rem;
+  nav {
+    margin-right: 1.9rem;
+  }
 }
 
-.Toolbar nav {
-  margin-right: 1.9rem;
+@media (max-width: 550px) {
+  .DesktopOnly .action-button {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 499px) {

@@ -1,13 +1,14 @@
 import React from 'react';
-import './Toolbar.css';
-import Logo from '../../Logo/Logo';
+import './toolbar.scss';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import SideDrawerToggler from '../SideDrawer/SideDrawerToggler/SideDrawerToggler';
+import BurgerSvg from '../../BurgerSvg/BurgerSvg';
+
 const Toolbar = (props) => {
   return (
     <header className='Toolbar'>
       <SideDrawerToggler toggle={props.sideDrawerHandle} />
-      <Logo />
+      <BurgerSvg classes={['burger--logo']} />
       <nav className='DesktopOnly'>
         <NavigationItems isAuth={props.isAuth} />
       </nav>
