@@ -1,9 +1,9 @@
 import React from 'react';
-import './SideDrawerToggler.scss';
+import './sideDrawerToggler.scss';
 const SideDrawerToggler = (props) => {
   return (
-    <div onClick={props.toggle} className='SideDrawerToggler'>
-      <div className="Hamburger">
+    <div onClick={props.toggle} className='sideDrawerToggler'>
+      <div className="hamburger">
       </div>
     </div>
   );

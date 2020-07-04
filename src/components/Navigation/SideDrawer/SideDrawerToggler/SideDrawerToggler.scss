@@ -1,4 +1,4 @@
-.SideDrawerToggler {
+.sideDrawerToggler {
   cursor: pointer;
   height: 24px;
   display: flex;
@@ -6,8 +6,11 @@
   @media (min-width: 500px) {
     display: none;
   }
+  @media (max-width: 800px) and (orientation: landscape) {
+      display: block;
+  }
 }
-.Hamburger {
+.hamburger {
   border: none;
   margin-left: 1.4rem;
   border-radius: 0;

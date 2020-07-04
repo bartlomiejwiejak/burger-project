@@ -14,3 +14,9 @@ visibility: hidden;
     display: none;
   }
 }
+
+@media (max-width: 800px) and (orientation: landscape) {
+  .isMobile {
+    display: block;
+  }
+}

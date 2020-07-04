@@ -1,7 +1,7 @@
-.Toolbar {
-  height: 10rem;
+.toolbar {
+  height: 15rem;
   width: 100%;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -10,8 +10,29 @@
   box-sizing: border-box;
   z-index: 90;
   font-size: 1.6rem;
+  transition: .3s;
+  transform: translateY(-100%);
+  opacity: 0;
+  animation: fadeToolBar 1.5s ease-in forwards;
+  @media (max-width: 500px) {
+    height: 10rem;
+    }
+    @media (max-width: 800px) and (orientation: landscape) {
+      height: 10rem;
+      }
   nav {
     margin-right: 1.9rem;
+  }
+  &--solid {
+    height: 10rem;
+    background-color: rgba(#ffbc0d, 0.9);
+    @media (max-width: 500px) {
+      background-color: transparent;
+      }
+    @media (max-width: 800px) and (orientation: landscape) {
+      background-color: transparent;
+      height: 10rem;
+      }
   }
 }
 
@@ -24,5 +45,18 @@
 @media (max-width: 499px) {
   .DesktopOnly {
     display: none;
+  }
+}
+
+@media (max-width: 800px) and (orientation: landscape) {
+  .DesktopOnly {
+    display: none;
+  }
+}
+
+@keyframes fadeToolBar {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

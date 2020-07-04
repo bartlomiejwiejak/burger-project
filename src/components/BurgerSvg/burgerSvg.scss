@@ -27,6 +27,10 @@ ul {
     @media (max-width: 500px) {
       margin-right: -4.5rem;
     }
+    @media (max-width: 800px) and (orientation: landscape) {
+      margin-right: -4.5rem;
+      margin-top: -1rem;
+      }
   }
 }
 .item {

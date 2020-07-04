@@ -4,18 +4,12 @@
 .home {
   box-sizing: border-box;
   background-color: #f7f7f7;
-  opacity: 0;
-  animation: fade-in .5s forwards ease-in;
+  opacity: 1;
+  position: relative;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
 }
-@keyframes fade-in {
-  100% {
-    opacity: 1;
-  }
-}
-
 .welcome {
-  height: 80vh;
+  height: 75vh;
   background-image: linear-gradient(to right bottom, rgba(#ddd, .5) 0%, rgba(#ddd, .5) 100%), url('../../Assets/Images/home-1.jpg');
   background-size: cover;
   background-position: center;

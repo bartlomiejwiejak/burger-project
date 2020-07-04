@@ -1,4 +1,10 @@
 main {
-  margin-top: 10rem;
+  margin-top: 15rem;
   position: relative;
+  @media (max-width: 500px) {
+    margin-top: 10rem;
+    }
+    @media (max-width: 800px) and (orientation: landscape) {
+      margin-top: 10rem;
+      }
 }

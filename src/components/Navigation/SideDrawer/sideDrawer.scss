@@ -1,4 +1,4 @@
-.SideDrawer {
+.sideDrawer {
   position: fixed;
   left: 0;
   top: 0;
@@ -15,9 +15,14 @@
   align-content: space-around;
   justify-content: center;
   transform: translateX(-100%);
+  & > ul {
+    @media (max-width: 800px) and (orientation: landscape) {
+      display: none;
+    }
+  }
   & nav {
     width: 100%;
-    & .NavigationItems {
+    & .navigationItems {
       width: 80%;
       margin: 0 auto;
       display: flex;
@@ -32,7 +37,13 @@
 }
 
 @media (min-width: 500px) {
-  .SideDrawer {
+  .sideDrawer {
     display: none;
   }
+}
+
+@media (max-width: 800px) and (orientation: landscape) {
+   .sideDrawer {
+     display: block;
+   }
 }
