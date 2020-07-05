@@ -5,7 +5,7 @@ import * as actions from '../../../store/actions';
 import './link.scss';
 
 const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames, wrapp, sideDrawerHandle, isAnimating }) => {
-  let classes = ['action-button animate']
+  let classes = ['link animate']
   if (wrapp) {
     classes = ['wrapp']
   }

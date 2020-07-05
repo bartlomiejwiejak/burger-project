@@ -8,7 +8,8 @@
     width: 100%;   
   }
   &--burger {
-    transform: translateY(50%);
+    transform: translateY(35%);
+    opacity: 1;
     transition: .3s;
     &:hover {
       opacity: .4;

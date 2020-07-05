@@ -17,6 +17,9 @@ const Layout = (props) => {
       <main>
         {props.children}
       </main>
+      <footer className='footer'>
+        <p className='footer__text'>© Made by <span><a href='https://github.com/Kuzniak98' target="_blank" rel="noopener noreferrer">WieJak</a></span>. 2020</p>
+      </footer>
     </Auxiliary>
   )
 }
