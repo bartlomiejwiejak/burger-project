@@ -1,0 +1,18 @@
+.burger-plate {
+  width: 60%;
+  position: absolute;
+  left: 60%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  &__item {
+    width: 100%;   
+  }
+  &--burger {
+    transform: translateY(50%);
+    transition: .3s;
+    &:hover {
+      opacity: .4;
+      cursor: pointer;
+    }
+  }
+}

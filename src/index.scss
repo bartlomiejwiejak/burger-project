@@ -40,9 +40,15 @@ html {
   &--main {
     font-size: 5rem;
     letter-spacing: 6px;
-    font-weight: 300;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+  }
+  &--sub {
+    font-size: 4rem;
+    letter-spacing: 4px;
+    font-style: italic;
+    font-family: 'roboto', sans-serif;
+    color: white;
   }
 }
 
@@ -54,13 +60,7 @@ html {
   transition: .3s;
   letter-spacing: 2px;
   font-weight: bold;
-  &--main {
-    font-size: 4rem;
-  letter-spacing: 4px;
-  font-weight: normal;
-  font-style: italic;
-  color: white;
-  }
+  text-align: center;
 }
 .heading-tertiary {
   font-size: 1.8rem;
@@ -69,4 +69,9 @@ html {
   background-clip: text;
   color: transparent;
   background-image: linear-gradient(to right, rgba(#bc581e, 0.8), rgba(#e27b36, 0.8));
+}
+
+.paragraph {
+  color: #777777;
+  font-size: 1.6rem;
 }

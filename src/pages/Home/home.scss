@@ -4,16 +4,16 @@
 .home {
   box-sizing: border-box;
   background-color: #f7f7f7;
-  opacity: 1;
   position: relative;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
 }
 .welcome {
-  height: 75vh;
+  height: 80vh;
   background-image: linear-gradient(to right bottom, rgba(#ddd, .5) 0%, rgba(#ddd, .5) 100%), url('../../Assets/Images/home-1.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
     &__text-box {
       position: absolute;
       left: 50%;
@@ -23,7 +23,7 @@
     }
 }
 .arrow-container {
-  padding: 3rem 0 12rem;
+  margin-top: -5rem;
   text-align: center;
 }
 .arrow {
@@ -41,6 +41,62 @@
 
 .about {
   font-size: 1.8rem;
-  width: 50%;
+  padding: 5rem;
+  margin: 10rem 0 0;
+  & h2 {
+    margin-bottom: 10rem;
+  }
+  &__container {
+    display: flex;
+  max-width: 114rem;
   margin: 0 auto;
+  }
+  &__left {
+    flex-basis: 50%;
+  }
+  &__right {
+    flex-basis: 50%;
+    position: relative;
+  }
+}
+
+.offer {
+  margin: 30rem 0;
+  padding: 20rem 5rem;
+  transform: skewY(-7deg);
+  background-image: linear-gradient(to right bottom, rgba(221, 221, 221, 0.5) 0%, rgba(221, 221, 221, 0.5) 100%), url('../../Assets/Images/offer-background.jpg');
+  background-size: cover;
+  background-position: center;
+  &__container {
+    display: flex;
+    transform: skewY(7deg);
+    margin: 0 auto;
+    max-width: 114rem;
+    justify-content: space-between;
+  }
+  &__box {
+    flex-basis: 25%;
+    padding: 3rem;
+    background: rgba(221, 221, 221, 0.8);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    transition: .3s;
+    &:hover {
+      transform: translateY(-1.5rem) scale(1.03);
+    }
+    &--icon {
+      background-clip: text;
+      font-size: 5rem;
+      color: transparent;
+      display: block;
+      text-align: center;
+      background-image: linear-gradient(to right, rgba(188, 88, 30, 0.8), rgba(226, 123, 54, 0.8));
+    }
+    &--header {
+      text-align: center;
+    }
+    &--text {
+      color: #777777;
+      font-size: 1.6rem;
+    }
+  }
 }

@@ -4,8 +4,7 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Logout from './pages/Auth/Logout/Logout';
 import { connect } from 'react-redux';
 import * as actions from './store/actions';
-import Home from './pages/Home/Home';
-import Loader from './components/UL/Link/Link';
+import Loader from './components/UL/Loader/Loader';
 
 const Checkout = React.lazy(() => {
   return import('./pages/Checkout/Checkout')
@@ -19,12 +18,17 @@ const Auth = React.lazy(() => {
 const BurgerBuilder = React.lazy(() => {
   return import('./pages/BurgerBuilder/BurgerBuilder');
 })
+const Home = React.lazy(() => {
+  return import('./pages/Home/Home');
+})
 
 const App = (props) => {
   const { onTryAutoSignUp } = props;
   useEffect(() => {
     onTryAutoSignUp()
   }, [onTryAutoSignUp])
+
+
 
   let routes = (
     <Switch>
@@ -37,7 +41,7 @@ const App = (props) => {
   if (props.isAuth) {
     routes = (
       <Switch>
-        <Route path='/' exact component={Home} />
+        <Route path='/' exact render={(props) => <Home {...props} />} />
         <Route path='/burger-builder' render={(props) => <BurgerBuilder {...props} />} />
         <Route path='/checkout' render={(props) => <Checkout {...props} />} />
         <Route path='/orders' render={(props) => <Orders {...props} />} />
@@ -48,11 +52,13 @@ const App = (props) => {
     )
   }
   return (
-    <div>
+    <>
       <Layout>
-        <Suspense fallback={<Loader />}>{routes}</Suspense>
+        <Suspense fallback={<Loader loading />}>
+          {routes}
+        </Suspense>
       </Layout>
-    </div>
+    </>
   );
 }
 
