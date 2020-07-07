@@ -77,7 +77,6 @@
 
 .story {
   max-width: 75%;
-  transform: skew(-12deg);
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.75);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
@@ -94,7 +93,6 @@
   @media (max-width: 600px) {
   padding: 3rem;
   margin-bottom: 5rem;
-  transform: skew(0);
   }
   @media (max-width: 400px) {
   padding: 2rem;
@@ -123,12 +121,6 @@
     left: 50%;
     transform: translate(-50%,-50%) scale(1.1);
     transition: .5s;
-  }
-  & > * {
-    transform: skew(12deg);
-    @media (max-width: 600px) {
-      transform: skew(0);
-    }
   }
   &__caption {
     font-size: 1.7rem;

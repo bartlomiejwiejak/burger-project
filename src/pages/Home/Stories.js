@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import bgVideo from '../../Assets/bg-video.mp4';
-import sandra from '../../Assets/Images/sandra.jpg';
-import paulina from '../../Assets/Images/paulina.jpg';
-import oskar from '../../Assets/Images/oskar.jpg';
 import './stories.scss';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import sandra from '../../Assets/Images/sandra.jpg';
+import paulina from '../../Assets/Images/paulina.jpg';
+import oskar from '../../Assets/Images/oskar.jpg';
+import Story from './Story';
 
 const Stories = () => {
 
@@ -44,7 +45,7 @@ const Stories = () => {
       }
     })
     tl.fromTo('.story:nth-child(1)', { x: '-150%' }, { x: 0 })
-      .fromTo('.story:nth-child(2)', { x: '150%' }, { x: 0, scrub: '-=.3' })
+      .fromTo('.story:nth-child(2)', { x: '150%' }, { x: 0 })
       .fromTo('.story:nth-child(3)', { x: '-150%' }, { x: 0 })
   }, [])
 
@@ -59,36 +60,9 @@ const Stories = () => {
         <div className="stories__line stories__line--3">THOUSANDS HAPPY CUSTOMERS - THOUSANDS HAPPY CUSTOMERS</div>
       </div>
       <div className="stories__wrapper">
-        <div className="story">
-          <figure className="story__figure">
-            <img src={sandra} alt="Sandra" className="story__img" />
-            <figcaption className="story__caption">Sandra Thielmann</figcaption>
-          </figure>
-          <div className="story__text">
-            <h3 className="heading-tertiary">BEST BURGER OF MY LIFE</h3>
-            <p className="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci alias animi consequatur commodi nihil illum soluta deleniti sunt, omnis iste odio quia autem tenetur suscipit non quod fugiat, maiores nulla.</p>
-          </div>
-        </div>
-        <div className="story">
-          <figure className="story__figure">
-            <img src={oskar} alt="Oskar" className="story__img" />
-            <figcaption className="story__caption">Oskar Thielmann</figcaption>
-          </figure>
-          <div className="story__text">
-            <h3 className="heading-tertiary">SUPER FAST DELIVERY</h3>
-            <p className="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci alias animi consequatur commodi nihil illum soluta deleniti sunt, omnis iste odio quia autem tenetur suscipit non quod fugiat, maiores nulla.</p>
-          </div>
-        </div>
-        <div className="story">
-          <figure className="story__figure">
-            <img src={paulina} alt="Paulina" className="story__img" />
-            <figcaption className="story__caption">Paulina Pogorzelska</figcaption>
-          </figure>
-          <div className="story__text">
-            <h3 className="heading-tertiary">NEVER TASTED MEAT LIKE THAT</h3>
-            <p className="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci alias animi consequatur commodi nihil illum soluta deleniti sunt, omnis iste odio quia autem tenetur suscipit non quod fugiat, maiores nulla.</p>
-          </div>
-        </div>
+        <Story img={sandra} name='Sandra Thielmann' heading='BEST BURGER IN MY LIFE' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam a magni corporis dolores non repudiandae laborum in porro voluptates consequuntur accusantium blanditiis optio repellat veniam ab, et culpa praesentium rerum.' />
+        <Story img={oskar} name='Oskar Thielman' heading='SUPER FAST DELIVERY' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam a magni corporis dolores non repudiandae laborum in porro voluptates consequuntur accusantium blanditiis optio repellat veniam ab, et culpa praesentium rerum.' />
+        <Story img={paulina} name='Paulina Pogorzelska' heading='HIGHEST QUALITY MEAT I HAVE EVER TASTED' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam a magni corporis dolores non repudiandae laborum in porro voluptates consequuntur accusantium blanditiis optio repellat veniam ab, et culpa praesentium rerum.' />
       </div>
     </section>
   );
