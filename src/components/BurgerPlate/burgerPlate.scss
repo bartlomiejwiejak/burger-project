@@ -1,18 +1,28 @@
 .burger-plate {
   width: 60%;
   position: absolute;
-  left: 60%;
-  top: 40%;
-  transform: translate(-50%, -50%);
   &__item {
     width: 100%;   
   }
+  &--plate {
+    @media (max-width: 1200px) {
+      margin-top: 10%;
+    }
+    @media (max-width: 1000px) {
+      margin-top: 15%;
+    }
+    @media (max-width: 900px) {
+      margin-top: 23%;
+    }
+    @media (max-width: 800px) {
+      margin-top: 25%;
+    }
+    @media (max-width: 700px) {
+      margin-top: 40%;
+    }
+  }
   &--burger {
-    transform: translateY(35%);
-    opacity: 1;
-    transition: .3s;
-    &:hover {
-      opacity: .4;
+    &:hover { 
       cursor: pointer;
     }
   }

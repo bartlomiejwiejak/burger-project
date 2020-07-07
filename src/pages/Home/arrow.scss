@@ -1,0 +1,50 @@
+.arrow-container {
+  margin-top: -8rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  .arrow-text{
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    color: rgba(188, 88, 30, 0.8);
+    visibility: hidden;
+    animation: fadeToggle 2s infinite;
+    @media (max-width: 600px) {
+      margin-top: 3rem;
+    }
+    @media (max-width: 600px) {
+      margin-top: 5.5rem;
+    }
+  }
+  .arrow {
+    display: inline-block;
+    font-size: 6rem;
+    background-image: linear-gradient(to right, rgba(188, 88, 30, 0.8), rgba(226, 123, 54, 0.8));
+    background-clip: text;
+    color: transparent;
+    cursor: pointer;
+    visibility: hidden;
+    transform: translateY(-100%);
+    text-shadow: 0 1rem 1.5rem rgba(0, 0, 0, .2);
+    @media (max-width: 600px) {
+      font-size: 5rem;
+    }
+    transition: .3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+    }
+}
+@keyframes fadeToggle {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}

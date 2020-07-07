@@ -10,7 +10,7 @@ const Toolbar = (props) => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= 100) {
+      if (window.scrollY >= 500) {
         setIsSolid(true)
       }
       else {

@@ -1,121 +1,58 @@
 .wrapper {
   padding: 0 6rem;
+  position: relative;
+  @media (max-width: 1000px) {
+    padding: 0 5rem;
+    }
+    @media (max-width: 800px) {
+      padding: 0 4rem;
+    }
+    @media (max-width: 600px) {
+      padding: 0 3rem;
+    }
+      @media (max-width: 400px) {
+        padding: 0 2rem;
+        }
 }
 .home {
   box-sizing: border-box;
-  background-color: #f7f7f7;
   position: relative;
-  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
-}
-.welcome {
-  height: 80vh;
-  background-image: linear-gradient(to right bottom, rgba(#ddd, .5) 0%, rgba(#ddd, .5) 100%), url('../../Assets/Images/home-1.jpg');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-    &__text-box {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      text-align: center;
-      transform: translate(-50%, -50%);
-    }
-}
-.arrow-container {
-  margin-top: -5rem;
-  text-align: center;
-}
-.arrow {
-  display: inline-block;
-  font-size: 6rem;
-  background-image: linear-gradient(to right, rgba(188, 88, 30, 0.8), rgba(226, 123, 54, 0.8));
-  background-clip: text;
-  color: transparent;
-  cursor: pointer;
-  transition: .3s;
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
-.about {
-  font-size: 1.8rem;
-  padding: 5rem;
-  margin: 10rem 0;
-  & h2 {
-    margin-bottom: 10rem;
-  }
-  &__container {
-    display: flex;
-  max-width: 114rem;
-  margin: 0 auto;
-  }
-  &__left {
-    flex-basis: 50%;
-    .link {
-      margin-top: 3rem;
-      margin-left: 1rem;
-    }
-  }
-  &__right {
-    flex-basis: 50%;
-    position: relative;
-  }
-}
-
-.offer {
-  margin: 20rem 0;
-  padding: 20rem 5rem;
-  transform: skewY(-7deg);
-  background-image: linear-gradient(to right bottom, rgba(221, 221, 221, 0.5) 0%, rgba(221, 221, 221, 0.5) 100%), url('../../Assets/Images/offer-background.jpg');
-  background-size: cover;
-  background-position: center;
-  &__container {
-    display: flex;
-    transform: skewY(7deg);
-    margin: 0 auto;
-    max-width: 114rem;
-    justify-content: space-between;
-  }
-  &__box {
-    flex-basis: 25%;
-    padding: 3rem;
-    background: rgba(221, 221, 221, 0.8);
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-    transition: .3s;
-    border-radius: 1rem;
-    &:hover {
-      transform: translateY(-1.5rem) scale(1.03);
-    }
-    &--icon {
-      background-clip: text;
-      font-size: 5rem;
-      color: transparent;
-      display: block;
-      text-align: center;
-      background-image: linear-gradient(to right, rgba(188, 88, 30, 0.8), rgba(226, 123, 54, 0.8));
-    }
-    &--header {
-      text-align: center;
-    }
-    &--text {
-      color: #836767;
-      font-size: 1.6rem;
-      text-align: center;
-    }
-  }
 }
 
 .stories {
   padding: 15rem 0;
   position: relative;
+  @media (max-width: 1000px) {
+    padding: 12rem 0;
+  }
+  @media (max-width: 800px) {
+    padding: 10rem 0;
+  }
+  @media (max-width: 600px) {
+    padding: 7rem 0;
+  }
+  @media (max-width: 400px) {
+    padding: 5rem 0;
+  }
   &__wrapper {
     max-width: 114rem;
     margin: 0 auto;
   }
   .heading-secondary {
     margin-bottom: 8rem;
+    text-align: center;
+    @media (max-width: 1000px) {
+      margin-bottom: 7rem;
+    }
+    @media (max-width: 800px) {
+      margin-bottom: 6rem;
+    }
+    @media (max-width: 600px) {
+      margin-bottom: 5rem;
+    }
+    @media (max-width: 400px) {
+      margin-bottom: 4rem;
+    }
   }
   & > *{
     position: relative;
@@ -146,6 +83,23 @@
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   padding: 6rem;
   margin-bottom: 8rem;
+  @media (max-width: 1000px) {
+    margin-bottom: 7rem;
+  padding: 5rem;
+  }
+  @media (max-width: 800px) {
+  padding: 4rem;
+  margin-bottom: 6rem;
+  }
+  @media (max-width: 600px) {
+  padding: 3rem;
+  margin-bottom: 5rem;
+  transform: skew(0);
+  }
+  @media (max-width: 400px) {
+  padding: 2rem;
+  margin-bottom: 4rem;
+  }
   &__figure {
     width: 15rem;
     height: 15rem;
@@ -156,6 +110,11 @@
     shape-outside: circle(50% at 50% 50%);
     margin-right: 3rem;
     overflow: hidden;
+    @media (max-width: 600px) {
+      width: 10rem;
+    height: 10rem;
+    transform: translateX(-3rem) skewX(0);
+      }
   }
   &__img {
     width: 100%;
@@ -167,8 +126,10 @@
   }
   & > * {
     transform: skew(12deg);
+    @media (max-width: 600px) {
+      transform: skew(0);
+    }
   }
-
   &__caption {
     font-size: 1.7rem;
     color: white;

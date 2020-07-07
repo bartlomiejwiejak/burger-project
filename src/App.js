@@ -32,7 +32,7 @@ const App = (props) => {
 
   let routes = (
     <Switch>
-      <Route path='/' exact component={Home} />
+      <Route path='/' exact render={(props) => <Home {...props} />} />
       <Route path='/burger-builder' render={(props) => <BurgerBuilder {...props} />} />
       <Route path='/auth' render={(props) => <Auth {...props} />} />
       <Redirect to='/' />
@@ -53,11 +53,11 @@ const App = (props) => {
   }
   return (
     <>
-      <Layout>
-        <Suspense fallback={<Loader loading />}>
+      <Suspense fallback={<Loader loading />}>
+        <Layout>
           {routes}
-        </Suspense>
-      </Layout>
+        </Layout>
+      </Suspense>
     </>
   );
 }

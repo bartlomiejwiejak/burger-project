@@ -17,7 +17,7 @@ const SideDrawer = (props) => {
     const sideDrawerCurr = sideDrawer.current;
     const backDropCurr = backDrop.current;
     const headingCurr = heading.current;
-    const navigationCurr = navigation.current.querySelectorAll('.action-button');
+    const navigationCurr = navigation.current.querySelectorAll('.link');
     const svgItems = svg.current.querySelectorAll('.item');
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
     if (props.show) {
