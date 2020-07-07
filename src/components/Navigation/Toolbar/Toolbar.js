@@ -22,7 +22,7 @@ const Toolbar = (props) => {
   return (
     <header className={`toolbar ${isSolid ? 'toolbar--solid' : ''}`}>
       <SideDrawerToggler toggle={props.sideDrawerHandle} />
-      <BurgerSvg classes={['burger--logo']} />
+      <BurgerSvg toolbar={true} classes={['burger--logo']} />
       <nav className='DesktopOnly'>
         <NavigationItems isAuth={props.isAuth} />
       </nav>

@@ -16,16 +16,16 @@ const About = () => {
     }
     else {
       const tl = gsap.timeline({ defaults: { ease: 'Power1.easeOut' } })
-      let delay = '+=2.5';
+      let delay = '+=2';
       const style = getComputedStyle(document.querySelector('.about__right'));
       const display = style.display;
       if (display === 'none') {
         delay = '+=0';
       }
 
-      tl.fromTo('.about .heading-secondary', { y: '100%' }, { y: 0, autoAlpha: 1, duration: .5 }, delay)
+      tl.fromTo('.about .heading-secondary', { y: '100%' }, { y: 0, autoAlpha: 1, duration: .1 }, delay)
         .fromTo(['.about__paragraph'], { y: 30 }, { stagger: .1, ease: 'back.out(1.7)', autoAlpha: 1, y: 0 })
-        .fromTo('.about .link', { scale: 1.1, y: 30 }, { y: 0, scale: 1, autoAlpha: 1, duration: .3 }, '-=.5')
+        .fromTo('.about .link', { scale: 1.1, y: 30 }, { y: 0, scale: 1, autoAlpha: 1, duration: .1 }, '-=.5')
         .fromTo('.about-scroll .arrow', { y: '-100%' }, { duration: .3, autoAlpha: 1, y: 0 })
         .fromTo('.about-scroll .arrow-text', { visibility: 'hidden', duration: .2 }, { autoAlpha: 1 })
     }

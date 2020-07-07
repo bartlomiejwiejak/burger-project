@@ -3,10 +3,25 @@
   transform: skewY(-7deg);
   background-image: linear-gradient(to right bottom, rgba(221, 221, 221, 0.5) 0%, rgba(221, 221, 221, 0.5) 100%), url('../../Assets/Images/offer-background.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: top;
+  &-scroll {
+    position: relative;
+  }
+  &-reveal {
+    background-color: #f7f7f7;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transform: translate(100%, 100%);
+    z-index: 10;
+  }
   &-wrapper {
     background-color: #f7f7f7;
     padding: 20rem 0;
+    overflow: hidden;
+    visibility: hidden;
     @media (max-width: 1000px) {
       padding: 15rem 0;
     }
@@ -44,8 +59,8 @@
     padding: 3rem;
     background: rgba(221, 221, 221, 0.8);
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-    transition: .3s;
     border-radius: 1rem;
+    visibility: hidden;
     @media (max-width: 1000px) {
       padding: 2.5rem;
     }
@@ -58,9 +73,6 @@
     }
     @media (max-width: 400px) {
       padding: 1rem;
-    }
-    &:hover {
-      transform: translateY(-1.5rem) scale(1.03);
     }
     &--icon {
       background-clip: text;

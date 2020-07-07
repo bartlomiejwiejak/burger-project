@@ -10,7 +10,7 @@ import CustomEase from 'gsap/src/CustomEase';
 import './burgerSvg.scss';
 
 
-const BurgerSvg = ({ classes, reference }) => {
+const BurgerSvg = ({ classes, reference, toolbar }) => {
   let styles = ['burger'];
   if (classes) {
     styles = [...styles, classes];
@@ -69,13 +69,23 @@ const BurgerSvg = ({ classes, reference }) => {
     const bunBottomCurr = bunBottom.current;
     const shadowCurr = shadow.current;
 
-    gsap.to(bunTopCurr, { y: 90, duration: .1 })
+    gsap.to(bunTopCurr, {
+      y: 90, duration: .1, onComplete: () => {
+        if (toolbar === true) {
+          window.scrollTo({
+            behavior: 'smooth',
+            top: 0
+          })
+        }
+      }
+    })
     gsap.to(bunBottomCurr, { y: -70, duration: .1 })
     gsap.to(meatCurr, { y: -40, duration: .1 })
     gsap.to(lettuceCurr, { y: 70, duration: .1 })
     gsap.to(baconCurr, { y: -5, duration: .1 })
     gsap.to(cheeseCurr, { y: 40, duration: .1 })
     gsap.to(shadowCurr, { y: -90, duration: .1 })
+
   }
   const mouseUp = () => {
     const bunTopCurr = bunTop.current;
