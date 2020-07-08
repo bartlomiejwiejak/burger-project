@@ -28,7 +28,30 @@ const App = (props) => {
     onTryAutoSignUp()
   }, [onTryAutoSignUp])
 
-
+  useEffect(() => {
+    switch (props.location.pathname) {
+      case '/':
+        document.title = `Le Burger Builder - Home`
+        break;
+      case '/auth':
+        document.title = `Le Burger Builder - Authorisation`
+        break;
+      case '/burger-builder':
+        document.title = `Le Burger Builder - Build`
+        break;
+      case '/checkout':
+        document.title = `Le Burger Builder - Checkout`
+        break;
+      case '/checkout/contact-data':
+        document.title = 'Le Burger Builder - Contact'
+        break;
+      case '/orders':
+        document.title = 'Le Burger Builder - Orders'
+        break;
+      default:
+        document.title = 'Le Burger Builder'
+    }
+  }, [props.location.pathname])
 
   let routes = (
     <Switch>
