@@ -7,6 +7,7 @@
     box-sizing: border-box;
     max-width: 1140px;
     width: 80%;
+    overflow: hidden;
     position: absolute;
     transform: translate(-50%, -30%);
     top: 50%;
@@ -16,6 +17,9 @@
     background-image: url(../../Assets/Images/auth-background.jpg);
   background-size: 100%;
   background-position: center;
+}
+& .heading-secondary {
+  margin-bottom: 0;
 }
 &__background {
   position: absolute;

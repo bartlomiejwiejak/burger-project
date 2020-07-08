@@ -145,9 +145,10 @@ const Auth = (props) => {
     const auth__switch = auth__container.querySelectorAll('.auth__switch');
     props.onRedirectStart();
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
-    tl.to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { stagger: .1, x: -100, autoAlpha: 0, duration: .2 })
-      .to(auth__background, { backgroundPosition: '100%', duration: .5 })
-      .to(auth__container, { transform: 'translate(-50%, -70%)', duration: .5, autoAlpha: 0, onComplete: authSuccess })
+    tl.to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { autoAlpha: 0, duration: .5 })
+      .to(auth__background, { backgroundColor: '#f7f7f7', backgroundPosition: '0% center', duration: 1 }, '-=.5')
+      .set(auth__container, { backgroundImage: 'none', boxShadow: 'none' })
+      .to(auth__background, { y: '-100%', onComplete: authSuccess })
   }
   if (props.isAuth && !triedAuth) {
     props.history.push('/');
@@ -161,9 +162,10 @@ const Auth = (props) => {
     const auth__btn = auth__container.querySelectorAll('.auth__btn');
     const auth__switch = auth__container.querySelectorAll('.auth__switch');                                                                                   // redirect dla navigacji
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
-    tl.to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { stagger: .1, x: -100, autoAlpha: 0, duration: .2 })
-      .to(auth__background, { backgroundPosition: '100%', duration: .5 })
-      .to(auth__container, { transform: 'translate(-50%, -70%)', duration: .5, autoAlpha: 0, onComplete: redirect })
+    tl.to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { autoAlpha: 0, duration: .5 })
+      .to(auth__background, { backgroundColor: '#f7f7f7', backgroundPosition: '0% center', duration: 1 }, '-=.5')
+      .set(auth__container, { backgroundImage: 'none', boxShadow: 'none' })
+      .to(auth__background, { y: '-100%', onComplete: redirect })
   }
 
   return (
