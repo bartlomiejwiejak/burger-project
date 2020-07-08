@@ -12,12 +12,21 @@ const BurgerPlate = ({ isTriggered }) => {
     setPositionY((event.clientY - window.innerHeight / 2) * .25)
   }
   useEffect(() => {
+    let mounted = true;
+    const tl = gsap.timeline({ defaults: { ease: 'Power1.easeOut' } })
     if (isTriggered) {
-      const tl = gsap.timeline({ defaults: { ease: 'Power1.easeOut' } })
       tl.fromTo('.burger-plate--burger', { transform: 'translate(0, -80%)', autoAlpha: 0 }, { autoAlpha: 1, duration: .5 })
-        .to('.burger-plate--burger', { duration: 1.5, transform: 'translate(0, 35%)', onComplete: () => { window.addEventListener('mousemove', setPosition) } })
+        .to('.burger-plate--burger', {
+          duration: 1.5, transform: 'translate(0, 35%)', onComplete: () => {
+            if (mounted) {
+              window.addEventListener('mousemove', setPosition)
+            }
+          }
+        })
     }
     return () => {
+      tl.kill();
+      mounted = false;
       window.removeEventListener('mousemove', setPosition)
     }
   }, [isTriggered])

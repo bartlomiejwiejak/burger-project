@@ -81,21 +81,27 @@
   background-color: rgba(255, 255, 255, 0.75);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   padding: 6rem;
+  padding-left: 9rem;
   margin-bottom: 8rem;
   @media (max-width: 1000px) {
     margin-bottom: 7rem;
   padding: 5rem;
+  padding-left: 8rem;
+
   }
   @media (max-width: 800px) {
   padding: 4rem;
+  padding-left: 7rem;
   margin-bottom: 6rem;
   }
   @media (max-width: 600px) {
   padding: 3rem;
+  padding-left: 6rem;
   margin-bottom: 5rem;
   }
   @media (max-width: 400px) {
   padding: 2rem;
+  padding-left: 5rem;
   margin-bottom: 4rem;
   }
   &__figure {
@@ -106,7 +112,6 @@
     margin: 0;
     transform: translateX(-3rem) skewX(12deg);
     shape-outside: circle(50% at 50% 50%);
-    margin-right: 3rem;
     overflow: hidden;
     @media (max-width: 600px) {
       width: 10rem;

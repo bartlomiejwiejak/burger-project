@@ -8,10 +8,17 @@ const Offer = () => {
   const [isTriggered, setIsTriggered] = useState(false);
   const [isAnimationDone, setIsAnimationdone] = useState(false);
   useEffect(() => {
+    let mounted = true;
     if (!isTriggered) {
       gsap.registerPlugin(ScrollTrigger)
       gsap.set('.offer-reveal', { autoAlpha: 0 });
-      gsap.to('.offer-reveal', { scrollTrigger: { trigger: '.offer-scroll', start: 'top center' }, duration: 1, transform: 'translate(0,0)', autoAlpha: 1, onComplete: () => setIsTriggered(true) })
+      gsap.to('.offer-reveal', {
+        scrollTrigger: { trigger: '.offer-scroll', start: 'top center' }, duration: 1, transform: 'translate(0,0)', autoAlpha: 1, onComplete: () => {
+          if (mounted) {
+            setIsTriggered(true)
+          }
+        }
+      })
     } else {
       const tl = gsap.timeline({ defaults: { ease: 'Power1.easeOut' } })
       gsap.to('.offer', {
@@ -34,7 +41,16 @@ const Offer = () => {
         .to('.offer__box:nth-child(2), .offer__box:nth-child(2) > *', { duration: .1, skewX: '0deg' })
         .to('.offer__box:nth-child(3)', { duration: .3, x: 0, autoAlpha: 1 }, '-=.5')
         .to('.offer__box:nth-child(3)', { duration: .2, skewX: '-20deg' })
-        .to('.offer__box:nth-child(3), .offer__box:nth-child(3) > *', { duration: .1, skewX: '0deg', onComplete: () => setIsAnimationdone(true) })
+        .to('.offer__box:nth-child(3), .offer__box:nth-child(3) > *', {
+          duration: .1, skewX: '0deg', onComplete: () => {
+            if (mounted) {
+              setIsAnimationdone(true)
+            }
+          }
+        })
+    }
+    return () => {
+      mounted = false;
     }
   }, [isTriggered])
   return (

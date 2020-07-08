@@ -10,9 +10,16 @@ const About = () => {
   const [isTriggered, setIsTriggered] = useState(false);
   gsap.registerPlugin(ScrollTrigger)
   useEffect(() => {
+    let mounted = true;
     if (!isTriggered) {
       gsap.set('.about', { transform: 'translate(-100%, 100%)', autoAlpha: 0 })
-      gsap.to('.about', { duration: 1, ease: 'Power2.easeOut', scrollTrigger: { trigger: '.about', start: '-80% center' }, x: 0, y: 0, autoAlpha: 1, onComplete: () => setIsTriggered(true) })
+      gsap.to('.about', {
+        duration: 1, ease: 'Power2.easeOut', scrollTrigger: { trigger: '.about', start: '-80% center' }, x: 0, y: 0, autoAlpha: 1, onComplete: () => {
+          if (mounted) {
+            setIsTriggered(true)
+          }
+        }
+      })
     }
     else {
       const tl = gsap.timeline({ defaults: { ease: 'Power1.easeOut' } })
@@ -29,6 +36,9 @@ const About = () => {
         .fromTo('.about-scroll .arrow', { y: '-100%' }, { duration: .3, autoAlpha: 1, y: 0 })
         .fromTo('.about-scroll .arrow-text', { visibility: 'hidden', duration: .2 }, { autoAlpha: 1 })
     }
+    return () => {
+      mounted = false;
+    };
   }, [isTriggered])
   const scrollToOffer = () => {
     document.querySelector('.offer-scroll').scrollIntoView({

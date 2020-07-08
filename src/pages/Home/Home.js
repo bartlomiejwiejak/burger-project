@@ -24,7 +24,6 @@ const Home = ({ leaving, onRedirectEnd, history, path, location }) => {
   }, [])
   useEffect(() => {
     if (leaving && path !== location.pathname) {
-      console.log('wychodzimy')
       const tl = gsap.timeline({ defaults: { ease: 'Power2.easeOut' } })
       tl.to('.home .welcome, .home .arrow-container, .about *, .offer, .stories *', { duration: 1, autoAlpha: 0 })
         .to('.home', { x: '-100%', duration: 1, onComplete: () => { onRedirectEnd(); history.push(path) } })

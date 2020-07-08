@@ -9,7 +9,7 @@ const Story = ({ img, name, heading, description }) => {
 
   useEffect(() => {
     const checkSize = () => {
-      if (window.innerWidth <= 600) {
+      if (window.innerWidth <= 800) {
         setIsMobile(true)
       } else {
         setIsMobile(false)
@@ -21,7 +21,7 @@ const Story = ({ img, name, heading, description }) => {
     }
   }, [])
   useEffect(() => {
-    if (window.innerWidth <= 600) {
+    if (window.innerWidth <= 800) {
       setIsMobile(true)
     }
     else {
@@ -43,7 +43,7 @@ const Story = ({ img, name, heading, description }) => {
   return (
     <div ref={storyRef} className="story">
       <figure ref={figureRef} className="story__figure">
-        <img src={img} alt="Oskar" className="story__img" />
+        <img src={img} alt={name} className="story__img" />
         <figcaption className="story__caption">{name}</figcaption>
       </figure>
       <div ref={textRef} className="story__text">
