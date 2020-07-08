@@ -120,15 +120,10 @@ const Auth = (props) => {
     const auth__btn = auth__container.querySelectorAll('.auth__btn');
     const auth__switch = auth__container.querySelectorAll('.auth__switch');
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
-    gsap.set([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { opacity: 0, y: '1.6rem' });
-    tl.to(auth__container, { duration: .3, opacity: 1, transform: 'translate(-50%, -50%)' })
-      .fromTo(auth__background, { backgroundPosition: '100%' }, { duration: .3, backgroundPosition: '47%' })
-      .to(auth__secondary, { duration: .1, opacity: 1, y: 0 })
-      .to(auth__tertiary, { duration: .1, opacity: 1, y: 0 })
-      .to(auth__inputs[0], { duration: .1, opacity: 1, y: 0 })
-      .to(auth__inputs[1], { duration: .1, opacity: 1, y: 0 })
-      .to(auth__btn, { duration: .1, opacity: 1, y: 0 })
-      .to(auth__switch, { duration: .1, opacity: 1, y: 0 })
+    gsap.set([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { autoAlpha: 0, y: '1.6rem' });
+    tl.to(auth__container, { duration: .5, autoAlpha: 1, transform: 'translate(-50%, -50%)' })
+      .fromTo(auth__background, { backgroundPosition: '100%' }, { duration: .5, backgroundPosition: '47%' })
+      .to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { duration: .2, autoAlpha: 1, y: 0, stagger: .1 })
     onAuthClear();
   }, [onAuthClear])
   const redirect = () => {
@@ -141,18 +136,34 @@ const Auth = (props) => {
     props.history.push('/burger-builder');
   }
   if (props.isAuth && triedAuth) {
+    const auth__container = container.current;
+    const auth__background = auth__container.querySelector('.auth__background');
+    const auth__secondary = auth__container.querySelector('.heading-secondary');
+    const auth__tertiary = auth__container.querySelector('.heading-tertiary');
+    const auth__inputs = auth__container.querySelectorAll('.input');
+    const auth__btn = auth__container.querySelectorAll('.auth__btn');
+    const auth__switch = auth__container.querySelectorAll('.auth__switch');
     props.onRedirectStart();
-    const auth__container = container.current;                         //redirect po zalogowaniu
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
-    tl.fromTo(auth__container, { opacity: 1, transform: 'translate(-50%,-50%)' }, { duration: .5, opacity: 0, transform: 'translate(-50%, -80%)', onComplete: authSuccess })
+    tl.to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { stagger: .1, x: -100, autoAlpha: 0, duration: .2 })
+      .to(auth__background, { backgroundPosition: '100%', duration: .5 })
+      .to(auth__container, { transform: 'translate(-50%, -70%)', duration: .5, autoAlpha: 0, onComplete: authSuccess })
   }
   if (props.isAuth && !triedAuth) {
     props.history.push('/');
   }
   if (props.leaving) {
-    const auth__container = container.current;                                                                                     // redirect dla navigacji
+    const auth__container = container.current;
+    const auth__background = auth__container.querySelector('.auth__background');
+    const auth__secondary = auth__container.querySelector('.heading-secondary');
+    const auth__tertiary = auth__container.querySelector('.heading-tertiary');
+    const auth__inputs = auth__container.querySelectorAll('.input');
+    const auth__btn = auth__container.querySelectorAll('.auth__btn');
+    const auth__switch = auth__container.querySelectorAll('.auth__switch');                                                                                   // redirect dla navigacji
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
-    tl.fromTo(auth__container, { opacity: 1, transform: 'translate(-50%,-50%)' }, { duration: .5, opacity: 0, transform: 'translate(-50%, -80%)', onComplete: redirect })
+    tl.to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { stagger: .1, x: -100, autoAlpha: 0, duration: .2 })
+      .to(auth__background, { backgroundPosition: '100%', duration: .5 })
+      .to(auth__container, { transform: 'translate(-50%, -70%)', duration: .5, autoAlpha: 0, onComplete: redirect })
   }
 
   return (

@@ -45,8 +45,9 @@
 	box-shadow: none;
 }
  &--active {
-	background-image: none;
-	background-color: #bc581e;
+	background-image: linear-gradient(to right,#bc581e,#bc581e);
+	transition: 1s;
+	animation: growActive 1s ease-in;
 	&:hover{ 
 	transform: translate(0px,0);
 	box-shadow: none;
@@ -55,3 +56,14 @@
  }
 }
 
+@keyframes growActive {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
