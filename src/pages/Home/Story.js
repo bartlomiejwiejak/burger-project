@@ -16,6 +16,9 @@ const Story = ({ img, name, heading, description }) => {
       }
     }
     window.addEventListener('resize', checkSize)
+    return () => {
+      window.removeEventListener('resize', checkSize);
+    }
   }, [])
   useEffect(() => {
     if (window.innerWidth <= 600) {
@@ -29,7 +32,6 @@ const Story = ({ img, name, heading, description }) => {
     const story = storyRef.current;
     const figure = figureRef.current;
     const text = textRef.current;
-    console.log(isMobile)
     if (isMobile) {
       gsap.set([story, figure, text], { skewX: 0 })
     }

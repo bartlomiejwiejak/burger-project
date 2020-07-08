@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import './link.scss';
 
-const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames, wrapp, sideDrawerHandle, isAnimating }) => {
+const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames, wrapp, sideDrawerHandle, isAnimating, animationTime }) => {
   let classes = ['link animate']
   if (wrapp) {
     classes = ['wrapp']
@@ -12,19 +12,24 @@ const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, cl
   if (classNames) {
     classes = [...classes, ...classNames];
   }
-  useEffect(() => {
-    if (activeClass && history.location.pathname === to) {
-      classes.push('link--active');
-    }
-  }, [activeClass, history.location.pathname, to, classes])
+  if (activeClass && history.location.pathname === to) {
+    classes.push('link--active');
+  }
   const linkTo = () => {
-    if (sideDrawerHandle && !isAnimating) sideDrawerHandle();
     if (leaving || history.location.pathname === to) {
       return;
     }
-    setTimeout(() => {
-      onRedirectStart(to)
-    }, .3)
+    if (isAnimating === true) {
+      return;
+    }
+    if (sideDrawerHandle && isAnimating === false) {
+      sideDrawerHandle();
+      setTimeout(() => {
+        onRedirectStart(to)
+      }, animationTime)
+      return;
+    }
+    onRedirectStart(to);
   }
   return <div className={classes.join(' ')} onClick={linkTo}>{children}</div>
 }

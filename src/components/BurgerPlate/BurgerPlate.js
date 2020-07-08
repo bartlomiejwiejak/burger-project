@@ -17,6 +17,9 @@ const BurgerPlate = ({ isTriggered }) => {
       tl.fromTo('.burger-plate--burger', { transform: 'translate(0, -80%)', autoAlpha: 0 }, { autoAlpha: 1, duration: .5 })
         .to('.burger-plate--burger', { duration: 1.5, transform: 'translate(0, 35%)', onComplete: () => { window.addEventListener('mousemove', setPosition) } })
     }
+    return () => {
+      window.removeEventListener('mousemove', setPosition)
+    }
   }, [isTriggered])
   return (
     <div className="burger-plate" style={{ transform: `translate(${-positionX}px,${-positionY}px` }}>
