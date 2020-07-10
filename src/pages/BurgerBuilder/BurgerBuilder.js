@@ -8,6 +8,7 @@ import axios from '../../axios-orders';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions';
+import { withRouter } from 'react-router-dom';
 
 const BurgerBuilder = (props) => {
   const [purchasing, setPurchasing] = useState(false);
@@ -22,7 +23,6 @@ const BurgerBuilder = (props) => {
 
   const ings = useSelector(state => state.burgerBuilder.ingredients)
   const price = useSelector(state => state.burgerBuilder.totalPrice)
-  const error = useSelector(state => state.burgerBuilder.error)
   const isAuth = useSelector(state => state.auth.token !== null)
 
   const purchaseHandler = () => {
@@ -78,4 +78,4 @@ const BurgerBuilder = (props) => {
   );
 }
 
-export default withErrorHandler(BurgerBuilder, axios);
+export default withRouter(withErrorHandler(BurgerBuilder, axios));

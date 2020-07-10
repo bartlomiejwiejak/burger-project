@@ -1,5 +1,8 @@
 .auth {
+  min-height: calc(100vh - 20rem);
+  @media(max-width: 500px) {
   min-height: calc(100vh - 15rem);
+  }
   position: relative;
   &__container {
     border-radius: 3px;

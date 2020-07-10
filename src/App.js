@@ -15,11 +15,12 @@ const Orders = React.lazy(() => {
 const Auth = React.lazy(() => {
   return import('./pages/Auth/Auth')
 })
-const BurgerBuilder = React.lazy(() => {
-  return import('./pages/BurgerBuilder/BurgerBuilder');
-})
+
 const Home = React.lazy(() => {
   return import('./pages/Home/Home');
+})
+const BurgerBuilder = React.lazy(() => {
+  return import('./pages/BurgerBuilder/BurgerBuilderAnimation')
 })
 
 const App = (props) => {
@@ -56,8 +57,8 @@ const App = (props) => {
   let routes = (
     <Switch>
       <Route path='/' exact render={(props) => <Home {...props} />} />
-      <Route path='/burger-builder' render={(props) => <BurgerBuilder {...props} />} />
       <Route path='/auth' render={(props) => <Auth {...props} />} />
+      <Route path='/burger-builder' render={(props) => <BurgerBuilder {...props} />} />
       <Redirect to='/' />
     </Switch>
   )

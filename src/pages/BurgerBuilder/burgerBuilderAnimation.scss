@@ -1,0 +1,39 @@
+.burger-builder-animation {
+  height: calc(100vh - 20rem);
+  overflow: hidden;
+  @media (max-width: 500px) {
+    height: calc(100vh - 15rem);
+  }
+    .trigger {
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-80%) scale(1.5);
+   }
+   .heading-build {
+     font-size: 4rem;
+     font-family: 'roboto', sans-serif;
+     color: rgb(188, 88, 30);
+     text-align: center;
+     visibility: hidden;
+}
+.progress-bar {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 30%;
+  height: 3rem;
+  border: 1px solid rgb(188, 88, 30);
+  visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  .fill {
+    height: 100%;
+    width: 0;
+    background-color: rgb(188, 88, 30);
+  }
+}
+}

@@ -5,79 +5,89 @@ ul {
 .burger {
   width: 150px;
   height: 300px;
+  
   cursor: pointer;
   & svg{
     width: 100%;
     height: 100%;
   }
-  &--logo {
-    transform: scale(.4);
-    margin-top: .5rem;
-    margin-left: -3rem;
-    @media (max-width: 1000px) {
-    transform: scale(.35);
-    margin-top: 0;
-    margin-left: -4rem;
-    }
-    @media (max-width: 800px) {
-      transform: scale(.3);
-      margin-left: -4.5rem;
-      margin-top: 0;
-    }
-    @media (max-width: 500px) {
-      margin-right: -4.5rem;
-    }
-    @media (max-width: 800px) and (orientation: landscape) {
-      margin-right: -4.5rem;
-      margin-top: -1rem;
-      }
-  }
-}
-.item {
-  position: relative;
-  text-align: center;
-}
-
-.bun_top {
-  z-index: 6;
-  transform: translateY(90px);
-} 
-
-
-.lettuce {
+   &--logo {
+     transform: scale(.4);
+     margin-top: -3.5rem;
+     margin-left: -3rem;
+     @media (max-width: 1000px) {
+     transform: scale(.35);
+     margin-top: -3rem;
+     margin-left: -4rem;
+     }
+     @media (max-width: 800px) {
+       transform: scale(.3);
+       margin-left: -4.5rem;
+     }
+     @media (max-width: 500px) {
+       margin-right: -4.5rem;
+       margin-top: .5rem;
+     }
+     @media (max-width: 800px) and (orientation: landscape) {
+       margin-right: -4.5rem;
+       margin-top: -1rem;
+       }
+   }
+ }
+ .item {
+   position: relative;
+   text-align: center;
+   overflow: hidden;
+ }
+ .bun_top {
+   z-index: 8;
+   transform: translateY(90px);
+ } 
+ .tomato {
+   z-index: 7;
+   transform: translateY(65px);
+ }
+ .lettuce {
+   z-index: 6;
+   transform: translateY(36px);
+ } 
+.gerkins {
   z-index: 5;
-  transform: translateY(70px);
-} 
-
-
-.cheese {
-  z-index: 4;
-  transform: translateY(40px);
-} 
-
-
-.bacon {
-  z-index: 3;
-  transform: translateY(-5px);
-} 
-
-
-.meat {
-  z-index: 2;
-  transform: translateY(-40px);
-} 
-
-
-.bun_bottom {
-  z-index: 1;
-  transform: translateY(-70px);
-} 
-
- .shadow {
-  height: 30px;
-	border-radius: 50%;
-	width: 100%;
-	margin: 0 auto;
-  background-image: radial-gradient(rgba(black, .2), rgba(black, 0));
-  transform: translateY(-90px);
+  transform: translateY(3px);
 }
+ .cheese {
+   z-index: 4;
+   transform: translateY(-33px);
+ } 
+ .bacon {
+   z-index: 3;
+   transform: translateY(-79px);
+ } 
+ .meat {
+   z-index: 2;
+   transform: translateY(-116px);
+ } 
+ .bun_bottom {
+   z-index: 1;
+   transform: translateY(-140px);
+ } 
+  .shadow {
+   height: 30px;
+   border-radius: 50%;
+   z-index: 0;
+ 	width: 100%;
+ 	margin: 0 auto;
+   background-image: radial-gradient(rgba(black, .2), rgba(black, 0));
+   transform: translateY(-162px);
+ }
+ .item-text {
+   position: absolute;
+   top: 50%;
+   left: 0;
+   transform: translate(-100%,-50%);
+   font-size: 2rem;
+   text-align: center;
+   width: 100%;
+   font-weight: bold;
+   color: #333;
+ }

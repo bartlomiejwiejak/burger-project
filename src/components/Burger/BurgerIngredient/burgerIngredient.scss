@@ -1,0 +1,39 @@
+.Bun-bottom {
+  z-index: -9999;
+  margin: -10% 0 0;
+}
+.Bun-top {
+  z-index: 9999;
+}
+.Meat {
+  margin: -17% 0;
+}
+.Cheese {
+  margin: -27% 0;
+}
+.Lettuce {
+margin: -15% 0;
+}
+.Bacon {
+margin: -20% 0;
+}
+.Tomato {
+margin: -17% 0;
+}
+.Gerkins {
+margin: -25% 0;
+}
+.burger-ing {
+  animation: addIng .5s ease-in;
+}
+
+@keyframes addIng {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

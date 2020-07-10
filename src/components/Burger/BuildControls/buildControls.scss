@@ -1,0 +1,58 @@
+.build-controls-container {
+  height: 40%;
+  background-color: rgba(255, 188, 13, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .build-controls {
+    flex-basis: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
+    &-price {
+      flex-basis: 100%;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    .orderBtn-wrapper {
+      flex-basis: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    &-orderBtn {
+      background-color: #bc581e;
+      outline: none;
+      border: none;
+      border-radius: 10px;
+      padding: 1rem 2rem;
+      color: #333;
+      font-weight: bold;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: .3s;
+      &:hover:not(:disabled) {
+        transform: translate(0px,-5px) scale(1.05);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+      }
+      &:disabled {
+        background-color: #666;
+        cursor: not-allowed;
+      }
+      &:not(:disabled) {
+        animation: activateOrder .5s ease-in;
+      }
+    }
+  }
+}
+
+@keyframes activateOrder {
+  50%{
+    transform: translate(0px,-5px) scale(1.1);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

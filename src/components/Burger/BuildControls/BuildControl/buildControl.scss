@@ -1,0 +1,56 @@
+.build-control {
+  display: flex;
+  flex-basis: 40%;
+  justify-content: space-between;
+  &-btn {
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #bc581e;
+    font-size: 1.6rem;
+    align-self: center;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    transition: .3s;
+  color: #333;
+    &:hover {
+      transform: translate(0px,-3px) scale(1.05);
+		box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    }
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #666;
+      transform: scale(1);
+    }
+  }
+  .ingredient {
+    position: relative;
+    overflow: hidden;
+    
+    svg {
+      transition: .3s;
+      cursor: pointer;
+    }
+    &:hover svg {
+      opacity: 0.6;
+    }
+    &-name {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      transform: translateX(-100%);
+      font-size: 2rem;
+      font-weight: bold;
+      transition: .3s;
+      text-align: center;
+      z-index: 10;
+      color: #222;
+    } 
+    &:hover .ingredient-name {
+      transform: translateX(0);
+      cursor: pointer;
+    }
+  }
+}

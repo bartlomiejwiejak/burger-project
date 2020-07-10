@@ -1,0 +1,22 @@
+<svg width="114px" className='ing' height="31px" viewBox="0 0 114 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlnssketch="http://www.bohemiancoding.com/sketch/ns">
+					<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketchtype="MSPage">
+						<g sketchtype="MSLayerGroup" transform="translate(-1.000000, -2.000000)">
+							<path d="M45.15,28.95 C41.65,30.6 33.65,30.6 29.1,31.15 C24.55,31.7 16.85,33.55 13.05,32.75 C9.25,31.95 8.8,28.4 7.15,26.55 C5.5,24.7 2.3,21.9 1.45,19.7 C-0.9,13.55 8.95,16.15 12.45,14.5 C16,12.85 21.85,8.25 26.35,7.9 C30.9,7.55 36.4,9.2 40.25,10 C44.05,10.8 54.95,6.5 53.35,13.6 C52.8,16 50.25,19 49.1,21.2 C47.95,23.35 48.65,27.3 45.15,28.95 L45.15,28.95 Z"
+								  id="Shape" fill="#6C844A" sketchtype="MSShapeGroup"></path>
+							<path d="M44.85,25.85 C41.35,27.5 33.35,27.5 28.8,28.05 C24.25,28.6 16.55,30.45 12.75,29.65 C8.95,28.85 8.5,25.3 6.85,23.45 C5.2,21.6 0.35,18.8 1.15,16.6 C2,14.45 8.65,13.05 12.15,11.4 C15.7,9.75 21.55,5.15 26.05,4.8 C30.6,4.45 36.1,6.1 39.95,6.9 C43.75,7.7 51.45,8.65 53.05,10.5 C54.7,12.35 49.95,15.9 48.8,18.1 C47.65,20.2 48.35,24.2 44.85,25.85 L44.85,25.85 Z"
+								  id="Shape" fill="#9EA555" sketchtype="MSShapeGroup"></path>
+							<ellipse id="Oval" fill="#B9C16A" sketchtype="MSShapeGroup" transform="translate(23.441545, 14.899615) rotate(-5.411269) translate(-23.441545, -14.899615) " cx="23.441545" cy="14.899615" rx="1.64992801" ry="0.899960732"></ellipse>
+							<ellipse id="Oval" fill="#B9C16A" sketchtype="MSShapeGroup" transform="translate(30.150820, 14.299040) rotate(-5.370800) translate(-30.150820, -14.299040) " cx="30.15082" cy="14.29904" rx="1.64998376" ry="0.899991144"></ellipse>
+							<ellipse id="Oval" fill="#B9C16A" sketchtype="MSShapeGroup" transform="translate(30.556310, 18.150830) rotate(-5.405025) translate(-30.556310, -18.150830) " cx="30.55631" cy="18.15083" rx="1.65007672" ry="0.900041849"></ellipse>
+							<ellipse id="Oval" fill="#B9C16A" sketchtype="MSShapeGroup" transform="translate(23.853860, 18.790805) rotate(-5.365095) translate(-23.853860, -18.790805) " cx="23.85386" cy="18.790805" rx="1.64996833" ry="0.899982724"></ellipse>
+							<path d="M102.3,30.65 C98.45,31.3 90.75,29.2 86.25,28.45 C81.75,27.75 73.8,27.5 70.35,25.7 C66.9,23.9 67.4,20.35 66.35,18.15 C65.25,15.95 62.9,12.35 62.7,10.05 C62.1,3.5 70.85,8.65 74.7,7.95 C78.55,7.3 85.4,4.45 89.9,5.3 C94.35,6.15 99.25,9.25 102.7,11.05 C106.15,12.85 117.8,11.6 114.35,18.05 C113.2,20.25 109.9,22.45 108.2,24.2 C106.5,26 106.1,30 102.3,30.65 L102.3,30.65 Z"
+								  id="Shape" fill="#6C844A" sketchtype="MSShapeGroup"></path>
+							<path d="M102.8,27.6 C98.95,28.25 91.25,26.1 86.75,25.4 C82.25,24.7 74.3,24.45 70.85,22.65 C67.4,20.85 67.9,17.35 66.85,15.1 C65.75,12.9 61.8,8.85 63.2,7 C64.6,5.15 71.35,5.6 75.2,4.9 C79.05,4.25 85.9,1.4 90.4,2.25 C94.85,3.1 99.75,6.2 103.2,8 C106.65,9.8 113.8,12.75 114.85,15 C115.95,17.2 110.4,19.4 108.7,21.15 C107.05,22.9 106.65,26.9 102.8,27.6 L102.8,27.6 Z"
+								  id="Shape" fill="#9EA555" sketchtype="MSShapeGroup"></path>
+							<ellipse id="Oval" fill="#B9C16A" sketchtype="MSShapeGroup" transform="translate(85.144115, 11.340385) rotate(10.050134) translate(-85.144115, -11.340385) " cx="85.144115" cy="11.340385" rx="1.64990711" ry="0.899949333"></ellipse>
+							<ellipse id="Oval" fill="#B9C16A" sketchtype="MSShapeGroup" transform="translate(91.757450, 12.502675) rotate(10.142398) translate(-91.757450, -12.502675) " cx="91.75745" cy="12.502675" rx="1.65004502" ry="0.900024556"></ellipse>
+							<ellipse id="Oval" fill="#B9C16A" sketchtype="MSShapeGroup" transform="translate(91.102605, 16.357650) rotate(10.142398) translate(-91.102605, -16.357650) " cx="91.102605" cy="16.35765" rx="1.65004502" ry="0.900024556"></ellipse>
+							<ellipse id="Oval" fill="#B9C16A" sketchtype="MSShapeGroup" transform="translate(84.447760, 15.139870) rotate(10.084986) translate(-84.447760, -15.139870) " cx="84.44776" cy="15.13987" rx="1.64991771" ry="0.899955116"></ellipse>
+						</g>
+					</g>
+				</svg>

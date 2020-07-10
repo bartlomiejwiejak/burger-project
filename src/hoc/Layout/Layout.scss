@@ -11,8 +11,10 @@ main {
 
 .footer {
   background-color: rgba(255, 188, 13, 0.9);
-  padding: 1rem;
-  margin-top: 2rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &__text {
     font-size: 1.4rem;
     text-align: center;

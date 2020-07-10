@@ -1,0 +1,24 @@
+<svg width="140px" className='ing' height="32px" viewBox="0 0 140 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlnssketch="http://www.bohemiancoding.com/sketch/ns">
+					<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketchtype="MSPage">
+						<g sketchtype="MSLayerGroup" transform="translate(-1.000000, -7.000000)">
+							<path d="M140.3,31.75 C139.15,38.15 119.3,39.95 95.9,35.8 C72.5,31.65 54.5,23.1 55.65,16.7 C55.85,15.65 56.4,12.75 57.6,11.9 C63.4,7.9 80.6,9.15 100.05,12.6 C119.85,16.15 136.75,21.05 140.45,26.9 C141.05,27.95 140.45,30.75 140.3,31.75 L140.3,31.75 Z"
+								  id="Shape" fill="#E83F40" sketchtype="MSShapeGroup"></path>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" transform="translate(98.551830, 21.202770) rotate(10.078342) translate(-98.551830, -21.202770) " cx="98.55183" cy="21.20277" rx="43.0013364" ry="11.8003667"></ellipse>
+							<path d="M117.45,31.8 C112.7,31.9 103.45,26.65 97.8,25.7 C92.1,24.75 81.65,26.7 77.2,25.1 C72.75,23.45 83.55,21.6 82,19.9 C80.5,18.2 64.4,14.15 66.4,13.05 C68.4,11.95 84.3,16.05 89.1,15.95 C93.8,15.85 94.3,11.35 100,12.3 C105.7,13.25 104.75,17.65 109.2,19.3 C113.65,20.95 130.05,22.2 131.55,23.95 C133.05,25.65 116.55,24.25 114.55,25.35 C112.55,26.45 122.15,31.7 117.45,31.8 L117.45,31.8 Z"
+								  id="Shape" fill="#E83F40" sketchtype="MSShapeGroup"></path>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" transform="translate(96.851240, 18.903260) rotate(10.136758) translate(-96.851240, -18.903260) " cx="96.85124" cy="18.90326" rx="1.30001258" ry="0.650006292"></ellipse>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" transform="translate(101.304960, 19.706940) rotate(10.049134) translate(-101.304960, -19.706940) " cx="101.30496" cy="19.70694" rx="1.30005482" ry="0.65002741"></ellipse>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" transform="translate(101.044890, 22.247370) rotate(9.986073) translate(-101.044890, -22.247370) " cx="101.04489" cy="22.24737" rx="1.29993409" ry="0.649967044"></ellipse>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" transform="translate(96.401845, 21.447835) rotate(10.037851) translate(-96.401845, -21.447835) " cx="96.401845" cy="21.447835" rx="1.30000948" ry="0.650004738"></ellipse>
+							<path d="M87.1,22.85 C87.2,29.35 68.05,34.9 44.3,35.3 C20.55,35.65 1.25,30.7 1.15,24.2 C1.15,23.1 1.15,20.15 2.15,19.15 C7.1,14.1 24.2,12.1 44,11.8 C64.15,11.5 81.6,13.1 86.35,18.15 C87.15,19 87.05,21.9 87.1,22.85 L87.1,22.85 Z" id="Shape" fill="#E83F40"
+								  sketchtype="MSShapeGroup"></path>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" transform="translate(44.099475, 20.454725) rotate(-0.876645) translate(-44.099475, -20.454725) " cx="44.099475" cy="20.454725" rx="43.0007331" ry="11.7502003"></ellipse>
+							<path d="M64.65,27.3 C60,28.3 49.95,24.9 44.2,25.05 C38.45,25.2 28.55,29.1 23.85,28.35 C19.15,27.6 29.4,23.7 27.6,22.35 C25.8,20.95 9.25,20.05 11,18.6 C12.75,17.1 29.15,18.15 33.8,17.15 C38.45,16.15 38.1,11.65 43.85,11.5 C49.6,11.35 49.5,15.85 54.2,16.6 C58.9,17.35 75.2,15.5 77.05,16.9 C78.85,18.3 62.4,20.05 60.65,21.5 C58.85,22.95 69.3,26.3 64.65,27.3 L64.65,27.3 Z"
+								  id="Shape" fill="#E83F40" sketchtype="MSShapeGroup"></path>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" cx="42" cy="18.55" rx="1.3" ry="0.65"></ellipse>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" cx="46.5" cy="18.45" rx="1.3" ry="0.65"></ellipse>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" cx="46.75" cy="21.05" rx="1.3" ry="0.65"></ellipse>
+							<ellipse id="Oval" fill="#EA5659" sketchtype="MSShapeGroup" cx="42.05" cy="21.1" rx="1.3" ry="0.65"></ellipse>
+						</g>
+					</g>
+				</svg>
