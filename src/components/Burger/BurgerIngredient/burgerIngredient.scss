@@ -24,7 +24,8 @@ margin: -17% 0;
 margin: -25% 0;
 }
 .burger-ing {
-  animation: addIng .5s ease-in;
+  opacity: 0;
+  animation: addIng .5s ease-in forwards;
 }
 
 @keyframes addIng {

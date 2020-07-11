@@ -6,8 +6,11 @@
   align-items: center;
   &-burger {
     overflow-y: auto;
+    overflow-x: visible;
     height: 100%;
-    width: 350px;
+    width: 450px;
+    padding: 0 5rem;
+    box-sizing: border-box;
     li {
       position: relative;
     }
