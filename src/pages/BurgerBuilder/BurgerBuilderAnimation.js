@@ -67,8 +67,10 @@ const BurgerAnimation = () => {
       <h1 className='heading-build'>
         {message()}
       </h1>
-      <div onMouseUp={checkFillBarState} onMouseDown={fillBar} onMouseLeave={checkFillBarState} className="trigger">
-        <BurgerSvg complete={setAnimationComplete} success={success} fill={fillPercent} />
+      <div className="burger-container">
+        <div onMouseUp={checkFillBarState} onMouseDown={fillBar} onMouseLeave={checkFillBarState} className="trigger">
+          <BurgerSvg complete={setAnimationComplete} success={success} fill={fillPercent} />
+        </div>
       </div>
       <div className="progress-bar">
         <div style={{ width: `${fillPercent}%` }} className="fill"></div>

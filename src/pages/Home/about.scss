@@ -1,15 +1,15 @@
 .about {
   font-size: 1.8rem;
-  padding: 15rem 5rem 0 0;
+  padding: 15rem 5rem 0 5rem;
   background-color: #f7f7f7;
   @media (max-width: 800px) {
-  padding: 11rem 3rem 0;
+  padding: 11rem 3rem 0 3rem;
   }
   @media (max-width: 600px) {
-    padding: 8rem 2rem 0;
+    padding: 8rem 2rem 0 2rem;
     }
     @media (max-width: 400px) {
-      padding: 6rem 2rem 0;
+      padding: 6rem 2rem 0 2rem;
       }
   & .heading-secondary {
     margin-bottom: 10rem;
