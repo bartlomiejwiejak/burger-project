@@ -11,12 +11,9 @@
   z-index: 90;
   font-size: 1.6rem;
   transition: .3s;
-  @media (max-width: 500px) {
+  @media (max-width: 1000px) {
     height: 10rem;
     }
-    @media (max-width: 800px) and (orientation: landscape) {
-      height: 10rem;
-      }
   nav {
     margin-right: 1.9rem;
   }

@@ -68,7 +68,7 @@ const BurgerAnimation = () => {
         {message()}
       </h1>
       <div className="burger-container">
-        <div onMouseUp={checkFillBarState} onMouseDown={fillBar} onMouseLeave={checkFillBarState} className="trigger">
+        <div onMouseUp={checkFillBarState} onMouseDown={fillBar} onTouchStart={fillBar} onTouchEnd={checkFillBarState} onTouchCancel={checkFillBarState} onMouseLeave={checkFillBarState} className="trigger">
           <BurgerSvg complete={setAnimationComplete} success={success} fill={fillPercent} />
         </div>
       </div>

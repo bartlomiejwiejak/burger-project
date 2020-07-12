@@ -179,7 +179,7 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
   }, [success, complete])
 
   return (
-    <ul onMouseEnter={mouseEnter} onMouseDown={mouseDown} onClick={mouseRelease} onMouseLeave={mouseOut} ref={reference} className={styles.join(' ')}>
+    <ul onMouseEnter={mouseEnter} onMouseDown={mouseDown} onTouchStart={mouseDown} onClick={mouseRelease} onMouseLeave={mouseOut} ref={reference} className={styles.join(' ')}>
       <li ref={bunTopRef} className="item bun_top">
         <BunTop />
       </li>

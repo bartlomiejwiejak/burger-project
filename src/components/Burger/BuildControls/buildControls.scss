@@ -4,6 +4,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 900px) and (orientation: landscape) {
+    overflow: auto;
+  }
+  @media (max-width: 1400px) {
+    height: 50%;
+  }
+  @media (max-width: 1000px) {
+    height: 60%;
+ }
+ @media (max-width: 800px) and (orientation: landscape) {
+  height: 70%;
+}
   .build-controls {
     flex-basis: 40%;
     height: 100%;
@@ -11,10 +23,37 @@
     justify-content: space-between;
     flex-wrap: wrap;
     align-content: space-between;
+    @media (max-width: 1600px) {
+       flex-basis: 50%;
+    }
+    @media (max-width: 1200px) {
+      flex-basis: 60%;
+   }
+   @media (max-width: 1000px) {
+    flex-basis: 70%;
+ }
+ @media (max-width: 800px) {
+  flex-basis: 80%;
+}
+@media (max-width: 700px) {
+  flex-basis: 90%;
+}
+@media (max-width: 500px) {
+  flex-basis: 95%;
+}
     &-price {
       flex-basis: 100%;
       text-align: center;
       font-size: 2.5rem;
+      margin: 1rem 0;
+      @media (max-width: 1200px) {
+        font-size: 2rem;
+        margin: .5rem 0;
+     }
+     @media (max-width: 600px) and (orientation: landscape) {
+      font-size: 1.5;
+      margin: .2rem 0;
+   }
     }
     .orderBtn-wrapper {
       flex-basis: 100%;
@@ -31,6 +70,10 @@
       font-weight: bold;
       font-size: 1.6rem;
       cursor: pointer;
+      @media (max-width: 1200px) {
+        padding: .8rem 1.5rem;
+        font-size: 1.5rem;
+     }
       transition: .3s;
       &:hover:not(:disabled) {
         transform: translate(0px,-5px) scale(1.05);

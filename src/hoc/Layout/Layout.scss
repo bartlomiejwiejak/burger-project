@@ -1,12 +1,9 @@
 main {
   margin-top: 15rem;
   position: relative;
-  @media (max-width: 500px) {
+  @media (max-width: 1000px) {
     margin-top: 10rem;
     }
-    @media (max-width: 800px) and (orientation: landscape) {
-      margin-top: 10rem;
-      }
 }
 
 .footer {
@@ -15,6 +12,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1000px) {
+    height: 3rem;
+  }
   &__text {
     font-size: 1.4rem;
     text-align: center;

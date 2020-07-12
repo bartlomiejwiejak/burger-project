@@ -4,6 +4,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1400px) {
+    height: 50%;
+  }
+  @media (max-width: 1000px) {
+    height: 40%;
+ }
+ @media (max-width: 800px) and (orientation: landscape) {
+  height: 30%;
+}
   &-burger {
     overflow-y: auto;
     overflow-x: visible;
@@ -11,6 +20,26 @@
     width: 450px;
     padding: 0 5rem;
     box-sizing: border-box;
+    @media (max-width: 1400px) {
+      width: 400px;
+    padding: 0 4rem;
+    }
+    @media (max-width: 1200px) {
+      width: 350px;
+      padding: 0 3rem;
+    }
+    @media (max-width: 1000px) {
+      width: 300px;
+      padding: 0 2.5rem;
+    }
+    @media (max-width: 800px) {
+      width: 250px;
+      padding: 0 2rem;
+    }
+    @media (max-width: 600px) {
+      width: 200px;
+      padding: 0 1.5rem;
+    }
     li {
       position: relative;
     }
@@ -34,5 +63,15 @@
     font-size: 2rem;
     color: #333;
     text-align: center;
+    margin: 0;
+    @media (max-width: 1200px) {
+      font-size: 1.6rem;
+    }
+    @media (max-width: 1000px) {
+      font-size: 1.5rem;
+    }
+    @media (max-width: 800px) {
+      font-size: 1.4rem;
+    }
   }
 }

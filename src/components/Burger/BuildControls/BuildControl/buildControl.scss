@@ -13,6 +13,10 @@
     outline: none;
     transition: .3s;
   color: #333;
+  @media (max-width: 1200px) {
+    font-size: 1.5rem;
+    padding: .8rem;
+ }
     &:hover {
       transform: translate(0px,-3px) scale(1.05);
 		box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
@@ -26,10 +30,10 @@
   .ingredient {
     position: relative;
     overflow: hidden;
-    
     svg {
       transition: .3s;
       cursor: pointer;
+      width: 100%;
     }
     &:hover svg {
       opacity: 0.6;
