@@ -17,7 +17,7 @@ const BurgerAnimation = ({ history }) => {
     clearInterval(inter);
     gsap.set('.progress-bar', { visibility: 'visible' })
     setInter(setInterval(() => {
-      setFillPercent(prevPercent => prevPercent + 0.66666)
+      setFillPercent(prevPercent => prevPercent + 1)
     }, 10))
   }
   useEffect(() => {
@@ -90,13 +90,11 @@ const BurgerAnimation = ({ history }) => {
   useEffect(() => {
     const onRedirectEnd = () => dispatch(actions.redirectEnd());
     const redirect = () => {
-      setTimeout(() => {
-        onRedirectEnd();
-        history.push(path)
-      }, 300)
+      onRedirectEnd();
+      history.push(path)
     }
     if (leaving) {
-      gsap.to('.burger-builder-animation', { autoAlpha: 0, scale: .9, duration: .4, onComplete: redirect })
+      gsap.to('.burger-builder-animation', { autoAlpha: 0, scale: .95, duration: 1, onComplete: redirect })
     }
   }, [leaving, history, path, dispatch])
   return (

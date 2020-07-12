@@ -136,36 +136,16 @@ const Auth = (props) => {
     props.history.push(props.redirectPath);
   }
   if (props.isAuth && triedAuth) {
-    const auth__container = container.current;
-    const auth__background = auth__container.querySelector('.auth__background');
-    const auth__secondary = auth__container.querySelector('.heading-secondary');
-    const auth__tertiary = auth__container.querySelector('.heading-tertiary');
-    const auth__inputs = auth__container.querySelectorAll('.input');
-    const auth__btn = auth__container.querySelectorAll('.auth__btn');
-    const auth__switch = auth__container.querySelectorAll('.auth__switch');
     props.onRedirectStart();
-    const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
-    tl.to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { autoAlpha: 0, duration: .5 })
-      .to(auth__background, { backgroundColor: '#f7f7f7', backgroundPosition: '0% center', duration: 1 }, '-=.5')
-      .set(auth__container, { backgroundImage: 'none', boxShadow: 'none' })
-      .to(auth__background, { y: '-100%', onComplete: authSuccess })
+    const auth__container = container.current;
+    gsap.to(auth__container, { duration: 1, ease: 'power2.inOut', autoAlpha: 0, scale: .95, onComplete: authSuccess })
   }
   if (props.isAuth && !triedAuth) {
     props.history.push('/');
   }
   if (props.leaving) {
     const auth__container = container.current;
-    const auth__background = auth__container.querySelector('.auth__background');
-    const auth__secondary = auth__container.querySelector('.heading-secondary');
-    const auth__tertiary = auth__container.querySelector('.heading-tertiary');
-    const auth__inputs = auth__container.querySelectorAll('.input');
-    const auth__btn = auth__container.querySelectorAll('.auth__btn');
-    const auth__switch = auth__container.querySelectorAll('.auth__switch');                                                                                   // redirect dla navigacji
-    const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
-    tl.to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { autoAlpha: 0, duration: .5 })
-      .to(auth__background, { backgroundColor: '#f7f7f7', backgroundPosition: '0% center', duration: 1 }, '-=.5')
-      .set(auth__container, { backgroundImage: 'none', boxShadow: 'none' })
-      .to(auth__background, { y: '-100%', onComplete: redirect })
+    gsap.to(auth__container, { duration: 1, ease: 'power2.inOut', autoAlpha: 0, scale: .95, onComplete: redirect })                                                                 // redirect dla navigacji
   }
 
   return (

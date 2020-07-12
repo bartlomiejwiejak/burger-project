@@ -18,9 +18,10 @@ const BuildControls = (props) => {
     gsap.set('.build-controls > *', { autoAlpha: 0, y: 50 })
     gsap.set('.burger-builder-burger > *', { autoAlpha: 0, x: -100 })
     const tl = gsap.timeline({ defaults: { ease: 'Power2.out' } })
-    tl.to('.build-controls-container', { y: 0, duration: 1 })
-      .to('.build-controls > *', { autoAlpha: 1, y: 0, stagger: .1, duration: .2 })
-      .to('.burger-builder-burger > *', { autoAlpha: 1, x: 0, duration: .3, stagger: .1 })
+    tl.to('.burger-builder-burger > *', { autoAlpha: 1, x: 0, duration: .3, stagger: .1 })
+      .to('.build-controls-container', { y: 0, duration: 1 }, '+=.2')
+      .to('.build-controls > *', { autoAlpha: 1, y: 0, stagger: .1, duration: .1 })
+
   }, [])
 
   return (

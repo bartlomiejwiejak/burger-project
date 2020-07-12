@@ -18,7 +18,7 @@ const BurgerBuilder = (props) => {
   const onIngredientRemoved = (ingName) => dispatch(actions.removeIngredient(ingName));
   const onInitIngredients = useCallback(() => dispatch(actions.initIngredients()), [dispatch]);
   const onInitPurchase = () => dispatch(actions.purchaseBurgerInit());
-  const onSetAuthRedirectPath = (path) => dispatch(actions.setAuthRedirectPath(path));
+  const onSetAuthRedirectPath = useCallback((path) => dispatch(actions.setAuthRedirectPath(path)), [dispatch]);
   const onRedirectStart = (path) => dispatch(actions.redirectStart(path))
 
   const ings = useSelector(state => state.burgerBuilder.ingredients)
@@ -47,11 +47,15 @@ const BurgerBuilder = (props) => {
   }
   const continuePurchaseHandler = () => {
     onInitPurchase();
-    props.history.push('/checkout');
+    onRedirectStart('/checkout');
   }
   useEffect(() => {
     onInitIngredients()
   }, [onInitIngredients])
+
+  useEffect(() => {
+    onSetAuthRedirectPath('/burger-builder')
+  }, [onSetAuthRedirectPath])
 
   const disabledInfo = { ...ings };
   for (let key in disabledInfo) {
