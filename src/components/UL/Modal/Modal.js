@@ -1,14 +1,13 @@
 import React from 'react';
-import './Modal.css';
-import Backdrop from '../Backdrop/Backdrop';
+import './modal.scss';
 
 const Modal = (props) => {
   return (
     <>
-      <Backdrop cancel={props.cancel} show={props.show} />
-      <div className='Modal'
+      <div style={props.show ? { visibility: 'visible', opacity: 1 } : { visibility: 'hidden', opacity: 0 }} className="modal-backdrop"></div>
+      <div className='modal'
         style={{
-          transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
+          transform: props.show ? 'translate(-50%,-50%)' : 'translate(-50%,-100vh)',
           opacity: props.show ? '1' : '0'
         }}>
         {props.children}

@@ -19,6 +19,7 @@ const BurgerBuilder = (props) => {
   const onInitIngredients = useCallback(() => dispatch(actions.initIngredients()), [dispatch]);
   const onInitPurchase = () => dispatch(actions.purchaseBurgerInit());
   const onSetAuthRedirectPath = (path) => dispatch(actions.setAuthRedirectPath(path));
+  const onRedirectStart = (path) => dispatch(actions.redirectStart(path))
 
   const ings = useSelector(state => state.burgerBuilder.ingredients)
   const price = useSelector(state => state.burgerBuilder.totalPrice)
@@ -29,7 +30,7 @@ const BurgerBuilder = (props) => {
       setPurchasing(true);
     } else {
       onSetAuthRedirectPath('/checkout');
-      props.history.push('/auth');
+      onRedirectStart('/auth');
     }
   }
   const canPurchase = (ingredients) => {

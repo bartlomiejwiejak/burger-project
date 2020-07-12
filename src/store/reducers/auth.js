@@ -6,7 +6,7 @@ const initialState = {
   error: null,
   token: null,
   userId: null,
-  redirectPath: '/'
+  redirectPath: '/burger-builder'
 }
 const authStart = (state, action) => {
   return updatedObject(state, {

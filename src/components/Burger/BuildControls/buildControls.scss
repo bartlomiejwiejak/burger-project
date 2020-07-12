@@ -7,7 +7,7 @@
   transform: translateY(100%);
   .build-controls > * {
     visibility: 0;
-    transform: translateX(50px);
+    transform: translateY(50px);
   }
   @media (max-width: 900px) and (orientation: landscape) {
     overflow: auto;

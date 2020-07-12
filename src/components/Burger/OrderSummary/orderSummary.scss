@@ -1,0 +1,39 @@
+.order-summary {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  & > * {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  &__heading {
+    font-size: 3.5rem;
+    margin: 1rem 0;
+    border-bottom: 1px solid black;
+    color: #bc581e;
+  }
+  &__description {
+    font-size: 2rem;
+  }
+  &__ingredients {
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 1.5rem;
+    & > *{
+      flex-basis: 30%;
+    }
+  }
+  &__price {
+    font-size: 2rem;
+  }
+  &__continue {
+    font-size: 1.6rem;
+  }
+  .btn {
+    flex-basis: 50%;
+    margin: 0;
+  }
+}

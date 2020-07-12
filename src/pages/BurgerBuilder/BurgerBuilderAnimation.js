@@ -3,8 +3,11 @@ import BurgerSvg from '../../components/BurgerSvg/BurgerSvg';
 import gsap from 'gsap';
 import BurgerBuilder from './BurgerBuilder';
 import './burgerBuilderAnimation.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../store/actions';
+import { withRouter } from 'react-router-dom';
 
-const BurgerAnimation = () => {
+const BurgerAnimation = ({ history }) => {
 
   const [fillPercent, setFillPercent] = useState(0);
   const [inter, setInter] = useState(null);
@@ -80,6 +83,22 @@ const BurgerAnimation = () => {
   if (animationComplete) {
     content = <BurgerBuilder />
   }
+  const dispatch = useDispatch();
+  const leaving = useSelector(state => state.redirect.leaving);
+  const path = useSelector(state => state.redirect.path)
+
+  useEffect(() => {
+    const onRedirectEnd = () => dispatch(actions.redirectEnd());
+    const redirect = () => {
+      setTimeout(() => {
+        onRedirectEnd();
+        history.push(path)
+      }, 300)
+    }
+    if (leaving) {
+      gsap.to('.burger-builder-animation', { autoAlpha: 0, scale: .9, duration: .4, onComplete: redirect })
+    }
+  }, [leaving, history, path, dispatch])
   return (
     <div className="burger-builder-animation">
       {content}
@@ -87,4 +106,4 @@ const BurgerAnimation = () => {
   );
 }
 
-export default BurgerAnimation;
+export default withRouter(BurgerAnimation);

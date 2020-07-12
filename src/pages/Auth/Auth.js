@@ -127,13 +127,13 @@ const Auth = (props) => {
     onAuthClear();
   }, [onAuthClear])
   const redirect = () => {
-    props.history.push(props.path);
     props.onRedirectEnd();
+    props.history.push(props.path);
   }
 
   const authSuccess = () => {
     props.onRedirectEnd();
-    props.history.push('/burger-builder');
+    props.history.push(props.redirectPath);
   }
   if (props.isAuth && triedAuth) {
     const auth__container = container.current;
