@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import './Layout.scss';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
@@ -11,7 +10,7 @@ const Layout = (props) => {
     setSideDrawerShown((prevState) => !prevState)
   }
   return (
-    <Auxiliary>
+    <>
       <Toolbar isAuth={props.isAuth} sideDrawerHandle={sideDrawerHandler} />
       <SideDrawer isAuth={props.isAuth} show={sideDrawerShown} sideDrawerHandle={sideDrawerHandler} />
       <main>
@@ -20,7 +19,7 @@ const Layout = (props) => {
       <footer className='footer'>
         <p className='footer__text'>© Made by <span><a href='https://github.com/Kuzniak98' target="_blank" rel="noopener noreferrer">WieJak</a></span>. 2020</p>
       </footer>
-    </Auxiliary>
+    </>
   )
 }
 

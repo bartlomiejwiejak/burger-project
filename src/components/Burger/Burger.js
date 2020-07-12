@@ -19,6 +19,7 @@ const Burger = (props) => {
         <BurgerIngredient type='bun_top' />
         {ingredientComponents}
         <BurgerIngredient type='bun_bottom' />
+        <li className='burger-shadow'></li>
       </ul>
     </div>
   );

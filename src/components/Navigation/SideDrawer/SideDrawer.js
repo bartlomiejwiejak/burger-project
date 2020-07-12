@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './sideDrawer.scss';
 import NavigationItems from '../NavigationItems/NavigationItems';
-import Aux from '../../../hoc/Auxiliary/Auxiliary';
 import Backdrop from '../../UL/Backdrop/Backdrop';
 import gsap from 'gsap';
 import BurgerSvg from '../../BurgerSvg/BurgerSvg';
@@ -39,7 +38,7 @@ const SideDrawer = (props) => {
     }
   }, [props.show])
   return (
-    <Aux>
+    <>
       <Backdrop isAnimating={isAnimating} reference={backDrop} isMobile show={props.show} cancel={props.sideDrawerHandle} />
       <div ref={sideDrawer} className='sideDrawer'>
         <div ref={heading} style={{ borderBottom: '1px solid white', borderTop: '1px solid white', width: '100%', textAlign: 'center' }}>
@@ -50,7 +49,7 @@ const SideDrawer = (props) => {
         </nav>
         <BurgerSvg reference={svg} />
       </div>
-    </Aux>
+    </>
   );
 }
 

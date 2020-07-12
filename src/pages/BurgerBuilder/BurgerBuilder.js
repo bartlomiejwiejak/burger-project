@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UL/Modal/Modal';
@@ -61,20 +60,20 @@ const BurgerBuilder = (props) => {
   let burger = null;
   if (ings) {
     burger = (
-      <Aux>
+      <>
         <Burger ingredients={ings} />
         <BuildControls isAuth={isAuth} price={price} disabled={disabledInfo} addIngredient={onIngredientAdded} removeIngredient={onIngredientRemoved} purchasable={canPurchase(ings)} purchase={purchaseHandler} />
-      </Aux>
+      </>
     )
     orderSummary = <OrderSummary price={price} continuePurchase={continuePurchaseHandler} cancelPurchase={cancelPurchaseHandler} ingredients={ings} />
   }
   return (
-    <Aux>
+    <>
       <Modal cancel={cancelPurchaseHandler} show={purchasing}>
         {orderSummary}
       </Modal>
       {burger}
-    </Aux>
+    </>
   );
 }
 
