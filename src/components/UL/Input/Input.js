@@ -27,7 +27,7 @@ const Input = (props) => {
   }
   return (
     <div className='input'>
-      <label className='label'>{props.label}</label>
+      <label className='label'>{props.elementType === 'select' ? props.elementConfig.name : props.label}</label>
       {inputElement}
       {validationError}
     </div>

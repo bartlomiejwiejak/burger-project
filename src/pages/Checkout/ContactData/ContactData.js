@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '../../../components/UL/Button/Button';
 import Input from '../../../components/UL/Input/Input';
 import { connect } from 'react-redux';
@@ -7,6 +7,7 @@ import axios from '../../../axios-orders';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import { updatedObject, checkValidity } from '../../../shared/utility';
 import './contactData.scss';
+import gsap from 'gsap';
 
 const ContactData = (props) => {
   const [orderForm, setOrderForm] = useState({
@@ -83,6 +84,7 @@ const ContactData = (props) => {
     deliveryMethod: {
       elementType: 'select',
       elementConfig: {
+        name: 'Delivery method',
         options: [{ value: 'fastest', displayValue: 'Fastest' }, { value: 'cheapest', displayValue: 'Cheapest' }]
       },
       value: 'fastest',
@@ -141,15 +143,21 @@ const ContactData = (props) => {
     obj['id'] = inputName;
     inputElements.push(obj);
   }
-  let form = (<form onSubmit={orderHandler}>
-    {inputElements.map(inputElement => <Input name={inputElement.id} touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
+  let form = (<form className='contact-data__form' onSubmit={orderHandler}>
+    {inputElements.map(inputElement => <Input label={inputElement.elementConfig.placeholder} name={inputElement.id} touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
     <Button disabled={!isFormValid} click={orderHandler} btnType='btn btn--success'>ORDER</Button>
   </form>)
 
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'Power2.out' } })
+    tl.to('.contact-data', { y: 0, autoAlpha: 1, duration: 1 }, '+=.3')
+      .to('.contact-data__heading', { y: 0, autoAlpha: 1, duration: .3 })
+      .to('.contact-data__form > *', { x: 0, autoAlpha: 1, duration: .2, stagger: .05 }, '-=.2')
+  }, [])
 
   return (
     <div className='contact-data'>
-      <h3 className='contact-data__heading'>Enter your Contact</h3>
+      <h3 className='heading-secondary contact-data__heading'>Enter your Contact</h3>
       {form}
     </div>
   );
