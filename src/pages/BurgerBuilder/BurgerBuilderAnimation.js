@@ -88,6 +88,11 @@ const BurgerAnimation = ({ history }) => {
   const path = useSelector(state => state.redirect.path)
 
   useEffect(() => {
+    const onInitIngredients = () => dispatch(actions.initIngredients());
+    onInitIngredients();
+  }, [dispatch])
+
+  useEffect(() => {
     const onRedirectEnd = () => dispatch(actions.redirectEnd());
     const redirect = () => {
       onRedirectEnd();

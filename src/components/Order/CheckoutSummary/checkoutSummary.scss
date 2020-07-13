@@ -1,0 +1,28 @@
+.checkout-summary {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  visibility: hidden;
+  margin-bottom: 5rem;
+  &__heading {
+    color: #944317;
+    transform: translateY(50px);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .burger-builder-burger > * {
+    visibility: 'hidden';
+    transform: translateX(-300px);
+    animation: none;
+  }
+  & > * {
+    flex-basis: 100%;
+  }
+  &__btn {
+    flex-basis: auto;
+    font-size: 2.5rem;
+    visibility: 'hidden';
+  }
+}

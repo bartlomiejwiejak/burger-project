@@ -45,6 +45,8 @@ const Auth = (props) => {
   const container = useRef(null);
   const [triedAuth, setTriedAuth] = useState(false)
 
+  const { leaving, history, path, onRedirectEnd } = props;
+
   const onFocus = () => {
     const auth__container = container.current;
     gsap.to(auth__container, { duration: .3, backgroundSize: '110%' })
@@ -85,8 +87,8 @@ const Auth = (props) => {
   }
   const { isBurgerBuilding, redirectPath, onSetAuthRedirectPath } = props;
   useEffect(() => {
-    if (!isBurgerBuilding && redirectPath !== '/') {
-      onSetAuthRedirectPath('/')
+    if (!isBurgerBuilding && redirectPath !== '/burger-builder') {
+      onSetAuthRedirectPath('/burger-builder')
     }
   }, [isBurgerBuilding, onSetAuthRedirectPath, redirectPath])
   let inputElements = [];
@@ -126,14 +128,11 @@ const Auth = (props) => {
       .to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { duration: .2, autoAlpha: 1, y: 0, stagger: .1 })
     onAuthClear();
   }, [onAuthClear])
-  const redirect = () => {
-    props.onRedirectEnd();
-    props.history.push(props.path);
-  }
+
 
   const authSuccess = () => {
-    props.onRedirectEnd();
-    props.history.push(props.redirectPath);
+    onRedirectEnd();
+    history.push(props.redirectPath);
   }
   if (props.isAuth && triedAuth) {
     props.onRedirectStart();
@@ -141,12 +140,18 @@ const Auth = (props) => {
     gsap.to(auth__container, { duration: 1, ease: 'power2.inOut', autoAlpha: 0, scale: .95, onComplete: authSuccess })
   }
   if (props.isAuth && !triedAuth) {
-    props.history.push('/');
+    history.replace('/');
   }
-  if (props.leaving) {
-    const auth__container = container.current;
-    gsap.to(auth__container, { duration: 1, ease: 'power2.inOut', autoAlpha: 0, scale: .95, onComplete: redirect })                                                                 // redirect dla navigacji
-  }
+  useEffect(() => {
+    if (leaving) {
+      const redirect = () => {
+        onRedirectEnd();
+        history.push(path);
+      }
+      const auth__container = container.current;
+      gsap.to(auth__container, { duration: 1, ease: 'power2.inOut', autoAlpha: 0, scale: .95, onComplete: redirect })                                      // redirect dla navigacji
+    }
+  }, [leaving, history, onRedirectEnd, path])
 
   return (
     <div className='auth'>

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import Button from '../../../components/UL/Button/Button';
-import './ContactData.css';
 import Input from '../../../components/UL/Input/Input';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import axios from '../../../axios-orders';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import { updatedObject, checkValidity } from '../../../shared/utility';
+import './contactData.scss';
+
 const ContactData = (props) => {
   const [orderForm, setOrderForm] = useState({
     name: {
@@ -142,13 +143,13 @@ const ContactData = (props) => {
   }
   let form = (<form onSubmit={orderHandler}>
     {inputElements.map(inputElement => <Input name={inputElement.id} touched={inputElement.validation.touched} isValid={inputElement.validation.valid} onChange={(e) => inputOnChangeHandler(e, inputElement.id)} key={inputElement.id} elementConfig={inputElement.elementConfig} elementType={inputElement.elementType} value={inputElement.value} />)}
-    <Button disabled={!isFormValid} click={orderHandler} btnType='Success'>ORDER</Button>
+    <Button disabled={!isFormValid} click={orderHandler} btnType='btn btn--success'>ORDER</Button>
   </form>)
 
 
   return (
-    <div className='ContactData'>
-      <h4>Enter your Contact Data</h4>
+    <div className='contact-data'>
+      <h3 className='contact-data__heading'>Enter your Contact</h3>
       {form}
     </div>
   );
