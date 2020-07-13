@@ -40,7 +40,7 @@ const SideDrawer = (props) => {
   return (
     <>
       <Backdrop isAnimating={isAnimating} reference={backDrop} isMobile show={props.show} cancel={props.sideDrawerHandle} />
-      <div ref={sideDrawer} className='sideDrawer'>
+      <div ref={sideDrawer} className='side-drawer'>
         <div ref={heading} style={{ borderBottom: '1px solid white', borderTop: '1px solid white', width: '100%', textAlign: 'center' }}>
           <h1 style={{ fontSize: '1.8rem', letterSpacing: '1px' }} className='heading-primary'>-LE BURGER BUILDER-</h1>
         </div>
