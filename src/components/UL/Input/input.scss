@@ -5,7 +5,7 @@
   visibility: inherit;
 }
 
-.Label {
+.label {
   font-weight: bold;
   display: block;
   text-transform: capitalize;
@@ -15,7 +15,7 @@
   margin: 1rem;
 }
 
-.InputElement {
+.inputElement {
     font-size: 1.5rem;
     padding: 1.5rem 2rem;
     border-radius: 2px;
@@ -30,6 +30,16 @@
     line-height: 1.7;
     box-sizing: border-box;
 
+    @media (max-width: 1000px) {
+      padding: 1rem 1.5rem;
+    }
+    @media (max-width: 600px) {
+      padding: .5rem 1rem;
+    }
+    @media (max-width: 850px) and (orientation: landscape) {
+      padding: .5rem 1rem;
+    }
+
     &:focus {
       outline: none;
       box-shadow: 0 1rem 2rem rgba(#000, .1);
@@ -43,7 +53,7 @@
     
 }
 
-.ValidationError {
+.validationError {
   color: #ff7730;
   position: absolute;
   bottom: 0%;
