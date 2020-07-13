@@ -29,3 +29,4 @@ export {
   authClear
 } from './auth';
 export { redirectStart, redirectEnd } from './redirect';
+export { alertHide, alertShow } from './alert';

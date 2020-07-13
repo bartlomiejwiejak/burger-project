@@ -111,6 +111,7 @@ const ContactData = (props) => {
       userId: props.userId
     }
     props.onPurchaseBurger(order, props.token);
+    props.onAlertShow('ORDER PLACED. YOU CAN FIND YOUR ORDERS ON ORDERS PAGE')
   }
   const inputOnChangeHandler = (e, key) => {
     const updatedFormElement = updatedObject(orderForm[key], {
@@ -169,12 +170,13 @@ const mapStateToProps = state => {
     price: state.burgerBuilder.totalPrice,
     loading: state.order.loading,
     token: state.auth.token,
-    userId: state.auth.userId
+    userId: state.auth.userId,
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     onPurchaseBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token)),
+    onAlertShow: (message) => dispatch(actions.alertShow(message))
   }
 }
 

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import { Route, Redirect } from 'react-router-dom';
 import ContactData from '../Checkout/ContactData/ContactData';
-import './checkout.scss';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import gsap from 'gsap';

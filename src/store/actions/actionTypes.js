@@ -28,3 +28,6 @@ export const AUTH_CLEAR = 'AUTH_CLEAR';
 
 export const REDIRECT_START = 'LEAVING_START';
 export const REDIRECT_END = 'LEAVING_END';
+
+export const ALERT_SHOW = 'ALERT_SHOW';
+export const ALERT_HIDE = 'ALERT_HIDE';

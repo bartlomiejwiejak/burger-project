@@ -3,31 +3,38 @@ import './toolbar.scss';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import SideDrawerToggler from '../SideDrawer/SideDrawerToggler/SideDrawerToggler';
 import BurgerSvg from '../../BurgerSvg/BurgerSvg';
+import { withRouter } from 'react-router-dom';
 
-const Toolbar = (props) => {
+const Toolbar = ({ sideDrawerHandle, isAuth, location }) => {
 
   const [isSolid, setIsSolid] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY >= 500) {
-        setIsSolid(true)
-      }
-      else {
+    const checkScroll = () => {
+      if (window.scrollY <= 500) {
         setIsSolid(false)
       }
-    })
-  }, [])
+      else if (location.pathname === '/checkout' || location.pathname === '/checkout/contact-data') {
+      }
+      else {
+        setIsSolid(true);
+      }
+    }
+    window.addEventListener('scroll', checkScroll)
+    return () => {
+      window.removeEventListener('scroll', checkScroll)
+    }
+  }, [location.pathname])
 
   return (
     <header className={`toolbar ${isSolid ? 'toolbar--solid' : ''}`}>
-      <SideDrawerToggler toggle={props.sideDrawerHandle} />
+      <SideDrawerToggler toggle={sideDrawerHandle} />
       <BurgerSvg toolbar={true} classes={['burger--logo']} />
       <nav className='DesktopOnly'>
-        <NavigationItems isAuth={props.isAuth} />
+        <NavigationItems isAuth={isAuth} />
       </nav>
     </header>
   );
 }
 
-export default Toolbar;
+export default withRouter(Toolbar);

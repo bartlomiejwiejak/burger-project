@@ -12,12 +12,15 @@ import orderReducer from './store/reducers/order';
 import authReducer from './store/reducers/auth';
 import redirectReducer from './store/reducers/redirect';
 import createSagaMiddleware from 'redux-saga';
+import alertReducer from './store/reducers/alert';
 import { watchAuth, watchBurgerBuilder, watchOrder } from './store/sagas';
+
 const rootReducer = combineReducers({
   burgerBuilder: burgerBuilderReducer,
   order: orderReducer,
   auth: authReducer,
-  redirect: redirectReducer
+  redirect: redirectReducer,
+  alert: alertReducer
 })
 //process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null ||
 const composeEnhancers = compose;

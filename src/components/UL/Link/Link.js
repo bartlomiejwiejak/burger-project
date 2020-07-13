@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import './link.scss';
 
-const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames, wrapp, sideDrawerHandle, isAnimating, animationTime }) => {
+const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, classNames, wrapp, sideDrawerHandle, isAnimating, animationTime, instant }) => {
   let classes = ['link animate']
   if (wrapp) {
     classes = ['wrapp']
@@ -16,6 +16,17 @@ const Link = ({ to, history, children, leaving, onRedirectStart, activeClass, cl
     classes.push('link--active');
   }
   const linkTo = () => {
+    if (instant && sideDrawerHandle && isAnimating === false) {
+      sideDrawerHandle();
+      setTimeout(() => {
+        history.replace(to);
+      }, animationTime)
+      return;
+    }
+    if (instant) {
+      history.replace(to);
+      return;
+    }
     if (leaving || history.location.pathname === to) {
       return;
     }

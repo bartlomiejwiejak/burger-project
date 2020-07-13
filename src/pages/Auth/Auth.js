@@ -112,7 +112,7 @@ const Auth = (props) => {
     )
   }
 
-  const { onAuthClear } = props;
+  const { onAuthClear, onAlertShow } = props;
   useEffect(() => {
     const auth__container = container.current;
     const auth__background = auth__container.querySelector('.auth__background');
@@ -132,6 +132,7 @@ const Auth = (props) => {
 
   const authSuccess = () => {
     onRedirectEnd();
+    onAlertShow('LOGGIN SUCCESSFUL')
     history.push(props.redirectPath);
   }
   if (props.isAuth && triedAuth) {
@@ -178,7 +179,8 @@ const mapDispatchToProps = dispatch => {
     onSetAuthRedirectPath: (url) => dispatch(actions.setAuthRedirectPath(url)),
     onAuthClear: () => dispatch(actions.authClear()),
     onRedirectStart: () => dispatch(actions.redirectEnd()),
-    onRedirectEnd: () => dispatch(actions.redirectEnd())
+    onRedirectEnd: () => dispatch(actions.redirectEnd()),
+    onAlertShow: (message) => dispatch(actions.alertShow(message))
   }
 }
 const mapStateToProps = state => {
