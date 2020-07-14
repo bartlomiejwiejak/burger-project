@@ -36,8 +36,8 @@ const Order = (props) => {
       <>
         <div className="order__cell">{ingredient.name}</div>
         <div className="order__cell">{ingredient.amount}</div>
-        <div className="order__cell">${ingredient.price.toFiexed(2)}</div>
-        <div className="order__cell">${ingredient.totalPrice.toFiexed(2)}</div>
+        <div className="order__cell">$ {ingredient.price.toFixed(2)}</div>
+        <div className="order__cell">$ {ingredient.totalPrice.toFixed(2)}</div>
       </>
     )
   })
@@ -51,7 +51,7 @@ const Order = (props) => {
       <div className="order__cell order__empty"></div>
       <div className="order__cell order__empty"></div>
       <div className="order__cell order__empty"></div>
-      <p className='order__price order__cell'>${Number.parseFloat(props.price).toFixed(2)}</p>
+      <p className='order__price order__cell'>$ {Number.parseFloat(props.price).toFixed(2)}</p>
       <div className="order__date order__cell">Ordered {props.date}</div>
     </div>
   );
