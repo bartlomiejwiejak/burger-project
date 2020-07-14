@@ -43,6 +43,9 @@
      transform: scale(1.5);
      .burger {
        margin: 0;
+        .item {
+          visibility: hidden;
+        }
      }
      @media (max-width: 1400px) {
        transform: scale(1.4);
@@ -76,6 +79,7 @@
      text-align: center;
      margin: 0;
      visibility: hidden;
+     transform: scale(15);
      @media (max-width: 1400px) {
        font-size: 3.5rem;
     }
