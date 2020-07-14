@@ -33,7 +33,7 @@ const Checkout = ({ history, leaving, path, onRedirectEnd, onRedirectStart, ings
   useEffect(() => {
     if (leaving) {
       gsap.to('.checkout', {
-        scale: 0.95, autoAlpha: 0, duration: 1, onComplete: () => {
+        scale: 0.95, autoAlpha: 0, duration: 1, ease: 'Power2.easeOut', onComplete: () => {
           console.log(path)
           onRedirectEnd()
           history.replace(path)

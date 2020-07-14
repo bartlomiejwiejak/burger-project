@@ -1,21 +1,58 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './order.scss';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 const Order = (props) => {
   let ingredients = [];
-
+  const orderRef = useRef(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(orderRef.current, {
+      x: 0, autoAlpha: 1, duration: .7, scrollTrigger: {
+        trigger: orderRef.current,
+        start: 'top center'
+      }
+    })
+  }, [])
+  const mouseEnterAnimation = () => {
+    const offerbox = orderRef.current;
+    gsap.to(offerbox, { y: '-1.5rem', scale: 1.03, duration: .3 })
+  }
+  const mouseleaveAnimation = () => {
+    const offerbox = orderRef.current;
+    gsap.to(offerbox, { y: 0, scale: 1, duration: .3 })
+  }
   for (let ingredient in props.ingredients) {
     ingredients.push({
       name: ingredient,
-      amount: +props.ingredients[ingredient]
+      amount: props.ingredients[ingredient],
+      price: props.ingredientPrices[ingredient],
+      totalPrice: props.ingredientPrices[ingredient] * props.ingredients[ingredient]
     })
   }
   const outputIngredients = ingredients.map(ingredient => {
-    return <span key={ingredient.name} style={{ textTransform: 'capitalize', display: 'inline-block', margin: '0 8px', border: '1px solid grey', padding: '5px' }}>{ingredient.name} ({ingredient.amount})</span>
+    return (
+      <>
+        <div className="order__cell">{ingredient.name}</div>
+        <div className="order__cell">{ingredient.amount}</div>
+        <div className="order__cell">${ingredient.price}</div>
+        <div className="order__cell">${ingredient.totalPrice}</div>
+      </>
+    )
   })
   return (
-    <div className='order'>
-      <p>Ingredients: {outputIngredients}</p>
-      <p>Price: <strong>{Number.parseFloat(props.price).toFixed(2)}</strong></p>
+    <div onMouseEnter={mouseEnterAnimation} onMouseLeave={mouseleaveAnimation} ref={orderRef} className='order'>
+      <div className="order__cell order__name">Ingredients</div>
+      <div className="order__cell order__name">Amount</div>
+      <div className="order__cell order__name">Price</div>
+      <div className="order__cell order__name">Total Price</div>
+      {outputIngredients}
+      <div className="order__cell order__empty"></div>
+      <div className="order__cell order__empty"></div>
+      <div className="order__cell order__empty"></div>
+      <p className='order__price order__cell'>${Number.parseFloat(props.price).toFixed(2)}</p>
+      <div className="order__date order__cell">Ordered {props.date}</div>
     </div>
   );
 }

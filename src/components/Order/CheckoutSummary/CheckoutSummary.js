@@ -7,7 +7,7 @@ import gsap from 'gsap';
 const CheckoutSummary = (props) => {
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'Power2.inOut' } })
+    const tl = gsap.timeline({ defaults: { ease: 'Power2.easeOut' } })
     gsap.set('.checkout-summary', { autoAlpha: 1 });
     gsap.set('.checkout-summary__burger .burger-builder-burger', { overflow: 'visible' })
     gsap.set('.checkout-summary__burger .burger-builder-burger > *', { autoAlpha: 0, x: -300 })

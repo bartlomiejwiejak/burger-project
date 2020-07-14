@@ -73,7 +73,7 @@ const BurgerBuilder = () => {
     gsap.set('.build-controls-container', { y: '100%' })
     gsap.set('.build-controls > *', { autoAlpha: 0, y: 50 })
     gsap.set('.burger-builder-burger > *', { autoAlpha: 0, x: -100 })
-    const tl = gsap.timeline({ defaults: { ease: 'Power2.out' } })
+    const tl = gsap.timeline({ defaults: { ease: 'Power2.easeOut' } })
     tl.to('.burger-builder-burger > *', { autoAlpha: 1, x: 0, duration: .3, stagger: .1 })
       .to('.build-controls-container', { y: 0, duration: 1 }, '+=.2')
       .to('.build-controls > *', { autoAlpha: 1, y: 0, stagger: .03, duration: .2 })

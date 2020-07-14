@@ -121,7 +121,7 @@ const Auth = (props) => {
     const auth__inputs = auth__container.querySelectorAll('.input');
     const auth__btn = auth__container.querySelectorAll('.auth__btn');
     const auth__switch = auth__container.querySelectorAll('.auth__switch');
-    const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
+    const tl = gsap.timeline({ defaults: { ease: 'Power3.inOut' } });
     gsap.set([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { autoAlpha: 0, y: '1.6rem' });
     tl.to(auth__container, { duration: .5, autoAlpha: 1, transform: 'translate(-50%, -50%)' })
       .fromTo(auth__background, { backgroundPosition: '100%' }, { duration: .5, backgroundPosition: '47%' })
@@ -138,7 +138,7 @@ const Auth = (props) => {
   if (props.isAuth && triedAuth) {
     props.onRedirectStart();
     const auth__container = container.current;
-    gsap.to(auth__container, { duration: 1, ease: 'power2.inOut', autoAlpha: 0, scale: .95, onComplete: authSuccess })
+    gsap.to(auth__container, { duration: 1, ease: 'Power2.easeOut', autoAlpha: 0, scale: .95, onComplete: authSuccess })
   }
   if (props.isAuth && !triedAuth) {
     history.replace('/');
@@ -150,7 +150,7 @@ const Auth = (props) => {
         history.push(path);
       }
       const auth__container = container.current;
-      gsap.to(auth__container, { duration: 1, ease: 'power2.inOut', autoAlpha: 0, scale: .95, onComplete: redirect })                                      // redirect dla navigacji
+      gsap.to(auth__container, { duration: 1, ease: 'Power2.easeOut', autoAlpha: 0, scale: .95, onComplete: redirect })                                      // redirect dla navigacji
     }
   }, [leaving, history, onRedirectEnd, path])
 

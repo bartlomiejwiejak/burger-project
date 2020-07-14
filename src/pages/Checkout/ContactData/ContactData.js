@@ -104,14 +104,18 @@ const ContactData = (props) => {
     for (let formElementIdentifier in orderForm) {
       formData[formElementIdentifier] = orderForm[formElementIdentifier].value;
     }
+    const date = new Date();
+    const time = `${date.getMonth()}/${date.getDay()}/${date.getFullYear()}  ${date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`}`
     const order = {
       ingredients: props.ings,
       price: props.price,
       orderData: formData,
-      userId: props.userId
+      userId: props.userId,
+      date: time,
+      ingredientPrices: props.ingredientPrices
     }
     props.onPurchaseBurger(order, props.token);
-    props.onAlertShow('ORDER PLACED. YOU CAN FIND YOUR ORDERS ON ORDERS PAGE')
+    props.onAlertShow('ORDER PLACED. YOU CAN FIND YOUR ORDERS ON ORDERS PAGE.')
   }
   const inputOnChangeHandler = (e, key) => {
     const updatedFormElement = updatedObject(orderForm[key], {
@@ -150,7 +154,7 @@ const ContactData = (props) => {
   </form>)
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'Power2.out' } })
+    const tl = gsap.timeline({ defaults: { ease: 'Power2.easeOut' } })
     tl.to('.contact-data', { y: 0, autoAlpha: 1, duration: 1 }, '+=.3')
       .to('.contact-data__heading', { y: 0, autoAlpha: 1, duration: .3 })
       .to('.contact-data__form > *', { x: 0, autoAlpha: 1, duration: .2, stagger: .05 }, '-=.2')
@@ -171,6 +175,7 @@ const mapStateToProps = state => {
     loading: state.order.loading,
     token: state.auth.token,
     userId: state.auth.userId,
+    ingredientPrices: state.burgerBuilder.prices
   }
 }
 const mapDispatchToProps = dispatch => {

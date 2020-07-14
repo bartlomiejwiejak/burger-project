@@ -18,7 +18,7 @@ const Layout = ({ isAuth, children, location, alertShow, alertMessage, onAlertHi
       gsap.fromTo('.alert', { x: '100%', autoAlpha: 0 }, {
         x: 0, autoAlpha: 1, duration: .5, ease: 'back.out(1.7)', onComplete: () => {
           setTimeout(() => {
-            gsap.to('.alert', { x: '100%', autoAlpha: 0, duration: .5, ease: 'Power2.out', onComplete: () => onAlertHide() })
+            gsap.to('.alert', { x: '100%', autoAlpha: 0, duration: .5, ease: 'Power2.easeOut', onComplete: () => onAlertHide() })
           }, 5000)
         }
       })

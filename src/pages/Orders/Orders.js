@@ -4,20 +4,28 @@ import axios from '../../axios-orders';
 import { connect } from 'react-redux';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions';
+import gsap from 'gsap';
+import { useHistory } from 'react-router-dom';
+
 const Orders = (props) => {
   const { token, userId, loading, onFetchOrders } = props;
-
+  const history = useHistory();
   useEffect(() => {
     onFetchOrders(token, userId);
   }, [token, userId, onFetchOrders])
   let orders = null;
   if (!loading) {
     orders = (
-      <>
-        {props.orders.map(order => <Order ingredients={order.ingredients} price={order.price} customer={order.customer} key={order.id} />)}
-      </>
+      <div className='orders'>
+        {props.orders.map(order => <Order ingredients={order.ingredients} date={order.date} price={order.price} ingredientPrices={order.ingredientPrices} key={order.id} />)}
+      </div>
     )
   }
+  useEffect(() => {
+    if (props.leaving) {
+      gsap.to('.orders', { autoAlpha: 0, scale: 0.95, duration: 1, ease: 'Power2.easeOut' })
+    }
+  }, [props.leaving])
   return orders;
 }
 
@@ -26,12 +34,14 @@ const mapStateToProps = state => {
     orders: state.order.orders,
     loading: state.order.loading,
     token: state.auth.token,
-    userId: state.auth.userId
+    userId: state.auth.userId,
+    path: state.redirect.path
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchOrders: (token, userId) => dispatch(actions.fetchOrders(token, userId))
+    onFetchOrders: (token, userId) => dispatch(actions.fetchOrders(token, userId)),
+    onRedirectEnd: () => dispatch(actions.redirectEnd())
   }
 }
 
