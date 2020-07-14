@@ -48,16 +48,16 @@ const About = () => {
   return (
     <div className="about-scroll">
       <section className="about">
-        <h2 className="heading-secondary">YOU ARE GOING TO FALL IN LOVE WITH BURGER APP</h2>
+        <h2 className="heading-secondary">YOU ARE GOING TO FALL IN LOVE WITH BURGER BUILDER APP</h2>
         <div className="about__container">
           <div className="about__left">
             <div className="about__paragraph">
               <h3 className="heading-tertiary">Who we are</h3>
-              <p className="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nihil excepturi delectus non commodi deserunt perspiciatis nemo amet, veniam perferendis quod, adipisci doloremque maiores? Iusto aliquam aspernatur facilis atque culpa?</p>
+              <p className="paragraph">We are the fastest growing online fast food company. Started as small local restaurant, now we deliver our burgers in many countries. After 10 years of work we made it possible. You won't be disappointed. </p>
             </div>
             <div className="about__paragraph">
-              <h3 className="heading-tertiary">What we offer</h3>
-              <p className="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolores recusandae libero mollitia beatae cupiditate esse laudantium delectus quam, sapiente distinctio, obcaecati, praesentium voluptatum doloremque repudiandae nisi cumque excepturi alias?</p>
+              <h3 className="heading-tertiary">How it works</h3>
+              <p className="paragraph">Hungry? Then why don’t you treat yourself tonight to our delicious takeaway. Ordering food online have never been that easy and convenient. With the Burger Builder App you can select ingredients and being delivered your delicious custom burger at your home extremely fast. Click a button bellow to start building your custom burger now!</p>
             </div>
             <Link to='/burger-builder'>GET STARTED NOW!</Link>
           </div>

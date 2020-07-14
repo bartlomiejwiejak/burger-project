@@ -45,7 +45,7 @@ const BurgerAnimation = ({ history }) => {
     if (fillPercent >= 100) {
       return 'Explode!'
     } else if (fillPercent < 2) {
-      return 'Build!'
+      return 'Click me!'
     }
     else {
       return 'Hold!'

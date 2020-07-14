@@ -115,7 +115,7 @@ const ContactData = (props) => {
       ingredientPrices: props.ingredientPrices
     }
     props.onPurchaseBurger(order, props.token);
-    props.onAlertShow('ORDER PLACED. YOU CAN FIND YOUR ORDERS ON ORDERS PAGE.')
+    props.onAlertShow('Thank you for placing your order with Burger Builder App. Your order will be ready for collection in 30 minutes.')
   }
   const inputOnChangeHandler = (e, key) => {
     const updatedFormElement = updatedObject(orderForm[key], {

@@ -17,7 +17,7 @@ const Orders = (props) => {
   if (!loading) {
     orders = (
       <div className='orders'>
-        {props.orders.map(order => <Order ingredients={order.ingredients} date={order.date} price={order.price} ingredientPrices={order.ingredientPrices} key={order.id} />)}
+        {props.orders.map(order => <Order ingredients={order.ingredients} date={order.date} price={order.price} ingredientPrices={order.ingredientPrices} key={order.id} />).reverse()}
       </div>
     )
   }

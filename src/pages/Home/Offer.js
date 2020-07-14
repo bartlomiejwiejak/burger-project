@@ -59,9 +59,9 @@ const Offer = () => {
       <div className="offer-wrapper">
         <section className="offer">
           <div className="offer__container">
-            <OfferBox favicon='fa-carrot' header='100% ORGANIC INGREDIENTS' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto ad voluptatibus quaerat quae. Odio, facilis necessitatibus dolorem saepe dolore incidunt numquam praesentium, labore optio ullam hic atque inventore nihil obcaecati.' />
-            <OfferBox favicon='fa-truck' header='SUPER FAST DELIVERY' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto ad voluptatibus quaerat quae. Odio, facilis necessitatibus dolorem saepe dolore incidunt numquam praesentium, labore optio ullam hic atque inventore nihil obcaecati.' />
-            <OfferBox favicon='fa-hamburger' header='NATURAL TASTE' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto ad voluptatibus quaerat quae. Odio, facilis necessitatibus dolorem saepe dolore incidunt numquam praesentium, labore optio ullam hic atque inventore nihil obcaecati.' />
+            <OfferBox favicon='fa-carrot' header='NATURAL TASTE' description='Took by the local farmers, 100% organic vegetables. Our bread is made by one of the greatest baker company in the world. 100% angus meat. Natural flavors, 2% or less of leghemoglobin (soy).' />
+            <OfferBox favicon='fa-truck' header='FAST DELIVERY' description="Place and take an order in 30min or less! If we don't make it, you get 100% money refund. No joke. We make everything in order to deliver warm food at the door of your comfortable house." />
+            <OfferBox favicon='fa-hamburger' header='PASSIONATE STAFF' description='Our secret is that people are carefully selected so can stay only those with true passion in order to make burgers really best possible. All with friendly atmosphere and hungry for more challenges.' />
           </div>
         </section>
       </div>

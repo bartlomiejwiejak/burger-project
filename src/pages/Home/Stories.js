@@ -60,9 +60,9 @@ const Stories = () => {
         <div className="stories__line stories__line--3">THOUSANDS HAPPY CUSTOMERS - THOUSANDS HAPPY CUSTOMERS</div>
       </div>
       <div className="stories__wrapper">
-        <Story img={sandra} name='Sandra Thielmann' heading='BEST BURGER IN MY LIFE' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam a magni corporis dolores non repudiandae laborum in porro voluptates consequuntur accusantium blanditiis optio repellat veniam ab, et culpa praesentium rerum.' />
-        <Story img={oskar} name='Oskar Thielman' heading='SUPER FAST DELIVERY' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam a magni corporis dolores non repudiandae laborum in porro voluptates consequuntur accusantium blanditiis optio repellat veniam ab, et culpa praesentium rerum.' />
-        <Story img={paulina} name='Paulina Pogorzelska' heading='HIGHEST QUALITY MEAT I HAVE EVER TASTED' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam a magni corporis dolores non repudiandae laborum in porro voluptates consequuntur accusantium blanditiis optio repellat veniam ab, et culpa praesentium rerum.' />
+        <Story img={sandra} name='Sandra Thielmann' heading='BEST BURGER IN MY LIFE' description="I really like an idea of creating my own burger since it really me decide what's inside. I am really suprised that I can get highest quality ingredients with such a price. I am going to order more, definitely. 10/10" />
+        <Story img={oskar} name='Oskar Thielman' heading='SUPER FAST DELIVERY' description="I was very suprised it can be delivered so fast! After around 20 minutes, my custom burger was already at my door, warm and ready to be eaten. I couldn't think of better delivery handling than this. If you are too lazy too cook, there is no faster way to get delicious meal in your house." />
+        <Story img={paulina} name='Paulina Pogorzelska' heading='HIGHEST QUALITY MEAT I HAVE EVER TASTED' description="Tasty ingredients, well spiced. But what note me most, is absolutely delicious meat. Really, I have never had something that juicy and true to taste in my mouth. I am really happy I've discovered Burger Builder App. Never supposed it could be so easy, fast and most important - unquestionably mouth-watering." />
       </div>
     </section>
   );
