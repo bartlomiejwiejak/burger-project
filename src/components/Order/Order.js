@@ -11,7 +11,7 @@ const Order = (props) => {
     gsap.to(orderRef.current, {
       x: 0, autoAlpha: 1, duration: .7, scrollTrigger: {
         trigger: orderRef.current,
-        start: 'top center'
+        start: '-100px center'
       }
     })
   }, [])

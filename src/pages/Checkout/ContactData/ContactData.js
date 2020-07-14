@@ -105,7 +105,7 @@ const ContactData = (props) => {
       formData[formElementIdentifier] = orderForm[formElementIdentifier].value;
     }
     const date = new Date();
-    const time = `${date.getMonth()}/${date.getDay()}/${date.getFullYear()}  ${date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`}`
+    const time = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}  ${date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`}`
     const order = {
       ingredients: props.ings,
       price: props.price,

@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import { Redirect } from 'react-router-dom';
 const Logout = (props) => {
-  const { onLogout } = props;
+  const { onLogout, onAlertShow } = props;
   useEffect(() => {
+    onAlertShow('Logout successful.')
     onLogout();
-  }, [onLogout])
+  }, [onLogout, onAlertShow])
 
   return (
     <Redirect to="/" />
@@ -15,7 +16,8 @@ const Logout = (props) => {
 
 const dispatchActionsToProps = dispatch => {
   return {
-    onLogout: () => dispatch(actions.logout())
+    onLogout: () => dispatch(actions.logout()),
+    onAlertShow: (message) => dispatch(actions.alertShow(message))
   }
 }
 

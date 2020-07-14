@@ -132,7 +132,7 @@ const Auth = (props) => {
 
   const authSuccess = () => {
     onRedirectEnd();
-    onAlertShow('LOGGIN SUCCESSFUL')
+    onAlertShow('Loggin successful.')
     history.push(props.redirectPath);
   }
   if (props.isAuth && triedAuth) {
