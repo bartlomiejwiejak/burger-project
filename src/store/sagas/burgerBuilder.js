@@ -4,8 +4,9 @@ import axios from '../../axios-orders';
 
 export function* initIngredientsSaga(action) {
   try {
-    const response = yield call([axios, 'get'], '/ingredients.json');
-    yield put(actions.setIngredients(response.data))
+    const ingredients = yield call([axios, 'get'], '/ingredients.json');
+    const prices = yield call([axios, 'get'], '/ingredient-prices.json')
+    yield put(actions.setIngredients(ingredients.data, prices.data))
   }
   catch (error) {
     yield put(actions.fetchIngredientsFailed())

@@ -28,10 +28,6 @@
 			}
   cursor: pointer;
 	background-image: linear-gradient(to right, rgba(#bc581e, 0.8), rgba(#e27b36, 0.8));
-	&:hover {
-		transform: translate(0px,-3px);
-		box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-	}
 	&:active
 {
 	transform: translate(0px,5px);

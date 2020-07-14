@@ -59,7 +59,7 @@ const About = () => {
               <h3 className="heading-tertiary">What we offer</h3>
               <p className="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolores recusandae libero mollitia beatae cupiditate esse laudantium delectus quam, sapiente distinctio, obcaecati, praesentium voluptatum doloremque repudiandae nisi cumque excepturi alias?</p>
             </div>
-            <Link to='/auth'>GET STARTED NOW!</Link>
+            <Link to='/burger-builder'>GET STARTED NOW!</Link>
           </div>
           <div className="about__right">
             <BurgerPlate isTriggered={isTriggered} />

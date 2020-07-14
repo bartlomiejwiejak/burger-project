@@ -14,10 +14,11 @@ export const removeIngredient = ingName => {
   }
 }
 
-export const setIngredients = (ings) => {
+export const setIngredients = (ings, prices) => {
   return {
     type: actionTypes.SET_INGREDIENTS,
-    ingredients: ings
+    ingredients: ings,
+    prices: prices
   }
 }
 

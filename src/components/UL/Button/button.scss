@@ -12,10 +12,6 @@
   display: block;
   position: relative;
   transition: .3s;
-  &:hover {
-    transform: translateY(-3px);
-    text-shadow: 0 1rem 2rem rgba(0,0,0, 0.5);
-  }
   &--success {
     color: #5C9210;
   }
