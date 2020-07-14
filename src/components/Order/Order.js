@@ -36,8 +36,8 @@ const Order = (props) => {
       <>
         <div className="order__cell">{ingredient.name}</div>
         <div className="order__cell">{ingredient.amount}</div>
-        <div className="order__cell">${ingredient.price}</div>
-        <div className="order__cell">${ingredient.totalPrice}</div>
+        <div className="order__cell">${ingredient.price.toFiexed(2)}</div>
+        <div className="order__cell">${ingredient.totalPrice.toFiexed(2)}</div>
       </>
     )
   })
