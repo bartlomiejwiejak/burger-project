@@ -6,6 +6,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions';
 import gsap from 'gsap';
 import { useHistory } from 'react-router-dom';
+import NoOrders from './NoOrders';
 
 const Orders = (props) => {
   const { token, userId, loading, onFetchOrders } = props;
@@ -17,7 +18,7 @@ const Orders = (props) => {
   if (!loading) {
     orders = (
       <div className='orders'>
-        {props.orders.map(order => <Order ingredients={order.ingredients} date={order.date} price={order.price} ingredientPrices={order.ingredientPrices} key={order.id} />).reverse()}
+        {props.orders.length !== 0 ? props.orders.map(order => <Order ingredients={order.ingredients} date={order.date} price={order.price} ingredientPrices={order.ingredientPrices} key={order.id} />).reverse() : <NoOrders />}
       </div>
     )
   }
