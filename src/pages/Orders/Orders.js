@@ -21,11 +21,17 @@ const Orders = (props) => {
       </div>
     )
   }
+  const { onRedirectEnd, path, leaving } = props;
   useEffect(() => {
-    if (props.leaving) {
-      gsap.to('.orders', { autoAlpha: 0, scale: 0.95, duration: 1, ease: 'Power2.easeOut' })
+    if (leaving) {
+      gsap.to('.orders', {
+        autoAlpha: 0, scale: 0.95, duration: 1, ease: 'Power2.easeOut', onComplete: () => {
+          onRedirectEnd();
+          history.push(path);
+        }
+      })
     }
-  }, [props.leaving])
+  }, [leaving, history, onRedirectEnd, path])
   return orders;
 }
 
@@ -35,7 +41,8 @@ const mapStateToProps = state => {
     loading: state.order.loading,
     token: state.auth.token,
     userId: state.auth.userId,
-    path: state.redirect.path
+    path: state.redirect.path,
+    leaving: state.redirect.leaving
   }
 }
 const mapDispatchToProps = dispatch => {
