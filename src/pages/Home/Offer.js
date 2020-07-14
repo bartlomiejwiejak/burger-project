@@ -20,15 +20,24 @@ const Offer = () => {
         }
       })
     } else {
+      if (navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)) {
+      } else {
+        gsap.to('.offer', {
+          scrollTrigger: {
+            trigger: '.offer',
+            start: 'top center',
+            end: 'center top',
+            scrub: 1
+          }, backgroundPositionY: '-300px'
+        })
+      }
       const tl = gsap.timeline({ defaults: { ease: 'Power1.easeOut' } })
-      gsap.to('.offer', {
-        scrollTrigger: {
-          trigger: '.offer',
-          start: 'top center',
-          end: 'center top',
-          scrub: 1
-        }, backgroundPositionY: '-300px'
-      })
       gsap.set('.offer-wrapper', { visibility: 'visible' })
       gsap.set('.offer__box', { x: '100vw', skewX: '-15deg' })
       gsap.set('.offer__box > *', { skewX: '15deg' })
