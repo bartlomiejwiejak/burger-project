@@ -70,6 +70,9 @@
    width: 50%;
    position: relative;
    padding: 4rem;
+   & > * {
+     visibility: hidden;
+   }
    @media (max-width: 1000px) {
      width: 100%;
      padding: 4rem;
@@ -88,6 +91,12 @@
     padding: 2rem;
   }
  }
+ &__form {
+  visibility: visible;
+  & > *{
+    visibility: hidden;
+  }
+}
  &__switch {
    display: flex;
    justify-content: center;
