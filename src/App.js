@@ -77,11 +77,12 @@ const App = (props) => {
   }
   return (
     <>
-      <Suspense fallback={<Loader loading />}>
-        <Layout>
+
+      <Layout>
+        <Suspense fallback={<Loader loading />}>
           {routes}
-        </Layout>
-      </Suspense>
+        </Suspense>
+      </Layout>
     </>
   );
 }
