@@ -27,6 +27,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  animation: showFooter 1s ease-out 3s forwards;
   @media (max-width: 1000px) {
     height: 3rem;
   }
@@ -46,5 +49,16 @@ main {
         }
       }
     }
+  }
+}
+
+@keyframes showFooter {
+  0%{
+  visibility: visible;
+  opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
   }
 }
