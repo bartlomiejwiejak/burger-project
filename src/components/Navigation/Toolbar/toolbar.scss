@@ -12,6 +12,7 @@
   font-size: 1.6rem;
   transform: translateY(-100%);
   animation: appear 1s ease-out 3s forwards;
+  transition: .3s;
   @media (max-width: 1000px) {
     height: 10rem;
     }
