@@ -10,7 +10,8 @@
   box-sizing: border-box;
   z-index: 10000;
   font-size: 1.6rem;
-  transition: .3s;
+  transform: translateY(-100%);
+  animation: appear 1s ease-out 3s forwards;
   @media (max-width: 1000px) {
     height: 10rem;
     }
@@ -45,5 +46,11 @@
 @media (max-width: 800px) and (orientation: landscape) {
   .DesktopOnly {
     display: none;
+  }
+}
+
+@keyframes appear {
+  100% {
+    transform: translateY(0);
   }
 }
