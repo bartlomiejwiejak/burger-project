@@ -20,17 +20,17 @@ const SideDrawer = (props) => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
     if (props.show) {
       setIsAnimating(true);
-      gsap.to(backDropCurr, { duration: .3, autoAlpha: 1, ease: "Power2.easeOut" });;
-      tl.to(sideDrawerCurr, { transform: 'translateX(0)', duration: .2, ease: "Power2.easeOut" });
+      gsap.to(backDropCurr, { duration: .3, autoAlpha: 1, ease: "power2.out" });;
+      tl.to(sideDrawerCurr, { transform: 'translateX(0)', duration: .2, ease: "power2.out" });
       tl.fromTo(headingCurr, { x: '-30rem', autoAlpha: 0 }, { x: '0', ease: "back.out(1.7)", autoAlpha: 1, duration: 1 });
       tl.fromTo([navigationCurr, svgItems], { x: '-30rem', autoAlpha: 0 }, { stagger: .06, x: '0', ease: "back.out(1.7)", autoAlpha: 1, onComplete: () => setIsAnimating(false) }, '-=.8');
 
     } else {
       setIsAnimating(true);
       gsap.to(backDropCurr, { duration: .3, autoAlpha: 0 });
-      tl.to([svgItems, navigationCurr, headingCurr], { alpha: '0', x: '-30rem', duration: .2, ease: "Power2.easeOut" })
+      tl.to([svgItems, navigationCurr, headingCurr], { alpha: '0', x: '-30rem', duration: .2, ease: "power2.out" })
         .to(sideDrawerCurr, {
-          transform: 'translateX(-100%)', duration: .3, ease: "Power2.easeOut", onComplete: () => {
+          transform: 'translateX(-100%)', duration: .3, ease: "power2.out", onComplete: () => {
             setIsAnimating(false);
           }
         }, '-=.2')

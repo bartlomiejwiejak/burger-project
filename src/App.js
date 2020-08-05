@@ -4,7 +4,6 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Logout from './pages/Logout';
 import { connect } from 'react-redux';
 import * as actions from './store/actions';
-import Loader from './components/Loader';
 
 const Checkout = React.lazy(() => {
   return import('./pages/Checkout')
@@ -78,7 +77,7 @@ const App = (props) => {
   return (
     <>
       <Layout>
-        <Suspense fallback={<Loader loading />}>
+        <Suspense fallback={null}>
           {routes}
         </Suspense>
       </Layout>

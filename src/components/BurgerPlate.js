@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import burger from '../assets/images/burger.png';
 import plate from '../assets/images/plate.png';
 import gsap from 'gsap';
 
 const BurgerPlate = ({ isTriggered }) => {
-  const [positionX, setPositionX] = useState(0);
-  const [positionY, setPositionY] = useState(0);
+
   const setPosition = (event) => {
-    setPositionX((event.clientX - window.innerWidth / 2) * .15)
-    setPositionY((event.clientY - window.innerHeight / 2) * .25)
+    gsap.to('.burger-plate', 1, { x: `${(event.clientX - window.innerWidth / 2) * .15}`, y: `${(event.clientY - window.innerHeight / 2) * .25}` })
   }
+
   useEffect(() => {
     let mounted = true;
-    const tl = gsap.timeline({ defaults: { ease: 'Power1.easeOut' } })
+    const tl = gsap.timeline({ defaults: { ease: 'power1.out' } })
     if (isTriggered) {
-      tl.fromTo('.burger-plate--burger', { transform: 'translate(0, -80%)', autoAlpha: 0 }, { autoAlpha: 1, duration: .5 })
-        .to('.burger-plate--burger', {
-          duration: 1.5, transform: 'translate(0, 35%)', onComplete: () => {
+      tl.fromTo('.burger-plate--burger', .3, { y: '-80%', autoAlpha: 0 }, { autoAlpha: 1 })
+        .to('.burger-plate--burger', 1, {
+          y: '35%', onComplete: () => {
             if (mounted) {
               window.addEventListener('mousemove', setPosition)
             }
@@ -30,7 +29,7 @@ const BurgerPlate = ({ isTriggered }) => {
     }
   }, [isTriggered])
   return (
-    <div className="burger-plate" style={{ transform: `translate(${-positionX}px,${-positionY}px` }}>
+    <div className="burger-plate">
       <img className='burger-plate__item burger-plate--burger' src={burger} alt="Delicious burger" />
       <img className='burger-plate__item burger-plate--plate' src={plate} alt="Plate" />
     </div>

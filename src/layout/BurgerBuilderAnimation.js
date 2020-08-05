@@ -60,7 +60,8 @@ const BurgerAnimation = ({ history }) => {
   }, [success])
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'Power2.easeOut' } })
+    document.querySelector('html').style.setProperty('overflow-x', 'hidden');
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
     tl.fromTo('.burger-builder-animation .burger .item', { x: '-500', autoAlpha: 0 }, { x: 0, autoAlpha: 1, stagger: .1, duration: '.5' })
     tl.fromTo('.heading-build', { scale: 15, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: .3 })
   }, [])
@@ -98,7 +99,7 @@ const BurgerAnimation = ({ history }) => {
       history.push(path)
     }
     if (leaving) {
-      gsap.to('.burger-builder-animation', { autoAlpha: 0, scale: .95, duration: 1, ease: 'Power2.easeOut', onComplete: redirect })
+      gsap.to('.burger-builder-animation', { autoAlpha: 0, scale: .95, duration: 1, ease: 'power2.out', onComplete: redirect })
     }
   }, [leaving, history, path, dispatch])
   return (

@@ -113,6 +113,7 @@ const Auth = (props) => {
 
   const { onAuthClear, onAlertShow } = props;
   useEffect(() => {
+    document.querySelector('html').style.setProperty('overflow-x', 'hidden');
     const auth__container = container.current;
     const auth__background = auth__container.querySelector('.auth__background');
     const auth__secondary = auth__container.querySelector('.heading-secondary');
@@ -122,9 +123,10 @@ const Auth = (props) => {
     const auth__switch = auth__container.querySelectorAll('.auth__switch');
     const tl = gsap.timeline({ defaults: { ease: 'Power3.inOut' } });
     gsap.set([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { autoAlpha: 0, y: '1.6rem' });
-    tl.to(auth__container, { duration: .5, autoAlpha: 1, transform: 'translate(-50%, -50%)' })
-      .fromTo(auth__background, { backgroundPosition: '100%' }, { duration: .5, backgroundPosition: '47%' })
-      .to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], { duration: .2, autoAlpha: 1, y: 0, stagger: .1 })
+    gsap.set(auth__container, { y: '-50%', x: '-30%' })
+    tl.to(auth__container, .5, { autoAlpha: 1, x: '-50%', y: '-50%' })
+      .fromTo(auth__background, .5, { backgroundPosition: '100%' }, { backgroundPosition: '47%' })
+      .to([auth__secondary, auth__tertiary, auth__inputs, auth__btn, auth__switch], .2, { autoAlpha: 1, y: 0, stagger: .1 })
     onAuthClear();
   }, [onAuthClear])
 
@@ -137,7 +139,7 @@ const Auth = (props) => {
   if (props.isAuth && triedAuth) {
     props.onRedirectStart();
     const auth__container = container.current;
-    gsap.to(auth__container, { duration: 1, ease: 'Power2.easeOut', autoAlpha: 0, scale: .95, onComplete: authSuccess })
+    gsap.to(auth__container, { duration: 1, ease: 'power2.out', autoAlpha: 0, scale: .95, onComplete: authSuccess })
   }
   if (props.isAuth && !triedAuth) {
     history.replace('/');
@@ -149,7 +151,7 @@ const Auth = (props) => {
         history.push(path);
       }
       const auth__container = container.current;
-      gsap.to(auth__container, { duration: 1, ease: 'Power2.easeOut', autoAlpha: 0, scale: .95, onComplete: redirect })                                      // redirect dla navigacji
+      gsap.to(auth__container, { duration: 1, ease: 'power2.out', autoAlpha: 0, scale: .95, onComplete: redirect })                                      // redirect dla navigacji
     }
   }, [leaving, history, onRedirectEnd, path])
 

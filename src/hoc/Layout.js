@@ -17,7 +17,7 @@ const Layout = ({ isAuth, children, location, alertShow, alertMessage, onAlertHi
       gsap.fromTo('.alert', { x: '100%', autoAlpha: 0 }, {
         x: 0, autoAlpha: 1, duration: .5, ease: 'back.out(1.7)', onComplete: () => {
           setTimeout(() => {
-            gsap.to('.alert', { x: '100%', autoAlpha: 0, duration: .5, ease: 'Power2.easeOut', onComplete: () => onAlertHide() })
+            gsap.to('.alert', { x: '100%', autoAlpha: 0, duration: .5, ease: 'power2.out', onComplete: () => onAlertHide() })
           }, 5000)
         }
       })
@@ -31,7 +31,7 @@ const Layout = ({ isAuth, children, location, alertShow, alertMessage, onAlertHi
       <main>
         {children}
       </main>
-      <footer style={location.pathname === '/checkout' || location.pathname === '/checkout/contact-data' || location.pathname === '/orders' ? { position: 'fixed', bottom: 0, left: 0, width: '100vw', zIndex: '9999999' } : {}} className='footer'>
+      <footer style={(location.pathname === '/checkout' || location.pathname === '/checkout/contact-data' || location.pathname === '/orders' || location.pathname === '/burger-builder' || location.pathname === '/auth') ? { position: 'fixed', bottom: 0, left: 0, width: '100vw', zIndex: '9999999' } : {}} className='footer'>
         <p className='footer__text'>© Made by <span><a href='https://github.com/Kuzniak98' target="_blank" rel="noopener noreferrer">WieJak</a></span>. 2020</p>
       </footer>
     </>

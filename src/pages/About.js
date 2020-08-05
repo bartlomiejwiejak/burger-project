@@ -11,9 +11,8 @@ const About = () => {
   useEffect(() => {
     let mounted = true;
     if (!isTriggered) {
-      gsap.set('.about', { transform: 'translate(-100%, 100%)', autoAlpha: 0 })
-      gsap.to('.about', {
-        duration: 1, ease: 'Power2.easeOut', scrollTrigger: { trigger: '.about', start: '-80% center' }, x: 0, y: 0, autoAlpha: 1, onComplete: () => {
+      gsap.to('.about', 1, {
+        ease: 'power2.out', scrollTrigger: { trigger: '.about', start: '-80% center' }, x: 0, y: 0, autoAlpha: 1, onComplete: () => {
           if (mounted) {
             setIsTriggered(true)
           }
@@ -21,19 +20,19 @@ const About = () => {
       })
     }
     else {
-      const tl = gsap.timeline({ defaults: { ease: 'Power1.easeOut' } })
-      let delay = '+=2';
+      const tl = gsap.timeline({ defaults: { ease: 'power1.out' } })
+      let delay = 1.2;
       const style = getComputedStyle(document.querySelector('.about__right'));
       const display = style.display;
       if (display === 'none') {
-        delay = '+=0';
+        delay = 0;
       }
 
-      tl.fromTo('.about .heading-secondary', { y: '100%' }, { y: 0, autoAlpha: 1, duration: .1 }, delay)
+      tl.fromTo('.about .heading-secondary', .1, { y: '100%' }, { y: 0, autoAlpha: 1, delay: delay })
         .fromTo(['.about__paragraph'], { y: 30 }, { stagger: .1, ease: 'back.out(1.7)', autoAlpha: 1, y: 0 })
-        .fromTo('.about .link', { scale: 1.1, y: 30 }, { y: 0, scale: 1, autoAlpha: 1, duration: .1 }, '-=.5')
-        .fromTo('.about-scroll .arrow', { y: '-100%' }, { duration: .3, autoAlpha: 1, y: 0 })
-        .fromTo('.about-scroll .arrow-text', { visibility: 'hidden', duration: .2 }, { autoAlpha: 1 })
+        .to('.about .link', .2, { y: 0, scale: 1, autoAlpha: 1, delay: -.3 })
+        .fromTo('.about-scroll .arrow', .3, { y: '-100%' }, { autoAlpha: 1, y: 0 })
+        .fromTo('.about-scroll .arrow-text', .2, { visibility: 'hidden' }, { autoAlpha: 1 })
     }
     return () => {
       mounted = false;

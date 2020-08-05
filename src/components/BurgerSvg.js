@@ -26,7 +26,7 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
   const shadowRef = useRef(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'Power2.easeOut', duration: .03 } })
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out', duration: .03 } })
     if (fill >= 100 && !success) {
       tl.to('.burger-builder-animation .burger', { x: '2%' })
         .to('.burger-builder-animation .burger', { x: '-2%' })
@@ -148,7 +148,7 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
       const meat = meatRef.current;
       const bunBottom = bunBottomRef.current;
       const shadow = shadowRef.current;
-      const tl = gsap.timeline({ defaults: { ease: 'Power2.easeOut' } })
+      const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
       tl.to([bunTop, bunBottom, tomato, meat, bacon, lettuce, cheese, gerkins, bunTop], { y: '0', duration: .3 })
         .to(shadow, { y: '-20', duration: .3 }, '-=.3')
         .to('.burger-builder-animation .item svg.ing', { opacity: .6, duration: .1, stagger: .1 }, '+=.5')

@@ -20,8 +20,9 @@
     width: 450px;
     padding: 0 5rem;
     box-sizing: border-box;
-    & > {
+    > *{
       visibility: 0;
+      opacity: 0;
       transform: translateX(-100px);
     }
     @media (max-width: 1400px) {

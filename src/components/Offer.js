@@ -11,8 +11,8 @@ const Offer = () => {
     if (!isTriggered) {
       gsap.registerPlugin(ScrollTrigger)
       gsap.set('.offer-reveal', { autoAlpha: 0 });
-      gsap.to('.offer-reveal', {
-        scrollTrigger: { trigger: '.offer-scroll', start: 'top center' }, duration: 1, transform: 'translate(0,0)', autoAlpha: 1, onComplete: () => {
+      gsap.to('.offer-reveal', 1, {
+        scrollTrigger: { trigger: '.offer-scroll', start: 'top center' }, x: 0, y: 0, autoAlpha: 1, onComplete: () => {
           if (mounted) {
             setIsTriggered(true)
           }
@@ -36,21 +36,21 @@ const Offer = () => {
           }, backgroundPositionY: '-300px'
         })
       }
-      const tl = gsap.timeline({ defaults: { ease: 'Power1.easeOut' } })
+      const tl = gsap.timeline({ defaults: { ease: 'power1.out' } })
       gsap.set('.offer-wrapper', { visibility: 'visible' })
       gsap.set('.offer__box', { x: '100vw', skewX: '-15deg' })
       gsap.set('.offer__box > *', { skewX: '15deg' })
-      tl.to('.offer-reveal', { duration: 1, transform: 'translate(100%,0)' })
-        .to('.offer__box:nth-child(1)', { duration: .3, x: 0, autoAlpha: 1 })
-        .to('.offer__box:nth-child(1)', { duration: .2, skewX: '-20deg' })
-        .to('.offer__box:nth-child(1), .offer__box:nth-child(1) > *', { duration: .1, skewX: '0deg' })
-        .to('.offer__box:nth-child(2)', { duration: .3, x: 0, autoAlpha: 1 }, '-=.5')
-        .to('.offer__box:nth-child(2)', { duration: .2, skewX: '-20deg' })
-        .to('.offer__box:nth-child(2), .offer__box:nth-child(2) > *', { duration: .1, skewX: '0deg' })
-        .to('.offer__box:nth-child(3)', { duration: .3, x: 0, autoAlpha: 1 }, '-=.5')
-        .to('.offer__box:nth-child(3)', { duration: .2, skewX: '-20deg' })
-        .to('.offer__box:nth-child(3), .offer__box:nth-child(3) > *', {
-          duration: .1, skewX: '0deg', onComplete: () => {
+      tl.to('.offer-reveal', 1, { x: '100%', y: 0 })
+        .to('.offer__box:nth-child(1)', .3, { x: 0, autoAlpha: 1 })
+        .to('.offer__box:nth-child(1)', .2, { skewX: '-20deg' })
+        .to('.offer__box:nth-child(1), .offer__box:nth-child(1) > *', .1, { skewX: '0deg' })
+        .to('.offer__box:nth-child(2)', .3, { x: 0, autoAlpha: 1, delay: -.5 })
+        .to('.offer__box:nth-child(2)', .2, { skewX: '-20deg' })
+        .to('.offer__box:nth-child(2), .offer__box:nth-child(2) > *', .1, { skewX: '0deg' })
+        .to('.offer__box:nth-child(3)', .3, { x: 0, autoAlpha: 1, delay: -.5 })
+        .to('.offer__box:nth-child(3)', .2, { skewX: '-20deg' })
+        .to('.offer__box:nth-child(3), .offer__box:nth-child(3) > *', .1, {
+          skewX: '0deg', onComplete: () => {
             if (mounted) {
               setIsAnimationdone(true)
             }

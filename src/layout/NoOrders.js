@@ -4,7 +4,7 @@ import Link from '../components/Link';
 
 const NoOrders = () => {
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'Power2.easeOut' } })
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
     tl.to('.no-orders-modal', { x: 0, autoAlpha: 1, duration: .6 })
       .to('.no-orders__heading, .no-orders .link', { y: 0, autoAlpha: 1, duration: .3, stagger: .1 })
   }, [])

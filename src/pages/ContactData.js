@@ -153,7 +153,7 @@ const ContactData = (props) => {
   </form>)
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'Power2.easeOut' } })
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
     tl.to('.contact-data', { y: 0, autoAlpha: 1, duration: 1 }, '+=.3')
       .to('.contact-data__heading', { y: 0, autoAlpha: 1, duration: .3 })
       .to('.contact-data__form > *', { x: 0, autoAlpha: 1, duration: .2, stagger: .05 }, '-=.2')
