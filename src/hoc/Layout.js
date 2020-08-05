@@ -32,7 +32,7 @@ const Layout = ({ isAuth, children, location, alertShow, alertMessage, onAlertHi
         {children}
       </main>
       <footer style={(location.pathname === '/checkout' || location.pathname === '/checkout/contact-data' || location.pathname === '/orders' || location.pathname === '/burger-builder' || location.pathname === '/auth') ? { position: 'fixed', bottom: 0, left: 0, width: '100vw', zIndex: '9999999' } : {}} className='footer'>
-        <p className='footer__text'>© Made by <span><a href='https://github.com/Kuzniak98' target="_blank" rel="noopener noreferrer">WieJak</a></span>. 2020</p>
+        <p className='footer__text'>© Made by <span><a href='https://github.com/bartlomiejwiejak' target="_blank" rel="noopener noreferrer">Bartłomiej Wiejak</a></span>. 2020</p>
       </footer>
     </>
   )
