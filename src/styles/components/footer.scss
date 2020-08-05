@@ -1,0 +1,30 @@
+.footer {
+  background-color: rgba(255, 188, 13, 0.9);
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  animation: showFooter 1s ease-out 3s forwards;
+  @media (max-width: 1000px) {
+    height: 3rem;
+  }
+  &__text {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0;
+    span {
+      font-weight: bold;
+      cursor: pointer;
+      a, a:visited, a:active {
+        text-decoration: none;
+        color: inherit;
+        transition: .3s;
+        &:hover {
+          text-shadow: 0 1rem 2rem rgba(0,0,0,0.4);
+        }
+      }
+    }
+  }
+}

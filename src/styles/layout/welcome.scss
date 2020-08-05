@@ -1,0 +1,34 @@
+.welcome {
+  &-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  height: 80vh;
+  background-image: linear-gradient(to right bottom, rgba(#ddd, .5) 0%, rgba(#ddd, .5) 100%), url('../../assets/images/home-1.jpg');
+  background-size: cover;
+  @media (max-width: 1600px) {
+  background-image: linear-gradient(to right bottom, rgba(#ddd, .5) 0%, rgba(#ddd, .5) 100%), url('../../assets/images/burger-landscape.jpg');
+  }
+  @media (max-width: 1200px) {
+    background-image: linear-gradient(to right bottom, rgba(#ddd, .5) 0%, rgba(#ddd, .5) 100%), url('../../assets/images/burger-medium.jpg');
+    }
+  position: relative;
+  visibility: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  @media (max-width: 800px) {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+  @media (max-width: 600px) {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+    &__text-box {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%) scale(3);
+      visibility: hidden;
+      opacity: 0;
+    }
+}
+

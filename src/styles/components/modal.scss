@@ -1,0 +1,48 @@
+.modal {
+  position: fixed;
+  z-index: 500;
+  background-color: rgb(247, 247, 247);
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px black;
+  width: 35%;
+  padding: 2rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);  
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+  background-image: linear-gradient(rgba(#ddd, .9) 0%, rgba(#ddd, .9) 100%, transparent 50%), url('../../assets/images/order.jpg');
+  background-size: cover;
+  z-index: 100000;
+  color: #333;
+  &-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgba(0,0,0,0.5);
+    transition: .3s;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10001;
+  }
+  @media (max-width: 1400px) {
+    width: 40%;
+  }
+  @media (max-width: 1200px) {
+    width: 45%;
+  }
+  @media (max-width: 1000px) {
+    width: 55%;
+  }
+  @media (max-width: 800px) {
+    width: 65%;
+  }
+  @media (max-width: 600px) {
+    width: 75%;
+  }
+  @media (max-width: 400px) {
+    width: 80%;
+  }
+}

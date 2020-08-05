@@ -1,0 +1,7 @@
+main {
+  margin-top: 15rem;
+  position: relative;
+  @media (max-width: 1000px) {
+    margin-top: 10rem;
+    }
+}

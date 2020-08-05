@@ -1,26 +1,26 @@
 import React, { useEffect, Suspense } from 'react';
-import Layout from './hoc/Layout/Layout';
+import Layout from './hoc/Layout';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
-import Logout from './pages/Auth/Logout/Logout';
+import Logout from './pages/Logout';
 import { connect } from 'react-redux';
 import * as actions from './store/actions';
-import Loader from './components/UL/Loader/Loader';
+import Loader from './components/Loader';
 
 const Checkout = React.lazy(() => {
-  return import('./pages/Checkout/Checkout')
+  return import('./pages/Checkout')
 })
 const Orders = React.lazy(() => {
-  return import('./pages/Orders/Orders')
+  return import('./pages/Orders')
 })
 const Auth = React.lazy(() => {
-  return import('./pages/Auth/Auth')
+  return import('./pages/Auth')
 })
 
 const Home = React.lazy(() => {
-  return import('./pages/Home/Home');
+  return import('./pages/Home');
 })
 const BurgerBuilder = React.lazy(() => {
-  return import('./pages/BurgerBuilder/BurgerBuilderAnimation')
+  return import('./layout/BurgerBuilderAnimation')
 })
 
 const App = (props) => {
@@ -77,7 +77,6 @@ const App = (props) => {
   }
   return (
     <>
-
       <Layout>
         <Suspense fallback={<Loader loading />}>
           {routes}

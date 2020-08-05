@@ -1,0 +1,104 @@
+.offer {
+  padding: 20rem 5rem;
+  transform: skewY(-7deg);
+  background-image: linear-gradient(to right bottom, rgba(221, 221, 221, 0.5) 0%, rgba(221, 221, 221, 0.5) 100%), url('../../assets/images/offer-background.jpg');
+  background-size: cover;
+  background-position: top;
+  &-scroll {
+    position: relative;
+  }
+  &-reveal {
+    background-color: #f7f7f7;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transform: translate(100%, 100%);
+    z-index: 10;
+  }
+  &-wrapper {
+    background-color: #f7f7f7;
+    padding: 20rem 0;
+    overflow: hidden;
+    visibility: hidden;
+    @media (max-width: 1000px) {
+      padding: 15rem 0;
+    }
+    @media (max-width: 800px) {
+      padding: 10rem 0;
+    }
+    @media (max-width: 600px) {
+      padding: 5rem 0;
+    }
+  }
+  @media (max-width: 1000px) {
+    margin: 15rem 0;
+    padding: 15rem 4rem;
+  }
+  @media (max-width: 800px) {
+    margin: 10rem 0;
+    padding: 10rem 3rem;
+  }
+  @media (max-width: 600px) {
+    margin: 5rem 0;
+    padding: 5rem 2rem;
+  }
+  &__container {
+    display: flex;
+    transform: skewY(7deg);
+    margin: 0 auto;
+    max-width: 114rem;
+    justify-content: space-between;
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+  }
+  &__box {
+    flex-basis: 25%;
+    padding: 3rem;
+    background: rgba(221, 221, 221, 0.8);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    visibility: hidden;
+    @media (max-width: 1000px) {
+      padding: 2.5rem;
+    }
+    @media (max-width: 800px) {
+      padding: 2rem
+    }
+    @media (max-width: 600px) {
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 400px) {
+      padding: 1rem;
+    }
+    &--icon {
+      background-clip: text;
+      font-size: 5rem;
+      color: transparent;
+      display: block;
+      text-align: center;
+      background-image: linear-gradient(to right, rgba(188, 88, 30, 0.8), rgba(226, 123, 54, 0.8));
+      @media (max-width: 1000px) {
+        font-size: 4rem;
+      }
+      @media (max-width: 800px) {
+        font-size: 3.5rem;
+      }
+      @media (max-width: 600px) {
+        font-size: 3rem;
+      }
+      @media (max-width: 400px) {
+        font-size: 3rem;
+      }
+    }
+    &--header {
+      text-align: center;
+    }
+    & .paragraph {
+      text-align: center;
+    }
+  }
+}
