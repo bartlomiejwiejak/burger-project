@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Layout from '../components/hoc/Layout';
 import Logout from '../components/views/Logout';
 import * as actions from '../store/actions';
+import Preloader from '../components/layout/PreLoader';
 
 const Checkout = React.lazy(() => {
   return import('../components/views/Checkout')
@@ -78,6 +79,7 @@ const App = (props) => {
   }
   return (
     <>
+      <Preloader />
       <Layout>
         <Suspense fallback={null}>
           {routes}

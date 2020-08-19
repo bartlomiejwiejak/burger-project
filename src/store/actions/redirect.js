@@ -11,4 +11,8 @@ export const redirectEnd = () => {
     type: actionTypes.REDIRECT_END
   }
 }
-
+export const loadEnd = () => {
+  return {
+    type: actionTypes.LOAD_END
+  }
+}

@@ -1,11 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useSelector } from 'react-redux';
 
 const Order = (props) => {
+  const isLoaded = useSelector(state => state.redirect.isLoaded)
+
   let ingredients = [];
   const orderRef = useRef(null);
+
   useEffect(() => {
+    if (!isLoaded) return;
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(orderRef.current, {
       x: 0, autoAlpha: 1, duration: .7, scrollTrigger: {
@@ -13,7 +18,7 @@ const Order = (props) => {
         start: '-100px center'
       }
     })
-  }, [])
+  }, [isLoaded])
   const mouseEnterAnimation = () => {
     const offerbox = orderRef.current;
     gsap.to(offerbox, { y: '-1.5rem', scale: 1.03, duration: .3 })

@@ -13,6 +13,8 @@ const BurgerBuilderStart = ({ history }) => {
   const [inter, setInter] = useState(null);
   const [success, setSuccess] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
+  const isLoaded = useSelector(state => state.redirect.isLoaded)
+
   const fillBar = () => {
     clearInterval(inter);
     gsap.set('.progress-bar', { visibility: 'visible' })
@@ -61,11 +63,12 @@ const BurgerBuilderStart = ({ history }) => {
   }, [success])
 
   useEffect(() => {
+    if (!isLoaded) return;
     document.querySelector('html').style.setProperty('overflow-x', 'hidden');
     const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
     tl.fromTo('.burger-builder-animation .burger .item', { x: '-500', autoAlpha: 0 }, { x: 0, autoAlpha: 1, stagger: .1, duration: '.5' })
     tl.fromTo('.heading-build', { scale: 15, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: .3 })
-  }, [])
+  }, [isLoaded])
   let content = (
     <>
       <h1 className='heading-build'>

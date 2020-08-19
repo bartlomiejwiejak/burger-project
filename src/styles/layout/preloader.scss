@@ -1,0 +1,29 @@
+.preloader {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(255, 188, 13);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999999;
+  .burger {
+    transform: scale(.8);
+    @media (max-width: 600px) {
+      transform: scale(.5);
+      margin-bottom: -5rem;
+    }
+  }
+  h2 {
+    font-size: 5rem;
+    margin-top: -5rem;
+    font-family: 'Pacifico', cursive;
+    line-height: 1;
+    @media (max-width: 600px) {
+    font-size: 3rem;
+    }
+  }
+}

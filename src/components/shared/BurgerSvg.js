@@ -11,7 +11,7 @@ import { ReactComponent as Tomato } from '../../assets/burger/tomato.svg';
 import { ReactComponent as Gerkins } from '../../assets/burger/gerkins.svg';
 
 
-const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => {
+const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete, noEvents, preLoader }) => {
   let styles = ['burger'];
   if (classes) {
     styles = [...styles, classes];
@@ -38,9 +38,8 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
     }
   }, [fill, success])
 
-
-
   const mouseEnter = () => {
+    if (success || noEvents) return
     const bunTop = bunTopRef.current;
     const tomato = tomatoRef.current;
     const lettuce = lettuceRef.current;
@@ -50,7 +49,6 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
     const meat = meatRef.current;
     const bunBottom = bunBottomRef.current;
     const shadow = shadowRef.current;
-    if (success) return
     gsap.defaults({
       ease: 'power2.out',
       duration: .5
@@ -66,7 +64,9 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
     gsap.to(shadow, { y: '-152' })
     gsap.to(bunTop, { y: '80' })
   }
+
   const mouseDown = () => {
+    if (success || noEvents) return
     if (toolbar) {
       window.scrollTo({
         behavior: 'smooth',
@@ -82,8 +82,6 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
     const meat = meatRef.current;
     const bunBottom = bunBottomRef.current;
     const shadow = shadowRef.current;
-    if (success) return
-
     gsap.to(bunTop, { y: '100' })
     gsap.to(bunBottom, { y: '-150' })
     gsap.to(tomato, { y: '72' })
@@ -93,9 +91,10 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
     gsap.to(cheese, { y: '-35' })
     gsap.to(gerkins, { y: '5' })
     gsap.to(shadow, { y: '-182' })
-    gsap.to(bunTop, { y: '100' })
   }
+
   const mouseRelease = () => {
+    if (fill >= 100 || noEvents) return;
     const bunTop = bunTopRef.current;
     const tomato = tomatoRef.current;
     const lettuce = lettuceRef.current;
@@ -105,7 +104,6 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
     const meat = meatRef.current;
     const bunBottom = bunBottomRef.current;
     const shadow = shadowRef.current;
-    if (fill >= 100) return;
     gsap.to(bunTop, { y: '80' })
     gsap.to(bunBottom, { y: '-130' })
     gsap.to(tomato, { y: '58' })
@@ -117,6 +115,7 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
     gsap.to(shadow, { y: '-152' })
     gsap.to(bunTop, { y: '80' })
   }
+
   const mouseOut = () => {
     const bunTop = bunTopRef.current;
     const tomato = tomatoRef.current;
@@ -138,6 +137,7 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
     gsap.to(gerkins, { y: '3' })
     gsap.to(shadow, { y: '-162' })
   }
+
   useEffect(() => {
     if (success) {
       const bunTop = bunTopRef.current;
@@ -178,8 +178,31 @@ const BurgerSvg = ({ classes, reference, toolbar, fill, success, complete }) => 
     }
   }, [success, complete])
 
+  useEffect(() => {
+    if (preLoader) {
+      const bunTop = bunTopRef.current;
+      const tomato = tomatoRef.current;
+      const lettuce = lettuceRef.current;
+      const gerkins = gerkinsRef.current;
+      const cheese = cheeseRef.current;
+      const bacon = baconRef.current;
+      const meat = meatRef.current;
+      const bunBottom = bunBottomRef.current;
+      const shadow = shadowRef.current;
+      gsap.to(bunTop, .3, { y: '100', yoyo: true, ease: 'power2.out', repeat: -1 })
+      gsap.to(bunBottom, .3, { y: '-155', yoyo: true, ease: 'power2.out', repeat: -1 })
+      gsap.to(tomato, .3, { y: '70', yoyo: true, ease: 'power2.out', repeat: -1 })
+      gsap.to(meat, .3, { y: '-120', yoyo: true, ease: 'power2.out', repeat: -1 })
+      gsap.to(bacon, .3, { y: '-84', yoyo: true, ease: 'power2.out', repeat: -1 })
+      gsap.to(lettuce, .3, { y: '41', yoyo: true, ease: 'power2.out', repeat: -1 })
+      gsap.to(cheese, .3, { y: '-35', yoyo: true, ease: 'power2.out', repeat: -1 })
+      gsap.to(gerkins, .3, { y: '5', yoyo: true, ease: 'power2.out', repeat: -1 })
+      gsap.to(shadow, .3, { y: '-182', yoyo: true, ease: 'power2.out', repeat: -1 })
+    }
+  }, [preLoader])
+
   return (
-    <ul onMouseEnter={mouseEnter} onMouseDown={mouseDown} onTouchStart={mouseDown} onClick={mouseRelease} onMouseLeave={mouseOut} ref={reference} className={styles.join(' ')}>
+    <ul style={preLoader ? { cursor: 'auto' } : {}} onMouseEnter={mouseEnter} onMouseDown={mouseDown} onTouchStart={mouseDown} onClick={mouseRelease} onMouseLeave={mouseOut} ref={reference} className={styles.join(' ')}>
       <li ref={bunTopRef} className="item bun_top">
         <BunTop />
       </li>

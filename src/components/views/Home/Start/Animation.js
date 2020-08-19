@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useToggle, useLockBodyScroll } from 'react-use';
 import gsap from 'gsap';
+import { useSelector } from 'react-redux';
 
 const WelcomeAnimation = () => {
   const [animationDone, setAnimationDone] = useState(false);
   const [locked, toggleLocked] = useToggle(true)
+  const isLoaded = useSelector(state => state.redirect.isLoaded)
+
   useLockBodyScroll(locked);
   useEffect(() => {
+    if (!isLoaded) return;
     let mounted = true;
     window.scrollTo({
       top: 0
@@ -31,7 +35,7 @@ const WelcomeAnimation = () => {
     return () => {
       mounted = false;
     };
-  }, [toggleLocked])
+  }, [toggleLocked, isLoaded])
 
   return (
     animationDone ? null : <div className="welcome-animation"></div>

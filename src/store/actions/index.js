@@ -28,5 +28,5 @@ export {
   authSuccess,
   authClear
 } from './auth';
-export { redirectStart, redirectEnd } from './redirect';
+export { redirectStart, redirectEnd, loadEnd } from './redirect';
 export { alertHide, alertShow } from './alert';

@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import gsap from 'gsap';
+import { useSelector } from 'react-redux';
 
 import Burger from '../../shared/Burger';
 import Button from '../../shared/Button';
 
 const CheckoutSummary = (props) => {
+  const isLoaded = useSelector(state => state.redirect.isLoaded)
 
   useEffect(() => {
+    if (!isLoaded) return;
     const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
     gsap.set('.checkout-summary', { autoAlpha: 1 });
     gsap.set('.checkout-summary__burger .burger-builder-burger', { overflow: 'visible' })
@@ -22,7 +25,7 @@ const CheckoutSummary = (props) => {
           })
         }
       }, '-=.3')
-  }, [])
+  }, [isLoaded])
   return (
     <div className='checkout-summary'>
       <h2 className='checkout-summary__heading heading-secondary'>We hope it tastes well!</h2>
