@@ -1,6 +1,7 @@
 import { put, call } from 'redux-saga/effects';
+
 import * as actions from '../actions';
-import axios from '../../axios-orders';
+import axios from '../../axios/orders';
 
 export function* purchaseBurgerSaga(action) {
   yield put(actions.purchaseBurgerStart())
