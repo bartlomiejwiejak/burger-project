@@ -12,7 +12,7 @@ You need to have Node.js and npm installed to run this project locally. After th
 
 ```
 # Clone the project.
-npm clone https://github.com/bartlomiejwiejak/burger-project.git
+git clone https://github.com/bartlomiejwiejak/burger-project.git
 
 # Install npm dependencies.
 npm install
